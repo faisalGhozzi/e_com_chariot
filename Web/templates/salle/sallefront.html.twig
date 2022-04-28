@@ -1,0 +1,59 @@
+{% extends 'base3.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 m-auto">
+            <article class="single-post">
+                <div class="post-title text-center">
+                    <h1>{{salle.nom}}</h1>
+                </div>
+                <div class="post-body">
+                    <div class="feature-image">
+                        <img class="img-fluid" src="{{ asset('uploads/salles/' ~ salle.image ) }}" alt="feature-image">
+                    </div>
+                    <h4><strong>Capacité:</strong></h4>
+                    <p>{{salle.capacite}}</p>
+                    <h4><strong>Prix:</strong></h4>
+                    <p>{{salle.prixSalle}}</p>
+                </div>
+            </article>
+            <div class="about-author">
+                <h2>Reservations</h2>
+                <table class="table">
+                    <tr>
+                        <th>Client</th>
+                        <th>Nombre des personnes</th>
+                        <th>Date</th>
+                    </tr>
+                    <tbody>
+                    {% for r in reservations %}
+                        <tr>
+                            <td>{{ r.idClient.nom }} {{ r.idClient.prenom }}</td>
+                            <td>{{ r.nbrp }}</td>
+                            <td>{{ r.date|date }}</td>
+                            <td><a href="{{ path('PDFReservation',{'id':r.idreservation}) }}" class="text-dark"><i class="ti-download"></i></a></td>
+                            <td><a href="{{ path('updateReservation',{'id':r.idreservation}) }}" class="text-dark"><i class="ti-reload"></i></a></td>
+                            <td><a href="{{ path('deleteReservation',{'id':r.idreservation}) }}" class="text-danger"><i class="ti-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <label>Nombre des personnes</label>
+                    {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre'}} ) }}
+                    {{ form_errors(form.nbrp,{'attr':{'class':'text-danger'}}) }}
+                    <div class="text-danger">{% if errNbr is defined %} {{ errNbr }} {% endif %}</div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    {{ form_widget(form.date , {'attr': {'class': 'form-control' }} ) }}
+                    {{ form_errors(form.date,{'attr':{'class':'text-danger'}}) }}
+                    <div class="text-danger">{% if err is defined %} {{ err }} {% endif %}</div>
+                </div>
+                {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

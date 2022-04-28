@@ -1,0 +1,67 @@
+{% extends 'base2.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col order-last">
+                <div class="feature-image">
+                    <img class="img-fluid" src="{{ asset('uploads/salles/' ~ salle.image ) }}" alt="feature-image">
+                </div>
+                <h4><strong>Capacité:</strong></h4>
+                <p>{{salle.capacite}}</p>
+                <h4><strong>Prix:</strong></h4>
+                <p>{{salle.prixSalle}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Client</th>
+                        <th>Nombre des personnes</th>
+                        <th>Date</th>
+                    </tr>
+                    <tbody>
+                    {% for r in reservations %}
+                        <tr>
+                            <td>{{ r.idClient.nom }} {{ r.idClient.prenom }}</td>
+                            <td>{{ r.nbrp }}</td>
+                            <td>{{ r.date|date }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div id="calendrier">
+    </div>
+
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data|raw }},
+                editable: true,
+                eventResizableFromStart: true
+            })
+
+            calendar.render()
+        }
+    </script>
+
+{% endblock %}

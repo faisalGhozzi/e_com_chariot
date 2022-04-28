@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Nombre des personnes</th>
+            <th>Date de réservation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ reservation.idClient.nom }} {{ reservation.idClient.prenom }}</td>
+            <td>{{ reservation.nbrp }}</td>
+            <td>{{ reservation.date|date }}</td>
+        </tr>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,23 @@
+{% extends 'base3.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 m-auto">
+            {{ form_start(form) }}
+            <div class="form-group">
+                <label>Nombre des personnes</label>
+                {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre','max':salle.capacite}} ) }}
+                {{ form_errors(form.nbrp,{'attr':{'class':'text-danger'}}) }}
+                <div class="text-danger">{% if errNbr is defined %} {{ errNbr }} {% endif %}</div>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                {{ form_widget(form.date , {'attr': {'class': 'form-control' }} ) }}
+                {{ form_errors(form.date,{'attr':{'class':'text-danger'}}) }}
+                <div class="text-danger">{% if err is defined %} {{ err }} {% endif %}</div>
+            </div>
+            {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

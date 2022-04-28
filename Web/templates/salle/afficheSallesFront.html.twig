@@ -1,0 +1,217 @@
+{% extends 'base3.html.twig' %}
+{% block content %}
+    <input type="text" class="form-control" placeholder="Recherche..." id="recherche">
+    <br>
+    <div class="col-lg-12 row">
+        <div class="col-lg-4">
+            Tri par prix:
+        </div>
+        <div class="col-lg-4">
+            <button class="btn btn-secondary" id="croissant" >Croissant</button>
+        </div>
+        <div class="col-lg-4">
+            <button class="btn btn-info"id="decroissant" >Décroissant</button>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="affichage">
+        {% for s in salles %}
+            <div class="col-lg-4 col-md-6">
+                <article class="post-sm">
+                    <div class="post-thumb">
+                        <a href="{{ path('SalledetailFront',{'id':s.idSalle}) }}" ><img class="w-100" src="{{ asset('uploads/salles/' ~ s.image ) }}" alt="Post-Image"></a>
+                    </div>
+                    <div class="post-title">
+                        <h3><a href="{{ path('SalledetailFront',{'id':s.idSalle}) }}" >{{s.nom}}</a></h3>
+                    </div>
+                    <div class="post-meta">
+                        <ul class="list-inline post-tag">
+                            <li class="list-inline-item">
+                                <img src="{{ asset('uploads/salles/' ~ s.image ) }}" alt="author-thumb">
+                            </li>
+                            <li class="list-inline-item">
+                                <strong>Prix:</strong>{{s.prixSalle}}
+                            </li>
+                            <li class="list-inline-item">
+                                <strong>Capacité:</strong>{{s.capacite}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="post-details">
+                        <p></p>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#recherche").keyup(function() {
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#affichage").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/rechercheSalle",
+                    dataType: "text",
+                    data:{
+                        'valeur':value
+                    },
+                    success: function(msg){
+                        var data = JSON.parse(msg);
+                        console.log(data)
+                        if(data.length!==0){
+                            for(let i = 0; i < data.length; i++){
+                                var img="{{ asset('uploads/salles/') }}"+data[i].image;
+                                entitySelector.append(
+                                    '<div class="col-lg-4 col-md-6">'+
+                                    '<article class="post-sm">'+
+                                    '<div class="post-thumb">'+
+                                    '<a href="/salle/'+data[i].idsalle+'" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                    '</div>'+
+                                    '<div class="post-title">'+
+                                    '<h3><a href="/salle/'+data[i].idsalle+'" >'+data[i].nom+'</a></h3>'+
+                                    '</div>'+
+                                    '<div class="post-meta">'+
+                                    '<ul class="list-inline post-tag">'+
+                                    '<li class="list-inline-item">'+
+                                    '<img src="'+img+'" alt="author-thumb">'+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Prix:</strong>'+data[i].prixsalle+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Capacité:</strong>'+data[i].capacite+
+                                    '</li>'+
+                                    '</ul>'+
+                                    '</div>'+
+                                    '<div class="post-details">'+
+                                    '<p></p>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
+                                );
+                            }
+                        }
+                        else{
+                            entitySelector.append('<div class="error">Aucune Salle trouvée</div>');
+                        }
+                    }
+                });
+            });
+            $("#croissant").click(function() {
+                var that = this;
+                var entitySelector = $("#affichage").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/triSalle",
+                    dataType: "text",
+                    data:{
+                        'tri':1
+                    },
+                    success: function(msg){
+                        var data = JSON.parse(msg);
+                        console.log(data)
+                        if(data.length!==0){
+                            for(let i = 0; i < data.length; i++){
+                                var img="{{ asset('uploads/salles/') }}"+data[i].image;
+                                entitySelector.append(
+                                    '<div class="col-lg-4 col-md-6">'+
+                                    '<article class="post-sm">'+
+                                    '<div class="post-thumb">'+
+                                    '<a href="/salle/'+data[i].idsalle+'" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                    '</div>'+
+                                    '<div class="post-title">'+
+                                    '<h3><a href="/salle/'+data[i].idsalle+'" >'+data[i].nom+'</a></h3>'+
+                                    '</div>'+
+                                    '<div class="post-meta">'+
+                                    '<ul class="list-inline post-tag">'+
+                                    '<li class="list-inline-item">'+
+                                    '<img src="'+img+'" alt="author-thumb">'+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Prix:</strong>'+data[i].prixsalle+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Capacité:</strong>'+data[i].capacite+
+                                    '</li>'+
+                                    '</ul>'+
+                                    '</div>'+
+                                    '<div class="post-details">'+
+                                    '<p></p>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
+                                );
+                            }
+                        }
+                        else{
+                            entitySelector.append('<div class="error">Aucune Salle trouvée</div>');
+                        }
+                    }
+                });
+            });
+            $("#decroissant").click(function() {
+                var that = this;
+                var entitySelector = $("#affichage").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/triSalle",
+                    dataType: "text",
+                    data:{
+                        'tri':2
+                    },
+                    success: function(msg){
+                        var data = JSON.parse(msg);
+                        console.log(data)
+                        if(data.length!==0){
+                            for(let i = 0; i < data.length; i++){
+                                var img="{{ asset('uploads/salles/') }}"+data[i].image;
+                                entitySelector.append(
+                                    '<div class="col-lg-4 col-md-6">'+
+                                    '<article class="post-sm">'+
+                                    '<div class="post-thumb">'+
+                                    '<a href="/salle/'+data[i].idsalle+'" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                    '</div>'+
+                                    '<div class="post-title">'+
+                                    '<h3><a href="/salle/'+data[i].idsalle+'" >'+data[i].nom+'</a></h3>'+
+                                    '</div>'+
+                                    '<div class="post-meta">'+
+                                    '<ul class="list-inline post-tag">'+
+                                    '<li class="list-inline-item">'+
+                                    '<img src="'+img+'" alt="author-thumb">'+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Prix:</strong>'+data[i].prixsalle+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Capacité:</strong>'+data[i].capacite+
+                                    '</li>'+
+                                    '</ul>'+
+                                    '</div>'+
+                                    '<div class="post-details">'+
+                                    '<p></p>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
+                                );
+                            }
+                        }
+                        else{
+                            entitySelector.append('<div class="error">Aucune Salle trouvée</div>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

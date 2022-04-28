@@ -1,0 +1,85 @@
+{% extends 'base2.html.twig' %}
+
+   {% block content %}
+     {#   <table border="1">
+           <tr>
+               <td>Id</td>
+               <td>contenu</td>
+               <td>titre</td>
+               <td>image</td>
+               <td>nbr react</td>
+               <td>Supprimer</td>
+               <td>update</td>
+           </tr>
+           {% for c in articles %}
+               <tr>
+                   <td>{{c.idarticle}}</td>
+                   <td>{{c.contenu}}</td>
+                   <td>{{c.titre}}</td>
+                   <td>{{c.image}}</td>
+                   <td>{{c.nbrreact}}</td>
+                   <td><a href="{{ path('deleteArticle',{'id':c.idarticle}) }}">Supprimer</a></td>
+                   <td><a href="{{ path('updateArticle',{'id':c.idarticle}) }}">update</a></td>
+               </tr>
+           {% endfor %}
+
+       </table>
+       <td><a class="btn btn-success" href="{{ path('addArticle') }}">Ajouter Article</a></td>
+     #}
+
+       <!-- Begin Page Content -->
+       <div class="container-fluid">
+
+           <!-- Page Heading -->
+           <h1 class="h3 mb-2 text-gray-800">Articles</h1>
+           <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+               For more information about DataTables, please visit the <a target="_blank"
+                                                                          href="https://datatables.net">official DataTables documentation</a>.</p>
+
+           <!-- DataTales Example -->
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+               </div>
+               <div class="card-body">
+                   <div class="table-responsive">
+                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                           <thead>
+                           <tr>
+                               <th>Id</th>
+                               <th>contenu</th>
+                               <th>titre</th>
+                               <th>image</th>
+                               <th>nbr react</th>
+                               <th>Supprimer</th>
+                               <th>update</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                               {% for c in articles %}
+                           <tr>
+                               <td>{{c.idarticle}}</td>
+                               <td>{{c.contenu}}</td>
+                               <td>{{c.titre}}</td>
+                               <td><img src="{{ asset('uploads/articles/' ~ c.image ) }}" alt="" width="200" height="200"></td>
+                               <td>{{c.nbrreact}}</td>
+                               <td><a href="{{ path('deleteArticle',{'id':c.idarticle}) }}" class="btn btn-primary ">Supprimer</a></td>
+                               <td><a href="{{ path('updateArticle',{'id':c.idarticle}) }}" class="btn btn-primary ">update</a></td>
+                           </tr>
+                           {% endfor %}
+                           </tbody>
+                           <tfoot>
+                           <tr><a class="btn btn-success" href="{{ path('addArticle') }}">Ajouter Article</a></tr>
+                           </tfoot>
+                       </table>
+                   </div>
+               </div>
+           </div>
+
+       </div>
+       <!-- /.container-fluid -->
+
+       </div>
+       <!-- End of Main Content -->
+   {% endblock %}

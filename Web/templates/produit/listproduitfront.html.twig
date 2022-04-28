@@ -1,0 +1,175 @@
+{% extends 'base3.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 m-auto">
+            <article class="single-post">
+                <div class="post-title text-center">
+                    <h1>{{categorie.nomcateg}}</h1>
+                </div>
+                <div class="post-body">
+                    <p>{{categorie.description}}</p>
+                </div>
+            </article>
+            <div class="col-lg-12 row">
+                <div class="col-lg-4">
+                    Trier par prix:
+                </div>
+                <div class="col-lg-4">
+                    <button class="btn btn-info" id="up">Up</button>
+                </div>
+                <div class="col-lg-4">
+                    <button class="btn btn-secondary" id="down">down</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result" class="row">
+            {% for p in produits %}
+                <div class="col-lg-4 col-md-6">
+                    <article class="post-sm">
+                        <div class="post-thumb">
+                            <a href="#" ><img class="w-100" src="{{ asset('uploads/produits/' ~ p.image ) }}" alt="Post-Image"></a>
+                        </div>
+                        <div class="post-title">
+                            <h3><a href="#" >{{p.nomproduit}}</a></h3>
+                        </div>
+                        <div class="post-meta">
+                            <ul class="list-inline post-tag">
+                                <li class="list-inline-item">
+                                    <strong>Quantité:</strong>{{p.quantite}}
+                                </li>
+                                <li class="list-inline-item">
+                                    <strong>Prix:</strong>{{p.prix}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-details">
+                            <p>{{p.description}}</p>
+                            <a href="{{path("cart_add", {id: p.idproduit})}}" class="btn btn-success">
+                                <i class="bi bi-cart-plus"></i> Ajouter
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#up").click(function() {
+                var that = this;
+                var val = {{ categorie.idcateg }};
+                var entitySelector = $("#result").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/triProduits",
+                    dataType: "text",
+                    data:{
+                        'type':1,
+                        'idCateg':val
+                    },
+                    success: function(msg){
+                        var result = JSON.parse(msg);
+                        console.log(result)
+                        if(result.length!==0){
+                            for(let i = 0; i < result.length; i++){
+                                var img="{{ asset('uploads/produits/') }}"+result[i].image;
+                                entitySelector.append(
+                                '<div class="col-lg-4 col-md-6">'+
+                                    '<article class="post-sm">'+
+                                    '<div class="post-thumb">'+
+                                    '<a href="#" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                    '</div>'+
+                                    '<div class="post-title">'+
+                                    '<h3><a href="#" >'+result[i].nomproduit+'</a></h3>'+
+                                '</div>'+
+                                '<div class="post-meta">'+
+                                    '<ul class="list-inline post-tag">'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Quantité:</strong>'+result[i].quantite+
+                                '</li>'+
+                                '<li class="list-inline-item">'+
+                                    '<strong>Prix:</strong>'+result[i].prix+
+                                '</li>'+
+                                '</ul>'+
+                                '</div>'+
+                                '<div class="post-details">'+
+                                    '<p>'+result[i].description+'</p>'+
+                                    '<a href="/card/add/'+result[i].idproduit+'" class="btn btn-success">'+
+                                    '<i class="bi bi-cart-plus"></i> Ajouter'+
+                                    '</a>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
+                                );
+                            }
+                        }
+                        else{
+                            entitySelector.append('<div class="error">Aucun Produit trouvé</div>');
+                        }
+                    }
+                });
+            });
+            $("#down").click(function() {
+                var that = this;
+                var val = {{ categorie.idcateg }};
+                var entitySelector = $("#result").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/triProduits",
+                    dataType: "text",
+                    data:{
+                        'type':2,
+                        'idCateg':val
+                    },
+                    success: function(msg){
+                        var result = JSON.parse(msg);
+                        if(result.length!==0){
+                            for(let i = 0; i < result.length; i++){
+                                var img="{{ asset('uploads/produits/') }}"+result[i].image;
+                                entitySelector.append(
+                                    '<div class="col-lg-4 col-md-6">'+
+                                    '<article class="post-sm">'+
+                                    '<div class="post-thumb">'+
+                                    '<a href="#" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                    '</div>'+
+                                    '<div class="post-title">'+
+                                    '<h3><a href="#" >'+result[i].nomproduit+'</a></h3>'+
+                                    '</div>'+
+                                    '<div class="post-meta">'+
+                                    '<ul class="list-inline post-tag">'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Quantité:</strong>'+result[i].quantite+
+                                    '</li>'+
+                                    '<li class="list-inline-item">'+
+                                    '<strong>Prix:</strong>'+result[i].prix+
+                                    '</li>'+
+                                    '</ul>'+
+                                    '</div>'+
+                                    '<div class="post-details">'+
+                                    '<p>'+result[i].description+'</p>'+
+                                    '<a href="/card/add/'+result[i].idproduit+'" class="btn btn-success">'+
+                                    '<i class="bi bi-cart-plus"></i> Ajouter'+
+                                    '</a>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
+                                );
+                            }
+                        }
+                        else{
+                            entitySelector.append('<div class="error">Aucun Produit trouvé</div>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

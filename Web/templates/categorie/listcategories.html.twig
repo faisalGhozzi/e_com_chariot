@@ -1,0 +1,85 @@
+{% extends 'base3.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-lg-10 m-auto">
+            <div class="block">
+                <div class="title text-center">
+                    <h2>Categories</h2>
+                </div>
+                <br>
+                <input type="text" class="form-control" placeholder="Recherche" id="rech">
+                <br>
+                <div id="result">
+                    {% for c in categories %}
+                        <div class="job">
+                            <div class="row">
+                                <div class="content col-lg-6">
+                                    <h3>{{c.nomcateg}}</h3>
+                                    <p>{{c.description}}</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="apply-button text-right">
+                                        <a href="{{ path('Produits',{'id':c.idcateg}) }}" class="btn btn-main-sm">Voir les produits</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#rech").keyup(function() {
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#result").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/rechercheCategorie",
+                    dataType: "text",
+                    data:{
+                        'valeur':value
+                    },
+                    success: function(msg){
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+                            console.log(msg)
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'categories') {
+                                        if (id !== 'error') {
+                                            var img='{{ asset("uploads/articles/") }}'+value[3];
+                                            entitySelector.append(
+                                            '<div class="job">'+
+                                                '<div class="row">'+
+                                                '<div class="content col-lg-6">'+
+                                                '<h3>'+value[0]+'</h3>'+
+                                                '<p>'+value[1]+'</p>'+
+                                                '</div>'+
+                                                '<div class="col-lg-6">'+
+                                                '<div class="apply-button text-right">'+
+                                                '<a href="/produits/'+id+'" class="btn btn-main-sm">Voir les produits</a>'+
+                                            '</div>'+
+                                            '</div>'+
+                                            '</div>'+
+                                            '</div>'
+                                            );
+                                        } else {
+                                            entitySelector.append('<div class="error">'+value+'</div>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

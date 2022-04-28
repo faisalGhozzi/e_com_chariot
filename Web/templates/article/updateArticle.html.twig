@@ -1,0 +1,63 @@
+{% extends 'base2.html.twig' %}
+
+{% block content %}
+{#
+{{ form_start(articleform) }}
+<h1> Ajouter un Article </h1>
+{{ form_errors(articleform.contenu) }}
+{{ form_label(articleform.contenu,"Contenu") }}
+{{ form_widget(articleform.contenu) }}
+{{ form_widget(articleform.titre, {'attr': {'placeholder': 'Titre'}}) }}
+{{ form_end(articleform) }}
+#}
+<div class="app-content">
+
+    <div class="side-app">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">Modifier article</h3>
+
+                    </div>
+                    {{ form_start(articleformi,{attr:{novalidate:'novalidate'}}) }}
+                    <div class="card-body">
+
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputname">Contenu</label>
+                                {{ form_widget(articleformi.contenu , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'contenu'}} ) }}
+                                {{ form_errors(articleformi.contenu,{'attr':{'class':'text-danger'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputEmail2">Titre</label>
+                                {{ form_widget(articleformi.titre , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'titre'}} ) }}
+                                {{ form_errors(articleformi.titre,{'attr':{'class':'text-danger'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputPassword2">image</label>
+                                {{ form_widget(articleformi.image, {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'image'}} ) }}
+                                {{ form_errors(articleformi.image) }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputPassword2">nbr_react</label>
+                                {{ form_widget(articleformi.nbrreact , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'reacts'}} ) }}
+                                {{ form_errors(articleformi.nbrreact) }}
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <div class="checkbox checkbox-secondary">
+                                    {{ form_widget(articleformi) }}
+                                    <button type="SubmitType" class="btn btn-primary ">Modifier</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {{ form_end(articleformi) }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}

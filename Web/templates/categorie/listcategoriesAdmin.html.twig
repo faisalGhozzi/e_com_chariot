@@ -1,0 +1,25 @@
+{% extends 'base2.html.twig' %}
+
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>Nom Categorie</th>
+            <th>Description</th>
+        </tr>
+        <tbody>
+        {% for c in categories %}
+            <tr>
+                <td>{{c.nomcateg}}</td>
+                <td>{{c.description}}</td>
+                <td><a href="{{ path('ProduitsAdmin',{'id':c.idcateg}) }}">Voir les produits</a></td>
+                <td><a href="{{ path('updateCategorie',{'id':c.idcateg}) }}">Update</a></td>
+                <td><a href="{{ path('deleteCategorie',{'id':c.idcateg}) }}">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="{{ path('addCategorie') }}">Ajouter Categorie</a>
+    <br>
+    <a href="{{ path('categorieStatsAdmin') }}">voir les statistiques</a>
+{% endblock %}
