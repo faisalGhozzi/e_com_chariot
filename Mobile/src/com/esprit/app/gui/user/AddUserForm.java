@@ -32,7 +32,7 @@ public class AddUserForm extends Form{
         TextField nom = new TextField(id == 0 ? "" : u.getNom(), "Nom");
         TextField prenom = new TextField(id == 0 ? "" : u.getPrenom(), "Prenom");
         TextField email = new TextField(id == 0 ? "" : u.getEmail(), "Email");
-        TextField password = new TextField("Password");
+        TextField password = new TextField("","Password");
 
         add.addActionListener(new ActionListener() {
             @Override

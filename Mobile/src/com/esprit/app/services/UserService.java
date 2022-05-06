@@ -56,7 +56,7 @@ public class UserService {
     }
     
     public boolean updateUser(User u){
-        String url = Statics.BASE_URL+"/users/json/update/"+String.valueOf(u.getId());
+        String url = Statics.BASE_URL+"/users/json/update/";
         req.setUrl(url);
         req.setPost(true);
         req.addArgument("id",String.valueOf(u.getId()));

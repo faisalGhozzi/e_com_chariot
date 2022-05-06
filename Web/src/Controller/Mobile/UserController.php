@@ -49,14 +49,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/users/json/update/{id}", name="updateUserJsonAction")
+     * @Route("/users/json/update", name="updateUserJsonAction")
      */
-    public function updateUserJsonAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id): JsonResponse
+    public function updateUserJsonAction(Request $request, UserPasswordEncoderInterface $passwordEncoder): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user = $em->getRepository(User::class)->find($id);
-
+        $user = $em->getRepository(User::class)->find($$request->get('id'));
         $user->setEmail($request->get('email'));
         $user->setNom($request->get('nom'));
         $user->setPrenom($request->get('prenom'));

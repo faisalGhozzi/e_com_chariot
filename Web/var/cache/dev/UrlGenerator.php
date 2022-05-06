@@ -105,7 +105,7 @@ return [
     'deleteSallesJsonAction' => [['id'], ['_controller' => 'App\\Controller\\Mobile\\SalleController::deleteSallesJsonAction'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/salles/json/delete']], [], []],
     'UsersJsonAction' => [[], ['_controller' => 'App\\Controller\\Mobile\\UserController::usersJsonAction'], [], [['text', '/users/json']], [], []],
     'newUserJsonAction' => [[], ['_controller' => 'App\\Controller\\Mobile\\UserController::newUserJsonAction'], [], [['text', '/users/json/new']], [], []],
-    'updateUserJsonAction' => [['id'], ['_controller' => 'App\\Controller\\Mobile\\UserController::updateUserJsonAction'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/users/json/update']], [], []],
+    'updateUserJsonAction' => [[], ['_controller' => 'App\\Controller\\Mobile\\UserController::updateUserJsonAction'], [], [['text', '/users/json/update']], [], []],
     'UsersIdJson' => [['id'], ['_controller' => 'App\\Controller\\Mobile\\UserController::usersIdJson'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/users/json']], [], []],
     'deleteUsersJsonAction' => [['id'], ['_controller' => 'App\\Controller\\Mobile\\UserController::deleteUsersJsonAction'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/users/json/delete']], [], []],
     'ProduitsAdmin' => [['id'], ['_controller' => 'App\\Controller\\ProduitController::listProduit'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/admin/produits']], [], []],

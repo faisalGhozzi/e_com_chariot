@@ -70,6 +70,27 @@ class ArticleController extends AbstractController
     }
 
     /**
+     * @Route("/article/json/update", name="ArticlesJsonUpdateAction")
+     */
+    public function updateArticleJson(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $em->getRepository(Article::class)->find($request->get('id'));
+
+        $article->setImage($request->get('image'));
+        $article->setTitre($request->get('titre'));
+        $article->setContenu($request->get('contenu'));
+        $article->setEtat('desarchive');
+
+        $em->persist($article);
+        $em->flush();
+
+        return new JsonResponse($article);
+    }
+
+
+    /**
      * @Route("/article/json/{id}", name="ArticlesIdJson")
      * @throws ExceptionInterface
      */

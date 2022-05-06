@@ -48,6 +48,22 @@ class CategorieController extends AbstractController
     }
 
     /**
+     * @Route("/categories/json/update", name="CategoriesJsonUpdateAction")
+     */
+    public function updateCategorieJson(Request $request): JsonResponse
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $categorie = $em->getRepository(Categorie::class)->find($request->get('id'));
+        $categorie->setNomcateg($request->get('nomcateg'));
+        $categorie->setDescription($request->get('description'));
+        $em->flush();
+
+        return new JsonResponse($categorie);
+    }
+
+    /**
      * @Route("/Categories/json/{id}", name="CategoriesIdJson")
      * @throws ExceptionInterface
      */

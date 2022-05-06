@@ -57,6 +57,31 @@ public class AdresseService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
     }
+    
+    public boolean updateAdresse(Adresse a){
+        String url = Statics.BASE_URL+"/adresses/json/update";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("id", String.valueOf(a.getId()));
+        req.addArgument("nummaison", String.valueOf(a.getNumMaison()));
+        req.addArgument("rue", String.valueOf(a.getRue()));
+        req.addArgument("ville", String.valueOf(a.getVille()));
+        req.addArgument("iduser", String.valueOf(1));
+
+
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
 
     public ArrayList<Adresse> parseAdressess(String jsonText) throws IOException{
         adresses = new ArrayList<>();

@@ -2,128 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="249bf0fc-f8f2-4d8c-a086-d11287c006b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/AdresseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/ArticleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/CategorieController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/CommentaireController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/LivraisonController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/LivreurController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/ProduitController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/RegistrationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/ReservationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/SalleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Mobile/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/built-jar.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/MyApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/Categorie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/Panier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/Panier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/SideMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/SideMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/SignInForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/SignInForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/user/UserForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/gui/user/UserForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/services/UserService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/services/UserService$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/classes/com/esprit/app/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/Categorie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/Panier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/Panier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/SideMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/SideMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/SignInForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/SignInForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/user/UserForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/gui/user/UserForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/services/UserService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/services/UserService$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/build/tmp/com/esprit/app/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/MyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/SideMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/SideMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/SignInForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/Transport/AddTransportForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/Transport/ShowTransportForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/Transport/TransportForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/categorie/AddCategorieForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/categorie/CategorieForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/categorie/CategorieForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/categorie/ShowCategorieForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/user/UserForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/user/UserForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/wishlist/WishlistForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/user/AddUserForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/gui/user/AddUserForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/AdresseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/AdresseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/CategorieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/CategorieService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/TransportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/SalleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/SalleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/services/WishlistService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Mobile/src/com/esprit/app/utils/DataSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/I-chariot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_03_04_2022_22_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/calendar.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20220406213614.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20220406214023.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20220406234015.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20220407151731.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommentaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentaireController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Home2Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Home2Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SalleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SalleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Adresse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Adresse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Livraison.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livraison.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Livreur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livreur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Panier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Panier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Reacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Salle.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Salle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ArticleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArticleType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProduitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProduitType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CommentaireRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentaireRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProduitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProduitRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/afficheArticle.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/afficheArticle.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base2.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base3.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/card/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie/ListCategorie.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie/listcategories.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie/listcategories.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie/listcategoriesAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie/listcategoriesAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commentaire/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commentaire/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/ListProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/ListProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/addproduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/addproduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/produit/listproduitfront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/listproduitfront.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservation/pdf.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservation/pdf.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/salle/afficheSalle.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/salle/afficheSalle.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/salle/afficheSallesFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/salle/afficheSallesFront.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/salle/salleAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/salle/salleAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/salle/sallefront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/salle/sallefront.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Mobile/AdresseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Mobile/AdresseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Mobile/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Mobile/ArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Mobile/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Mobile/CategorieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Mobile/SalleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Mobile/SalleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Mobile/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Mobile/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/2/H/mf2ut139zu6rH6pvgUsw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/2/H/mf2ut139zu6rH6pvgUsw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/G/6/BGScGE7hyf0YkLvc5C5g" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/G/6/BGScGE7hyf0YkLvc5C5g" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/H/B/UQXiNP1FLAsZeTrZK1IA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/H/B/UQXiNP1FLAsZeTrZK1IA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/U/X/nTS1UIhkDATQpad5VYkA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/U/X/nTS1UIhkDATQpad5VYkA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/W/E/YaCOFPS8IREGbgr77OYw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/W/E/YaCOFPS8IREGbgr77OYw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/X/J/EwN4LaYWx-KTk4d5+zUA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/X/J/EwN4LaYWx-KTk4d5+zUA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/X/T/rKgZLuutf1eV1Fmhs2fA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/pIxRUU3aFA/X/T/rKgZLuutf1eV1Fmhs2fA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +252,7 @@
       <workItem from="1651661527382" duration="5252000" />
       <workItem from="1651695448885" duration="842000" />
       <workItem from="1651741764319" duration="7134000" />
-      <workItem from="1651768811783" duration="16059000" />
+      <workItem from="1651768811783" duration="18987000" />
     </task>
     <servers />
   </component>

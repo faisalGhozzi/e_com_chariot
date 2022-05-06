@@ -42,6 +42,42 @@ class SalleController extends AbstractController
     }
 
     /**
+     * @Route("/salles/json/new", name="newSalleJsonAction")
+     */
+    public function newSalleJsonAction(Request $request): JsonResponse
+    {
+        $salle = new Salle();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $salle->setNom($request->get('nom'));
+        $salle->setImage($request->get('image'));
+        $salle->setCapacite($request->get('capacite'));
+        $salle->setPrixsalle($request->get('prixsalle'));
+        $em->persist($salle);
+        $em->flush();
+        return new JsonResponse($salle);
+    }
+
+    /**
+     * @Route("/salles/json/update", name="updateSalleJsonAction")
+     */
+    public function updateSalleJsonAction(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $salle = $em->getRepository(Salle::class)->find($request->get('id'));
+        $salle->setNom($request->get('nom'));
+        $salle->setImage($request->get('image'));
+        $salle->setCapacite($request->get('capacite'));
+        $salle->setPrixsalle($request->get('prixsalle'));
+        $em->flush();
+        return new JsonResponse($salle);
+    }
+
+
+
+    /**
      * @Route("/salles/json/{id}", name="SallesIdJson")
      * @throws ExceptionInterface
      */

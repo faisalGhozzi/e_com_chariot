@@ -37,6 +37,24 @@ class AdresseController extends AbstractController
     }
 
     /**
+     * @Route("/adresses/json/update", name="AdressesJsonUpdateAction")
+     */
+    public function updateAdresseJson(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $adresse = $em->getRepository(Adresse::class)->find($request->get('id'));
+
+        $adresse->setNummaison($request->get('nummaison'));
+        $adresse->setRue($request->get('rue'));
+        $adresse->setVille($request->get('ville'));
+
+        $em->flush();
+
+        return new JsonResponse($adresse);
+    }
+
+    /**
      * @Route("/adresses/json/{id}", name="AdressesJsonAction")
      * @throws ExceptionInterface
      */

@@ -53,6 +53,28 @@ public class CategorieService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
     }
+    
+    public boolean updateCategorie(Categorie a){
+        String url = Statics.BASE_URL+"/categories/json/update";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("id", String.valueOf(a.getNom()));
+        req.addArgument("nomcateg", String.valueOf(a.getNom()));
+        req.addArgument("description", String.valueOf(a.getDescription()));
+
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
 
     public ArrayList<Categorie> parseCategoriess(String jsonText) throws IOException{
         categories = new ArrayList<>();

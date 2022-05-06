@@ -55,6 +55,30 @@ public class ArticleService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
     }
+    
+    public boolean updateArticle(Article a){
+        String url = Statics.BASE_URL+"/article/json/update";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("id", String.valueOf(a.getId()));
+        req.addArgument("contenu", String.valueOf(a.getContenu()));
+        req.addArgument("titre", String.valueOf(a.getTitre()));
+        req.addArgument("image", String.valueOf(a.getImage()));
+        req.addArgument("auteur", String.valueOf(1));
+
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
 
     public ArrayList<Article> parseArticless(String jsonText) throws IOException{
         articles = new ArrayList<>();

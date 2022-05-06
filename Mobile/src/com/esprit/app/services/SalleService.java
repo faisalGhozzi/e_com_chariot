@@ -55,6 +55,30 @@ public class SalleService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
     }
+    
+    public boolean updateSalle(Salle a){
+        String url = Statics.BASE_URL+"/salles/json/update";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("id", String.valueOf(a.getId()));
+        req.addArgument("nom", String.valueOf(a.getNom()));
+        req.addArgument("prixsalle", String.valueOf(a.getPrix()));
+        req.addArgument("image", String.valueOf(a.getImage()));
+        req.addArgument("capacite", String.valueOf(a.getCapacite()));
+        
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
 
     public ArrayList<Salle> parseSalless(String jsonText) throws IOException{
         salles = new ArrayList<>();
