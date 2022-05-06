@@ -1,0 +1,48 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block title %}liste d'utulisateur{% endblock %}
+
+{% block content %}
+    <h1>liste d'utulisateur</h1>
+    {% include 'user/_filtre.html.twig' with {form : form} only %}
+    <a href="{{ path('app_user_tri') }}">trier la liste </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Roles</th>
+
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+
+                <td>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_register') }}">Create new</a>
+
+{% endblock %}

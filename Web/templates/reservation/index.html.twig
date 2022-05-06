@@ -1,11 +1,11 @@
-{% extends 'base3.html.twig' %}
-{% block content %}
+{% extends 'base.html.twig' %}
+{% block body %}
     <div class="row">
         <div class="col-md-10 m-auto">
             {{ form_start(form) }}
             <div class="form-group">
                 <label>Nombre des personnes</label>
-                {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre','max':salle.capacite}} ) }}
+                {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre'}} ) }}
                 {{ form_errors(form.nbrp,{'attr':{'class':'text-danger'}}) }}
                 <div class="text-danger">{% if errNbr is defined %} {{ errNbr }} {% endif %}</div>
             </div>

@@ -1,0 +1,117 @@
+{% extends 'base2.html.twig' %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <div class="container">
+        <div class="row">
+
+            <div class="col order-last text-right">
+                <br>
+                <a class="btn btn-outline-info" href="{{ path('addLivreur') }}"><i class="fa-solid fa-circle-plus"></i>Ajouter livreur</a>
+            </div>
+            <div class="col">
+                <div class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" id="search" class="form-control" placeholder="Chercher..">
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <ul class="nav nav-second-level" id="entitiesNav">
+                        </ul>
+                    </li>
+                </ul>
+                <!-- jQuery is necessary -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function() {
+                        var searchRequest = null;
+                        $("#search").keyup(function() {
+                            var minlength = 2;
+                            var that = this;
+                            var value = $(this).val();
+                            var entitySelector = $("#entitiesNav").html('');
+                            if (value.length >= minlength ) {
+                                if (searchRequest != null)
+                                    searchRequest.abort();
+                                searchRequest = $.ajax({
+                                    type: "GET",
+                                    url: "{{ path('ajax_search') }}",
+                                    data: {
+                                        'q' : value
+                                    },
+                                    dataType: "text",
+                                    success: function(msg){
+                                        //we need to check if the value is the same
+                                        if (value==$(that).val()) {
+                                            var result = JSON.parse(msg);
+                                            $.each(result, function(key, arr) {
+                                                $.each(arr, function(id, value) {
+                                                    if (key == 'livreurs') {
+                                                        if (id != 'error') {
+                                                            entitySelector.append('<li><a href="/details/'+id+'">'+  value +'</a></li>');
+                                                        } else {
+                                                            entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col order-first">
+                <h1 class="h3 mb-2 text-gray-800">La liste des livreurs</h1>
+            </div>
+
+        </div>
+    </div>
+<br>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+    <table border="1"  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tr>
+            <td>Id</td>
+            <td>Nom de livreur</td>
+            <td>Numero telephone</td>
+            <td>Prenom de livreur</td>
+            <td>Email</td>
+            <td>Action</td>
+
+        </tr>
+        {% for l in livreurs %}
+            <tr>
+                <td>{{l.idlivreur}}</td>
+                <td>{{l.nomlivreur}}</td>
+                <td>{{l.numtel}}</td>
+                <td>{{l.prenom}}</td>
+                <td>{{l.email}}</td>
+                <td><a href="{{ path('deleteLivreur',{'id':l.idlivreur}) }}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i>Supprimer</a>
+                    <a href="{{ path('updateLivreur',{'id':l.idlivreur}) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i>Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="justify-content-center">
+        <div class="navigation ">
+            {{ knp_pagination_render(livreurs) }}
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

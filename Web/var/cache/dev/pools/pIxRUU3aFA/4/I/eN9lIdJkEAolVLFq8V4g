@@ -1,0 +1,22 @@
+<?php //App%255CController%255CMobile%255CUserController%2523usersJsonAction
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/users/json',
+            ],
+            'name' => [
+                'UsersJsonAction',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

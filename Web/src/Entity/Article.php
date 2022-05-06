@@ -4,48 +4,55 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * Article
- *
- * @ORM\Table(name="article", indexes={@ORM\Index(name="auteur", columns={"auteur"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ArticleRepository::class")
  */
 class Article
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idArticle", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idArticle", type="integer")
      */
     private $idarticle;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="contenu", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="contenu", type="text", length=200, nullable=false)
+     * @Assert\NotBlank(message="description  doit etre non vide")
+     * @Assert\Length(
+     *      min = 7,
+     *      max = 100,
+     *      minMessage = "doit etre >=7 ",
+     *      maxMessage = "doit etre <=100" )
      */
     private $contenu;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="titre", type="string", length=15, nullable=false)
+     * @Assert\NotBlank(message=" titre doit etre non vide")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage=" Entrer un titre au mini de 5 caracteres"
+     *
+     *     )
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Etat", type="string", length=250, nullable=false)
+     * @ORM\Column(name="Etat", type="string", length=200, nullable=false)
      */
     private $etat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=500, nullable=false)
+     * @ORM\Column(name="image", type="string", length=200, nullable=false)
      */
     private $image;
 
@@ -107,12 +114,12 @@ class Article
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image)
     {
         $this->image = $image;
 

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
@@ -12,9 +11,10 @@ use ReclamationBundle\Entity\archive;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class CategorieController extends AbstractController
 {
@@ -27,7 +27,6 @@ class CategorieController extends AbstractController
             'controller_name' => 'CategorieController',
         ]);
     }
-
 
     /**
      * @Route("/admin/categories", name="categorieAdmin")
@@ -165,5 +164,39 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/stats.html.twig', array('piechart' => $pieChart));
     }
+    /**
+     * @Route("/PDFProduits/{id}",name="PDFProduits")
+     */
+    public function PDFProduits($id,CategorieRepository $CategorieRepository,ProduitRepository $ProduitRepository)
+    {
+        $categorie=$CategorieRepository->find($id);
+        $Produits=$ProduitRepository->findBy(array('idCateg'=>$categorie));
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
 
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->render("produit/pdf.html.twig",array('produits'=>$Produits));
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("Produits.pdf", [
+            "Attachment" => true
+        ]);
+
+
+
+        return $this->redirectToRoute("categorieAdmin");
+    }
 }

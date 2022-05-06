@@ -2,63 +2,168 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
- *
- * @ORM\Table(name="user")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idUser", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", name="idUser")
      */
-    private $iduser;
+    private $id;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=180, unique=true)
      *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
-     */
-    private $nom;
-
-    /**
-     * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      *
-     * @ORM\Column(name="prenom", type="string", length=30, nullable=false)
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=50, nullable=false)
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50, nullable=false)
+     * @ORM\Column(type="json", name="role")
+     */
+    private $roles = ['ROLE_USER'];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=50, nullable=false)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="il faut saisir votre nom")
      */
-    private $role;
+    private $nom;
 
-    public function getIduser(): ?int
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="il faut saisir votre prenom")
+     */
+    private $prenom;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isExpired = false;
+
+//    /**
+//     * @CaptchaAssert\ValidCaptcha(
+//     *      message = "CAPTCHA validation failed, try again."
+//     * )
+//     */
+//    protected $captchaCode;
+
+    public function isExpired(): bool
     {
-        return $this->iduser;
+        return $this->isExpired;
+    }
+
+    public function setIsExpired(bool $isExpired): self
+    {
+        $this->isExpired = $isExpired;
+        return $this;
+    }
+//    public function getCaptchaCode()
+//    {
+//        return $this->captchaCode;
+//    }
+//
+//    public function setCaptchaCode($captchaCode)
+//    {
+//        $this->captchaCode = $captchaCode;
+//    }
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getNom(): ?string
@@ -84,42 +189,4 @@ class User
 
         return $this;
     }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-
 }

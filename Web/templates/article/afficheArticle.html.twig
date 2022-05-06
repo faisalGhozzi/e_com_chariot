@@ -46,33 +46,37 @@
                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                            <thead>
                            <tr>
-                               <th>Id</th>
                                <th>contenu</th>
                                <th>titre</th>
                                <th>image</th>
                                <th>nbr react</th>
-                               <th>Supprimer</th>
-                               <th>update</th>
+                               <th>See More</th>
+                               <th>Update</th>
+                               <th>Delete</th>
                            </tr>
                            </thead>
                            <tbody>
                            <tr>
                                {% for c in articles %}
                            <tr>
-                               <td>{{c.idarticle}}</td>
                                <td>{{c.contenu}}</td>
                                <td>{{c.titre}}</td>
                                <td><img src="{{ asset('uploads/articles/' ~ c.image ) }}" alt="" width="200" height="200"></td>
                                <td>{{c.nbrreact}}</td>
-                               <td><a href="{{ path('deleteArticle',{'id':c.idarticle}) }}" class="btn btn-primary ">Supprimer</a></td>
-                               <td><a href="{{ path('updateArticle',{'id':c.idarticle}) }}" class="btn btn-primary ">update</a></td>
+                               <td><a href="{{ path('articledetailadmin',{'id':c.idarticle}) }}" class="btn btn-info btn-circle btn-lg"><i class="fas fa-info-circle"></i></a></td>
+                               <td><a href="{{ path('updateArticle',{'id':c.idarticle}) }}" class="btn btn-warning btn-circle btn-lg"><i class="fas fa-exclamation-triangle"></i></a></td>
+                               <td><a href="{{ path('deleteArticle',{'id':c.idarticle}) }}" class="btn btn-danger btn-circle btn-lg"><i class="fas fa-trash"></i></a>
                            </tr>
                            {% endfor %}
+                           {{ knp_pagination_render(articles,('paginator/pagination.html.twig')) }}
                            </tbody>
                            <tfoot>
-                           <tr><a class="btn btn-success" href="{{ path('addArticle') }}">Ajouter Article</a></tr>
                            </tfoot>
                        </table>
+                       <br>
+                       <a href="{{ path('PDFArticles') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Pdf</a>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <a href="{{ path('addArticle') }}" class="btn btn-success btn-icon-split"><span class="icon text-white-50"><i class="fas fa-check"></i></span><span class="text">Add Article</span></a>
                    </div>
                </div>
            </div>

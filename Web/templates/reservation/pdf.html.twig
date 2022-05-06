@@ -1,18 +1,37 @@
-<table class="table">
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    /* Les descendants de rang impair sont stylés avec une couleur     */
+    tbody:nth-child(odd)  { background-color : #8d8a8a;}
+    /* Les descendants de rang pair sont stylés avec une autre couleur */
+    tbody:nth-child(even) { background-color : #6e9ff5; }
+    th { background-color : #273781; padding:1.2em; }
+    td { padding:0.6em; }
+    logo {
+        width: 1cm;
+        height :1cm;
+    }
+</style>
+    <h1 style="text-align:center"> I-chariot </h1>
+    <h2 style="text-align:center"> Reservation effectuée avec succés </h2>
+<table class="table" align="center">
     <thead>
-        <tr>
-            <th>Client</th>
-            <th>Nombre des personnes</th>
-            <th>Date de réservation</th>
-        </tr>
+    <tr>
+        <th style="color:#ffffff">Client</th>
+        <th style="color:#ffffff">Nombre des personnes</th>
+        <th style="color:#ffffff">Date de réservation</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>{{ reservation.idClient.nom }} {{ reservation.idClient.prenom }}</td>
-            <td>{{ reservation.nbrp }}</td>
-            <td>{{ reservation.date|date }}</td>
-        </tr>
+    <tr>
+        <td>{{ reservation.idClient.nom }} {{ reservation.idClient.prenom }}</td>
+        <td style="text-align:center">{{ reservation.nbrp }}</td>
+        <td>{{ reservation.date|date }}</td>
+    </tr>
     </tbody>
 </table>
-
-
+    {% endblock %}

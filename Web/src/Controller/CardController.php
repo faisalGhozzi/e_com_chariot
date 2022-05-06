@@ -9,13 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/card", name="cart_")
- */
 class CardController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/cart", name="cart")
      */
     public function index(SessionInterface $session, ProduitRepository $produitRepository)
     {
@@ -43,13 +40,12 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/add/{id}", name="add")
+     * @Route("/cart/add/{id}", name="cart_add")
      */
-    public function add(Produit $product, SessionInterface $session)
+    public function add($id, SessionInterface $session)
     {
         // On récupère le panier actuel
         $panier = $session->get("panier", []);
-        $id = $product->getIdproduit();
 
         if(!empty($panier[$id])){
             $panier[$id]++;
@@ -60,13 +56,13 @@ class CardController extends AbstractController
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
 
     /**
-     * @Route("/remove/{id}", name="remove")
+     * @Route("/cart/remove/{id}", name="cart_remove")
      */
-    public function remove(Produit $product, SessionInterface $session)
+    public function remove(ProduitRepository $product, SessionInterface $session)
     {
         // On récupère le panier actuel
         $panier = $session->get("panier", []);
@@ -87,9 +83,9 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/cart/delete/{id}", name="cart_delete")
      */
-    public function delete(Produit $product, SessionInterface $session)
+    public function delete(ProduitRepository $product, SessionInterface $session)
     {
         // On récupère le panier actuel
         $panier = $session->get("panier", []);
@@ -106,7 +102,7 @@ class CardController extends AbstractController
     }
 
     /**
-     * @Route("/delete", name="delete_all")
+     * @Route("/cart/delete", name="cart_delete_all")
      */
     public function deleteAll(SessionInterface $session)
     {

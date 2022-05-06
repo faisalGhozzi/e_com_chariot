@@ -6,6 +6,7 @@ use App\Entity\Commentaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -45,22 +46,63 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Commentaire[] Returns an array of Commentaire objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Commentaire[] Returns an array of Commentaire objects
+     */
+
+    public function findByArticle($article)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('c.idArticle = :val')
+            ->setParameter('val', $article)
+            ->orderBy('c.datepub', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Commentaire[] Returns an array of Commentaire objects
+     */
+
+    public function triAnciensCommentaire($article)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.idArticle = :val')
+            ->setParameter('val', $article)
+            ->orderBy('c.datepub', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return Commentaire[] Returns an array of Commentaire objects
+     */
+
+    public function triRecentesCommentaires($article)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.idArticle = :val')
+            ->setParameter('val', $article)
+            ->orderBy('c.datepub', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return Commentaire[] Returns an array of Commentaire objects
+     */
+
+    public function allCommentaires()
+    {
+        return $this->createQueryBuilder('c')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Commentaire

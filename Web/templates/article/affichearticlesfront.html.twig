@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="section page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 m-auto">
+                <!-- Page Title -->
+                <h1>Articles & Actualités</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="post-grid section pt-0">
+    <div class="container">
+        <input type="text" id="search" class="form-control" placeholder="Search...">
+        <br>
+        <div class="row" id="result">
+            {% for c in articles %}
+                <div class="col-lg-4 col-md-6">
+                    <article class="post-sm">
+                        <div class="post-thumb">
+                            <a href="{{ path('articledetail',{'id':c.idarticle}) }}" ><img class="w-100" height="250" src="{{ asset('uploads/articles/' ~ c.image ) }}" alt="Post-Image"></a>
+                        </div>
+                        <div class="post-title">
+                            <h3><a href="{{ path('articledetail',{'id':c.idarticle}) }}" >{{c.titre}}</a></h3>
+                        </div>
+                        <div class="post-meta">
+                            <p>{{ c.auteur.nom }} {{ c.auteur.prenom }}</p>
+                        </div>
+                        <div class="post-details">
+                            <p style="color: #000;">{{c.contenu}}</p>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#result").html('');
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "/searchArticle",
+                    dataType: "text",
+                    data:{
+                        'val':value
+                    },
+                    success: function(msg){
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'articles') {
+                                        if (id !== 'error') {
+                                            var img='{{ asset("uploads/articles/") }}'+value[3];
+                                            entitySelector.append(
+                                                '<div class="col-lg-4 col-md-6">'+
+                                                '<article class="post-sm">'+
+                                                '<div class="post-thumb">'+
+                                                '<a href="/article/'+id+'" ><img class="w-100" src="'+img+'" alt="Post-Image"></a>'+
+                                                '</div>'+
+                                                '<div class="post-title">'+
+                                                '<h3><a href="/article/'+id+'" >'+value[0]+'</a></h3>'+
+                                                '</div>'+
+                                                '<div class="post-meta">'+
+                                                '<ul class="list-inline post-tag">'+
+                                                '<li class="list-inline-item">'+
+                                                '<img src="'+img+'" alt="author-thumb">'+
+                                                '</li>'+
+                                                '<li class="list-inline-item">'+
+                                                '<a href="#">'+value[4]+'</a>'+
+                                                '</li>'+
+                                                '<li class="list-inline-item">'+
+                                                'April 8, 2022'+
+                                                '</li>'+
+                                                '</ul>'+
+                                                '</div>'+
+                                                '<div class="post-details">'+
+                                                '<p>'+value[1]+'</p>'+
+                                                '</div>'+
+                                                '</article>'+
+                                                '</div>'
+                                            );
+                                        } else {
+                                            entitySelector.append('<div class="error">'+value+'</div>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    {% include "chat/index3.html.twig" %}
+{% endblock %}

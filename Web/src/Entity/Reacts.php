@@ -5,28 +5,36 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Reacts
- *
- * @ORM\Table(name="reacts")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ReactsRepository::class")
  */
 class Reacts
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="idarticles", type="integer", nullable=false)
+     * @ORM\Column(name="idReact", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idarticles;
+    private $idreact;
 
     /**
-     * @var int
+     * @var \Commentaire
      *
-     * @ORM\Column(name="idusers", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\ManyToOne(targetEntity="Commentaire",inversedBy="reacts")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idcommentaire", referencedColumnName="idCommentaire")
+     * })
+     */
+    private $idcommentaire;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idusers", referencedColumnName="idUser")
+     * })
      */
     private $idusers;
 
@@ -35,14 +43,14 @@ class Reacts
      *
      * @ORM\Column(name="datecrea", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $datecrea = 'CURRENT_TIMESTAMP';
+    private $datecrea;
 
-    public function getIdarticles(): ?int
+    public function getIdCommentaire(): ?Commentaire
     {
-        return $this->idarticles;
+        return $this->idcommentaire;
     }
 
-    public function getIdusers(): ?int
+    public function getIdusers(): ?User
     {
         return $this->idusers;
     }
@@ -58,6 +66,32 @@ class Reacts
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getIdreact(): int
+    {
+        return $this->idreact;
+    }
+
+    /**
+     * @param int $idreact
+     */
+    public function setIdreact(int $idreact): void
+    {
+        $this->idreact = $idreact;
+    }
+    public function setIdCommentaire(?Commentaire $idcommentaire)
+    {
+        $this->idcommentaire=$idcommentaire;
+    }
+
+    public function setIdUser(?User $iduser)
+    {
+        $this->idusers=$iduser;
+    }
+
 
 
 }

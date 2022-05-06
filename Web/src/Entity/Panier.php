@@ -5,19 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Panier
- *
- * @ORM\Table(name="panier", indexes={@ORM\Index(name="panier_ibfk_1", columns={"idProduit"})})
  * @ORM\Entity
  */
 class Panier
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idPanier", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idPanier", type="integer")
      */
     private $idpanier;
 

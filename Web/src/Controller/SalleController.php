@@ -9,6 +9,7 @@ use App\Form\ReservationType;
 use App\Form\UpdateType;
 use App\Repository\ReservationRepository;
 use App\Repository\SalleRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -20,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\SalleType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\File;
+
 
 class SalleController extends AbstractController
 {
@@ -35,10 +37,15 @@ class SalleController extends AbstractController
     /**
      * @Route("/admin/affichesalles", name="salles")
      */
-    public function afficheSalle(SalleRepository $repository){
+    public function afficheSalle(SalleRepository $repository,Request $request,PaginatorInterface $paginator){
         $salles= $repository->findAll();
+        $pagedOffers = $paginator->paginate(
+            $salles, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            3 // Nombre de résultats par page
+        );
         return $this->render("salle/afficheSalle.html.twig",
-            array('salles'=>$salles));
+            array('salles'=>$pagedOffers));
     }
     /**
      * @Route("/removeSalle/{id}",name="d")
@@ -157,7 +164,7 @@ class SalleController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $reservation->setIdSalle($salle);
-            $reservation->setIdClient($this->getDoctrine()->getRepository(User::class)->find(44444459));
+            $reservation->setIdClient($this->getUser());
             if($reservation->getNbrp()>$salle->getCapacite()){
                 return $this->render("Salle/sallefront.html.twig",array("salle"=>$salle,'reservations'=>$reservations,'form'=>$form->createView(),'errNbr'=>'le nombre des personnes doit etre inférieur ou egal a '.$salle->getCapacite()));
             }
@@ -170,7 +177,7 @@ class SalleController extends AbstractController
                     ->to($reservation->getIdClient()->getEmail())
                     ->subject('Réservation !')
                     ->text('Réservation ajoutée!')
-                    ->html('<p>Mr '.$reservation->getIdClient()->getNom().' Votre réservation a été ajouté avec succe. Salle:'.$reservation->getIdSalle()->getNom().' Date de réservation:'.$reservation->getDate()->format('Y:M:D').'</p>');
+                    ->html('<p>Mr '.$reservation->getIdClient()->getNom().' Félicitation ! votre réservation a été ajouté avec succés. Salle:'.$reservation->getIdSalle()->getNom().' Date de réservation:'.$reservation->getDate()->format('Y:M:D').'</p>');
 
                 $mailer->send($email);
                 $reservations=$reservationRepository->findBy(array('idSalle'=>$salle));

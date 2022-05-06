@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="app-content align-items-center">
+
+    <div class="side-app align-items-center">
+        <div class="col-md-12 ">
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-6 align-items-center">
+                <div class="card m-b-20 ">
+                    <div class="card-header">
+                        <h3 class="card-title">Valider la commande</h3>
+
+                    </div>
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                    <div class="card-body align-items-center">
+
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputname">Type</label>
+                                {{ form_widget(form.type , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'type'}} ) }}
+                                {{ form_errors(form.type ) }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="exampleInputEmail2">Adresse</label>
+                                {{ form_widget(form.adresse , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Adresse'}} ) }}
+                                {{ form_errors(form.adresse) }}
+                            </div>
+
+                            <div class="form-group mb-4 text-center">
+                                <div class="checkbox checkbox-secondary">
+                                    {{ form_widget(form) }}
+                                    <button type="SubmitType" class="btn btn-outline-primary ">Valider</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}
+

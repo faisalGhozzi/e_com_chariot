@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
     <table class="table">
         <tr>
             <th>Nom Produit</th>
@@ -15,12 +14,10 @@
         <tbody>
         {% for p in produits %}
             <tr>
-
                 <td>{{p.nomproduit}}</td>
                 <td>{{p.quantite}}</td>
                 <td>{{p.prix}}</td>
                 <td>{{p.description}}</td>
-
                 <td><img src="{{ asset('uploads/produits/' ~ p.image ) }}" alt="" width="200" height="200"></td>
                 <td><a href="{{ path('updateProduit',{'id':p.idproduit}) }}">Update</a></td>
                 <td><a href="{{ path('deleteProduit',{'id':p.idproduit}) }}">Supprimer</a></td>

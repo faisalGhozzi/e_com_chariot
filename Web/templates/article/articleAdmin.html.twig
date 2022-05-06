@@ -1,0 +1,48 @@
+{% extends 'base2.html.twig' %}
+
+   {% block content %}
+       <div class="container-fluid">
+           <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                   <h6 class="m-0 font-weight-bold text-primary">Article "{{article.titre}}"</h6>
+               </div>
+               <div class="card-body">
+                   <h3>Auteur</h3>
+                   <p>
+                       {{article.auteur.nom}}
+                   </p><br>
+                   <h3>Contenu</h3>
+                   <p>
+                       {{article.contenu}}
+                   </p><br>
+                   <h3>Image</h3>
+                   <div>
+                       <img src="{{ asset('uploads/articles/' ~ article.image ) }}" alt="" width="200" height="200">
+                   </div><br>
+                   <div class="table-responsive">
+                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                           <thead>
+                           <tr>
+                               <th>contenu</th>
+                               <th>date publication</th>
+                               <th>auteur</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           {% for c in commentaires %}
+                               <tr>
+                                   <td>{{ c.contenuC }}</td>
+                                   <td>{{ c.datepub|date }}</td>
+                                   <td>{{ c.auteurC.nom }}</td>
+                                   <td><a href="{{ path('deleteCommentAdmin',{'id':c.idcommentaire}) }}" class="btn btn-primary ">Supprimer</a></td>
+                               </tr>
+                           {% endfor %}
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+
+       </div>
+
+   {% endblock %}

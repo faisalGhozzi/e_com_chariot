@@ -1,0 +1,146 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Statistiques</h1>
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+                <!-- Area Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Nombre livraison par adresse</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="nbrlivparadresse"></canvas>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- Bar Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Nombre de livraison affecté chaque livreur</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="nbrlivparlivreur"></canvas>
+                        </div>
+                        <hr>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Nombre de livraison par type</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-pie pt-4">
+                            <canvas id="liv"></canvas>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+    <script src="{{asset('backoffice/vendor/chart.js/Chart.min.js')}}"></script>
+
+<!-- Page level custom scripts -->
+
+    <script src="{{asset('backoffice/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('backoffice/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="{{asset('backoffice/js/demo/chart-bar-demo.js')}}"></script>
+    <script>
+
+  window.onload = () => {
+            var mychart = document.getElementById("liv").getContext('2d');
+            let liv = new Chart(mychart, {
+                type:'doughnut',
+                data:{
+                    labels: ["rapide", "Normal"],
+                    datasets:[{
+                        lable:'Samples',
+                        data : [{{ numrapide | raw }},{{ numnormal | raw }}],
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                        hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    }]
+                }
+
+            })
+
+        };
+  /*
+  let livreur = [];
+  let livraison =[];
+  var obj = ;
+  for (i = 0; i < obj.length; i++) {
+      livreur.push(Object.keys(obj[i]));
+      livraison.push(Object.values(obj[i]));
+}
+  console.log(livreur);
+  */
+      var chart = document.getElementById("nbrlivparlivreur");
+      let nbrlivparlivreur = new Chart(chart, {
+          type: 'bar',
+          data: {
+              labels: {{ l | raw}},
+              datasets: [{
+                  label: "nombres de livraison",
+                  backgroundColor: "#4e73df",
+                  hoverBackgroundColor: "#2e59d9",
+                  borderColor: "#4e73df",
+                  data: {{ num | raw }},
+                  responsive: true,
+                  hidden: false,
+              }],
+          },
+      });
+
+
+  var chart2 = document.getElementById("nbrlivparadresse");
+  let nbrlivparadresse = new Chart(chart2, {
+      type: 'bar',
+      data: {
+          labels: {{ville |  raw}},
+          datasets: [{
+              label: "nombres de livraison",
+              backgroundColor: "#4e73df",
+              hoverBackgroundColor: "#2e59d9",
+              borderColor: "#4e73df",
+              data:{{nbr |  raw}},
+          }],
+      },})
+
+
+    </script>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br>
+{% endblock %}

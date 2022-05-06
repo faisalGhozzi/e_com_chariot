@@ -47,9 +47,13 @@ class ReservationController extends AbstractController
         $form= $this->createForm(ReservationType::class,$reservation);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
+           /* if($reservation->getNbrp()>$reservation->getIdSalle()->getCapacite()){
+                return $this->render("reservation/index.html.twig",array('form'=>$form->createView(),'salle'=>$reservation->getIdSalle(),'errNbr'=>'le nombre des personnes doit etre inférieur ou egal a '.$reservation->getIdSalle()->getCapacite()));
+            }*/
             if($reservation->getNbrp()>$reservation->getIdSalle()->getCapacite()){
                 return $this->render("reservation/index.html.twig",array('form'=>$form->createView(),'salle'=>$reservation->getIdSalle(),'errNbr'=>'le nombre des personnes doit etre inférieur ou egal a '.$reservation->getIdSalle()->getCapacite()));
             }
+
 
             if($reservationRepository->find($id)->getDate() !== $reservation->getDate()){
                 if($reservationRepository->findBySalleAndDate($reservation->getIdSalle(),$reservation->getDate())==0){

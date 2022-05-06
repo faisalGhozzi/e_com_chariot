@@ -6,20 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Produit
- *
- * @ORM\Table(name="produit", indexes={@ORM\Index(name="id_categ", columns={"id_categ"})})
- * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
+ * @ORM\Entity(repositoryClass="ProduitRepository::class")
  */
 class Produit
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idProduit", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idProduit", type="integer")
      */
     private $idproduit;
 
@@ -65,7 +59,7 @@ class Produit
 
     /**
      * @var string
-     * @ORM\Column(name="image", type="string", length=500, nullable=false)
+     * @ORM\Column(name="image", type="string", length=200, nullable=false)
      */
     private $image;
 
@@ -89,7 +83,7 @@ class Produit
         return $this->nomproduit;
     }
 
-    public function setNomproduit(string $nomproduit): self
+    public function setNomproduit(?string $nomproduit): self
     {
         $this->nomproduit = $nomproduit;
 
@@ -101,7 +95,7 @@ class Produit
         return $this->quantite;
     }
 
-    public function setQuantite(int $quantite): self
+    public function setQuantite(?int $quantite): self
     {
         $this->quantite = $quantite;
 
@@ -113,7 +107,7 @@ class Produit
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix(?float $prix): self
     {
         $this->prix = $prix;
 
@@ -125,7 +119,7 @@ class Produit
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -137,7 +131,7 @@ class Produit
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

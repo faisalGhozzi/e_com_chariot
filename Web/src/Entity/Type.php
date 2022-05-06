@@ -5,19 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type
- *
- * @ORM\Table(name="type")
  * @ORM\Entity
  */
 class Type
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idType", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idType", type="integer")
      */
     private $idtype;
 

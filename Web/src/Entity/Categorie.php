@@ -6,20 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Categorie
- *
- * @ORM\Table(name="categorie")
- * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
+ * @ORM\Entity(repositoryClass="CategorieRepository::class")
  */
 class Categorie
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idCateg", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idCateg", type="integer")
      */
     private $idcateg;
 
@@ -58,7 +52,7 @@ class Categorie
         return $this->nomcateg;
     }
 
-    public function setNomcateg(string $nomcateg): self
+    public function setNomcateg(?string $nomcateg): self
     {
         $this->nomcateg = $nomcateg;
 
@@ -70,7 +64,7 @@ class Categorie
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 

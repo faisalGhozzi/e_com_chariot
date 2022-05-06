@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main id="main" class="main">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Filtrer par type</h5>
+
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+
+                        <a href="{{ path('filtres',{'type': "rapide" }) }}" class="btn btn-outline-primary">rapide</a>
+                        <a href="{{ path('filtres',{'type': "normal" }) }}" class="btn btn-outline-primary">normal</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="container">
+        <div class="row">
+            <div class="col order-last text-right">
+                <br>
+
+            </div>
+            <div class="col">
+            </div>
+            <div class="col order-first">
+                <h1 class="h3 mb-2 text-gray-800">Mes Livraisons</h1>
+            </div>
+        </div>
+    </div>
+
+    {% for l in livraisons %}
+        <div class="container align-items-center">
+            <div class="row align-items-center ">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6 align-items-center ">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body  align-items-center">
+                            <div class="row  align-items-center">
+                                <div class="col mr-2 align-items-center">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Livraison N {{l.idlivraison}} </div>
+                                    <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Type: </div>
+
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{l.type}}
+                                    </div>
+                                    <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Etat: </div>
+
+
+                                    {% if l.etat == 0 %}
+                                        <h1 class="h5 mb-0 font-weight-bold text-gray-800">valide non affecte</h1>
+                                        <br>
+
+                                    {% endif %}
+                                    {% if l.etat == 1 %}
+                                        <h1  class="h5 mb-0 font-weight-bold text-gray-800"> affecte en cours de livraison</h1>
+                                    {% endif %}
+
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa-solid fa-truck-ramp-box"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+    <div class="justify-content-center">
+        <div class="navigation ">
+            {{ knp_pagination_render(livraisons) }}
+        </div>
+    </div>
+{% endblock %}

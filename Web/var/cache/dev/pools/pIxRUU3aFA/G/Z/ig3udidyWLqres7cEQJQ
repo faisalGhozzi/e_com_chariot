@@ -1,0 +1,52 @@
+<?php //App%255CEntity%255CProduit%2524quantite
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Range'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Range')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'message' => [
+                'La quantité doit etre non vide !',
+            ],
+            'groups' => [
+                [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+            ],
+            'notInRangeMessage' => [
+                1 => 'La quantite doit etre entre 1 et 100',
+            ],
+            'min' => [
+                1 => 1,
+            ],
+            'max' => [
+                1 => 100,
+            ],
+            'name' => [
+                2 => 'quantite',
+            ],
+            'type' => [
+                2 => 'integer',
+            ],
+            'precision' => [
+                2 => null,
+            ],
+            'scale' => [
+                2 => null,
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];

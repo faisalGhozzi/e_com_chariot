@@ -1,0 +1,72 @@
+{% extends 'base2.html.twig' %}
+
+{% block content %}
+    {% for l in livreurs %}
+        <div class="container align-items-center">
+            <div class="row align-items-center ">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6 align-items-center ">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row  align-items-center">
+                                <div class="col mr-2 align-items-center">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Livreur N {{l.idlivreur}} </div>
+                                    <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Nom Livreur: </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{l.nomlivreur}}
+                                    </div>
+                                        <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Numero de telephone: </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{l.numtel}}
+                                    </div>
+                                    <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Prenom: </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{l.prenom}}
+                                    </div>
+                                        <br>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Email: </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{l.email}}
+                                    </div>
+                                        <br>
+                                        <br>
+                                        <a href="{{ path('choisirlivreur',{'id':idlivraison,'idlivreur':l.idlivreur}) }}" id="submit" type="SubmitType" class="btn btn-primary justify-content-center" ">selectionner</a>
+
+                                </div>
+                                <div class="col-auto">
+
+                                    <i class="fa-solid fa-person"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <script>
+        $(function(){
+            document.getElementById("submit").onclick = function() {
+                this.disabled = true;
+            }
+        });
+    </script>
+    <div class="justify-content-center">
+        <div class="navigation ">
+            {{ knp_pagination_render(livreurs) }}
+        </div>
+    </div>
+{% endblock %}

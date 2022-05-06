@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <div class="container">
+
+        <div class="row">
+            <div class="col order-last text-right">
+                <br>
+                <pre>
+                <a class="btn btn-outline-info" href="{{ path('addAdresse') }}">Ajouter Adresse</a>
+                <a class="btn btn-outline-info" href="{{ path('villes') }}">Trier par ville</a>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col order-first">
+                <h1 class="h3 mb-2 text-gray-800">Mes adresses</h1>
+            </div>
+        </div>
+    </div>
+{% for a in adresses %}
+<div class="container align-items-center">
+    <div class="row align-items-center ">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 align-items-center ">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row  align-items-center text-center">
+                        <div class="col mr-2 align-items-center">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Adresse N {{a.idAdresse}} </div>
+                            <br>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              Ville : </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{a.ville}}
+                            </div>
+                                <br>
+                                <br>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Rue : </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{a.rue}}
+                        </div>
+                                <br>
+                                <br>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Numero de maison : </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{a.nummaison}}
+                    </div>
+                                <br>
+                                <br>
+                                <a href="{{ path('deleteAdresse',{'id':a.idAdresse}) }}" class="btn btn-outline-danger">Supprimer</a>
+                                <a href="{{ path('updateAdresse',{'id':a.idAdresse}) }}" class="btn btn-outline-primary">Modifier</a>
+
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+{% endfor %}
+    <div class="justify-content-center">
+        <div class="navigation ">
+            {{ knp_pagination_render(adresses) }}
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

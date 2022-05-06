@@ -33,6 +33,51 @@ public class UserService {
 	req = DataSource.getInstance().getRequest();
     }
     
+    public boolean addUser(User u){
+        String url = Statics.BASE_URL+"/users/json/new";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("email",String.valueOf(u.getEmail()));
+        req.addArgument("nom",String.valueOf(u.getNom()));
+        req.addArgument("prenom",String.valueOf(u.getPrenom()));
+        req.addArgument("password",String.valueOf(u.getPassword()));
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
+    
+    public boolean updateUser(User u){
+        String url = Statics.BASE_URL+"/users/json/update/"+String.valueOf(u.getId());
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument("id",String.valueOf(u.getId()));
+        req.addArgument("email",String.valueOf(u.getEmail()));
+        req.addArgument("nom",String.valueOf(u.getNom()));
+        req.addArgument("prenom",String.valueOf(u.getPrenom()));
+        req.addArgument("password",String.valueOf(u.getPassword()));
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
+    
     public User parseUser(String jsonText) throws IOException{
         users = new ArrayList<>();
         JSONParser j = new JSONParser();
@@ -51,7 +96,7 @@ public class UserService {
     }
     
     public User getUser(int id){
-        String url = Statics.BASE_URL+"/user/json/"+id;
+        String url = Statics.BASE_URL+"/users/json/"+id;
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
@@ -96,7 +141,7 @@ public class UserService {
     }
 
     public ArrayList<User> getAllUsers(){
-        String url = Statics.BASE_URL+"/user/json";
+        String url = Statics.BASE_URL+"/users/json";
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
@@ -116,5 +161,22 @@ public class UserService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return users;
+    }
+    
+    public boolean deleteUser(int id){
+        String url = Statics.BASE_URL+"/users/json/delete/"+id;
+        req.setUrl(url);
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
     }
 }

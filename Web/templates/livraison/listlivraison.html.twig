@@ -1,0 +1,63 @@
+{% extends 'base2.html.twig' %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    {% for l in livraisons %}
+    <div class="container align-items-center">
+<div class="row align-items-center ">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 align-items-center ">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row  align-items-center">
+                    <div class="col mr-2 align-items-center">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Livraison N {{l.idlivraison}} </div>
+                        <br>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Type: </div>
+
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{l.type}}
+                        </div>
+                        <br>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Etat: </div>
+
+
+                            {% if l.etat == 0 %}
+                                <h1 class="h5 mb-0 font-weight-bold text-gray-800">valide non affecte</h1>
+                                <br>
+                                <a href="{{ path('affecter',{'id':l.idlivraison}) }}" type="SubmitType" class="btn btn-primary ">Affecter un livreur</a>
+                            {% endif %}
+                            {% if l.etat == 1 %}
+                                <h1  class="h5 mb-0 font-weight-bold text-gray-800"> affecte en cours de livraison</h1>
+                            {% endif %}
+
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+    </div>
+    {% endfor %}
+    <div class="justify-content-center">
+        <div class="navigation ">
+            {{ knp_pagination_render(livraisons) }}
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

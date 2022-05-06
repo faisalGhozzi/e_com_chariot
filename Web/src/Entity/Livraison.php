@@ -5,19 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Livraison
- *
- * @ORM\Table(name="livraison", indexes={@ORM\Index(name="id_livreur", columns={"id_livreur"}), @ORM\Index(name="fk_livraison_user", columns={"iduser"}), @ORM\Index(name="adresse", columns={"adresse"}), @ORM\Index(name="id_produit", columns={"id_produit"})})
  * @ORM\Entity
  */
 class Livraison
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idLivraison", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idLivraison", type="integer")
      */
     private $idlivraison;
 

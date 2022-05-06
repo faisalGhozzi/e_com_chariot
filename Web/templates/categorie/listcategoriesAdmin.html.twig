@@ -12,6 +12,7 @@
             <tr>
                 <td>{{c.nomcateg}}</td>
                 <td>{{c.description}}</td>
+                <td><a href="{{ path('PDFProduits',{'id':c.idcateg}) }}">Telecharger PDF</a></td>
                 <td><a href="{{ path('ProduitsAdmin',{'id':c.idcateg}) }}">Voir les produits</a></td>
                 <td><a href="{{ path('updateCategorie',{'id':c.idcateg}) }}">Update</a></td>
                 <td><a href="{{ path('deleteCategorie',{'id':c.idcateg}) }}">Supprimer</a></td>

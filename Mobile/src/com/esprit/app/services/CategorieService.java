@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.esprit.app.services;
 
 import com.codename1.components.InfiniteProgress;
@@ -12,56 +17,29 @@ import com.esprit.app.entity.Categorie;
 import com.esprit.app.utils.DataSource;
 import com.esprit.app.utils.Statics;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 public class CategorieService {
     public ArrayList<Categorie> categories;
 
     public static CategorieService instance = null;
     public boolean resultOk;
-    public Categorie courseclass = new Categorie();
+    private Categorie categorie = new Categorie();
     private ConnectionRequest req;
 
     public CategorieService() {
 	req = DataSource.getInstance().getRequest();
     }
 
-    public boolean addCategorie(Categorie c){
-        String url = Statics.BASE_URL+"/categorie/json/new";
+    public boolean addCategorie(Categorie a){
+        String url = Statics.BASE_URL+"/categories/json/new";
         req.setUrl(url);
         req.setPost(true);
-        req.addArgument("nom",String.valueOf(c.getNom()));
-        req.addArgument("boiteVitesse",String.valueOf(c.getBoitevitesse()));
-        InfiniteProgress prog = new InfiniteProgress();
-        Dialog d = prog.showInfiniteBlocking();
-        req.setDisposeOnCompletion(d);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                resultOk = req.getResponseCode() == 200;
-                req.removeResponseListener(this);
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return resultOk;
-    }
-    
-    public boolean updateCategorie(Categorie c){
-        String url = Statics.BASE_URL+"/categorie/json/update/"+String.valueOf(c.getId());
-        req.setUrl(url);
-        req.setPost(true);
-        req.addArgument("nom",String.valueOf(c.getNom()));
-        req.addArgument("boiteVitesse",String.valueOf(c.getBoitevitesse()));
+        req.addArgument("nomcateg", String.valueOf(a.getNom()));
+        req.addArgument("description", String.valueOf(a.getDescription()));
+
         InfiniteProgress prog = new InfiniteProgress();
         Dialog d = prog.showInfiniteBlocking();
         req.setDisposeOnCompletion(d);
@@ -76,41 +54,40 @@ public class CategorieService {
         return resultOk;
     }
 
-    public ArrayList<Categorie> parseCategories(String jsonText) throws IOException, ParseException{
+    public ArrayList<Categorie> parseCategoriess(String jsonText) throws IOException{
         categories = new ArrayList<>();
         JSONParser j = new JSONParser();
-        Map<String,Object> coursesListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-        List<Map<String,Object>> list = (List<Map<String,Object>>)coursesListJson.get("root");
+        Map<String,Object> categoriesListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+        List<Map<String,Object>> list = (List<Map<String,Object>>)categoriesListJson.get("root");
         for(Map<String,Object> obj : list){
-            Categorie c = new Categorie();
-            int id = (int)Float.parseFloat(obj.get("id").toString());
-            c.setId(id);
-            String nom = obj.get("nom").toString();
-            c.setNom(nom);
-            String boiteVitesse = obj.get("boiteVitesse").toString();
-            c.setBoitevitesse(boiteVitesse);
-            categories.add(c);
+            Categorie a = new Categorie();
+            int id = (int)Float.parseFloat(obj.get("idcateg").toString());
+            a.setId(id);
+            String nomcateg = obj.get("nomcateg").toString();
+            a.setNom(nomcateg);
+            String description = obj.get("description").toString();
+            a.setDescription(description);
+            categories.add(a);
         }
         return categories;
     }
     
-    public Categorie parseCategorie(String jsonText) throws IOException, ParseException{
-        categories = new ArrayList<>();
+    public Categorie parseCategorie(String jsonText) throws IOException{
         JSONParser j = new JSONParser();
-        Map<String,Object> categoriesListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-        Categorie c = new Categorie();
-        int id = (int)Float.parseFloat(categoriesListJson.get("id").toString());
-        c.setId(id);
-        String nom = categoriesListJson.get("nom").toString();
-        c.setNom(nom);
-        String boiteVitesse = categoriesListJson.get("boiteVitesse").toString();
-        c.setBoitevitesse(boiteVitesse);
-        categories.add(c);
-        return c;
+        Map<String,Object> categorieJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+        Categorie a = new Categorie();
+        int id = (int)Float.parseFloat(categorieJson.get("idCategorie").toString());
+        a.setId(id);
+        String ville = categorieJson.get("ville").toString();
+        String nomcateg = categorieJson.get("nomcateg").toString();
+        a.setNom(nomcateg);
+        String description = categorieJson.get("description").toString();
+        a.setDescription(description);
+        return a;
     }
 
     public ArrayList<Categorie> getAllCategories(){
-        String url = Statics.BASE_URL+"/categorie/json";
+        String url = Statics.BASE_URL+"/categories/json";
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
@@ -121,10 +98,8 @@ public class CategorieService {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 try{
-                    categories = parseCategories(new String(req.getResponseData()));
+                    categories = parseCategoriess(new String(req.getResponseData()));
                 }catch(IOException ex){
-                    ex.printStackTrace();
-                } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
                 req.removeResponseListener(this);
@@ -134,8 +109,8 @@ public class CategorieService {
         return categories;
     }
     
-    public Categorie findCategorie(int id){
-        String url = Statics.BASE_URL+"/categorie/json/"+id;
+    public Categorie getCategorie(int id){
+        String url = Statics.BASE_URL+"/categories/json/"+id;
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
@@ -146,21 +121,19 @@ public class CategorieService {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 try{
-                    courseclass = parseCategorie(new String(req.getResponseData()));
+                    categorie = parseCategorie(new String(req.getResponseData()));
                 }catch(IOException ex){
-                    ex.printStackTrace();
-                } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return courseclass;
+        return categorie;
     }
 
     public boolean deleteCategorie(int id){
-        String url = Statics.BASE_URL+"/categorie/json/delete/"+id;
+        String url = Statics.BASE_URL+"/categories/json/delete/"+id;
         req.setUrl(url);
         InfiniteProgress prog = new InfiniteProgress();
         Dialog d = prog.showInfiniteBlocking();

@@ -6,20 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Salle
- *
- * @ORM\Table(name="salle")
- * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\SalleRepository")
+ * @ORM\Entity(repositoryClass="SalleRepository::class")
  */
 class Salle
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idSalle", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="idSalle", type="integer")
      */
     private $idsalle;
 
@@ -37,6 +31,9 @@ class Salle
 
     /**
      * @var float
+     * @Assert\Range(
+     *      min=1,
+     *      notInRangeMessage="Le prix doit etre >0")
      * @Assert\NotBlank(message="Prix doit etre non vide !")
      * @ORM\Column(name="prixSalle", type="float", precision=10, scale=0, nullable=false)
      */
@@ -44,7 +41,7 @@ class Salle
 
     /**
      * @var string
-     * @ORM\Column(name="image", type="string", length=500, nullable=false)
+     * @ORM\Column(name="image", type="string", length=200, nullable=false)
 
      */
     private $image;
@@ -71,7 +68,7 @@ class Salle
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -83,7 +80,7 @@ class Salle
         return $this->prixsalle;
     }
 
-    public function setPrixsalle(float $prixsalle): self
+    public function setPrixsalle(?float $prixsalle): self
     {
         $this->prixsalle = $prixsalle;
 
@@ -95,7 +92,7 @@ class Salle
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -107,7 +104,7 @@ class Salle
         return $this->capacite;
     }
 
-    public function setCapacite(int $capacite): self
+    public function setCapacite(?int $capacite): self
     {
         $this->capacite = $capacite;
 

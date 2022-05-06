@@ -1,0 +1,43 @@
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    /* Les descendants de rang impair sont stylés avec une couleur     */
+    tbody:nth-child(odd)  { background-color : #FFE4C4;}
+    /* Les descendants de rang pair sont stylés avec une autre couleur */
+    tbody:nth-child(even) { background-color : #FFE4C4; }
+    th { background-color : #008B8B; padding:1.2em; }
+    td { padding:0.6em; }
+    logo {
+        width: 1cm;
+        height :1cm;
+    }
+
+</style>
+
+<h1 align="center">Liste des Produits</h1>
+<table class="table" align="center">
+    <thead>
+    <tr>
+        <th style="color:#ffffff">Nom Produit</th>
+        <th style="color:#ffffff">Quantite</th>
+        <th style="color:#ffffff">Prix</th>
+        <th style="color:#ffffff">Description</th>
+      
+    </tr>
+    </thead>
+    <tbody>
+        {% for p in produits %}
+            <tr>
+                <td>{{p.nomproduit}}</td>
+                <td>{{p.quantite}}</td>
+                <td>{{p.prix}}</td>
+                <td>{{p.description}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+    {% endblock %}

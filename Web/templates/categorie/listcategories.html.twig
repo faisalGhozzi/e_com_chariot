@@ -1,26 +1,34 @@
-{% extends 'base3.html.twig' %}
-{% block content %}
-    <div class="row">
-        <div class="col-12 col-lg-10 m-auto">
-            <div class="block">
-                <div class="title text-center">
-                    <h2>Categories</h2>
-                </div>
-                <br>
-                <input type="text" class="form-control" placeholder="Recherche" id="rech">
-                <br>
-                <div id="result">
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="section page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 m-auto">
+                <!-- Page Title -->
+                <h1>Catégories</h1>
+                <!-- Page Description -->
+                <p>Découvrez des produits de diverses catégories</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="job-list section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-10 m-auto">
+                <div class="block">
+                    <div class="title text-center">
+                        <input type="text" class="form-control" placeholder="Recherche" id="rech">
+                    </div>
                     {% for c in categories %}
                         <div class="job">
-                            <div class="row">
-                                <div class="content col-lg-6">
-                                    <h3>{{c.nomcateg}}</h3>
-                                    <p>{{c.description}}</p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="apply-button text-right">
-                                        <a href="{{ path('Produits',{'id':c.idcateg}) }}" class="btn btn-main-sm">Voir les produits</a>
-                                    </div>
+                            <div class="content">
+                                <h3>{{c.nomcateg}}</h3>
+                                <p>{{c.description}}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="apply-button">
+                                    <a href="{{ path('Produits',{'id':c.idcateg}) }}" class="btn btn-main-sm">Voir les produits</a>
                                 </div>
                             </div>
                         </div>
@@ -29,6 +37,7 @@
             </div>
         </div>
     </div>
+</section>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {

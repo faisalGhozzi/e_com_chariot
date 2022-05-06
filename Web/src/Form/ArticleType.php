@@ -20,7 +20,6 @@ class ArticleType extends AbstractType
             ->add('titre')
             ->add('image', FileType::class, array('label' => 'Brochure (image)','data_class' => null))
             ->add('nbrreact')
-
         ;
     }
 
