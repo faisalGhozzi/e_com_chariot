@@ -13,6 +13,7 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Categorie;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.CategorieService;
 
 public class AddCategorieForm extends Form{
@@ -42,11 +43,11 @@ public class AddCategorieForm extends Form{
                     c.setId(id);
                     cs.updateCategorie(c);
                 }             
-                previous.showBack();
+                previous.show();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         addAll(nom, description, add);     
     }

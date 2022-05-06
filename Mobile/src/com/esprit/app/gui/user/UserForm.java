@@ -47,7 +47,7 @@ public class UserForm extends Form{
         
         // Declaration d'un button dans le toolbar afin de retourner à la page précedente
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         // Declaration d'un button dans le toolbar afin d'ajouter un nouveau utilisateur

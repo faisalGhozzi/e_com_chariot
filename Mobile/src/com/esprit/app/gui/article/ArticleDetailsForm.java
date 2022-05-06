@@ -19,6 +19,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Article;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.ArticleService;
 import com.esprit.app.utils.Statics;
 
@@ -38,7 +39,7 @@ public class ArticleDetailsForm extends Form{
         
         
         SpanLabel titre = new SpanLabel("Nom : "+a.getTitre());
-        SpanLabel contenu = new SpanLabel("Prix : "+String.valueOf(a.getContenu())+" €");
+        SpanLabel contenu = new SpanLabel("Contenu : "+String.valueOf(a.getContenu()));
         SpanLabel nbreact = new SpanLabel("Nombre Reacts : "+String.valueOf(a.getNbrreact()));
 
         update.addActionListener(new ActionListener() {
@@ -54,12 +55,12 @@ public class ArticleDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             as.deleteArticle(a.getId());
-            previous.showBack();
+            previous.show();
         });
     }
 }

@@ -32,12 +32,12 @@ public class CategorieForm extends Form{
             MultiButton mb = new MultiButton(categorie.getNom());
             mb.setTextLine2(categorie.getDescription());
             mb.addActionListener((evt) -> {
-                // new CategorieDetailsForm(this, theme, categorie).show();
+                new CategorieDetailsForm(this, theme, categorie).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            // new AddCategorieForm(this, theme, 0, false).show();
+            new AddCategorieForm(this, theme, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
             previous.show();

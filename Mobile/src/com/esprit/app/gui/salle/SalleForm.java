@@ -40,12 +40,12 @@ public class SalleForm extends Form{
             mb.setIcon(i.fill(200, 200));
             mb.setTextLine2(String.valueOf(salle.getCapacite())+" €");
             mb.addActionListener((evt) -> {
-                // new SalleDetailsForm(this, theme, salle).show();
+                new SalleDetailsForm(this, theme, salle).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            // new AddSalleForm(this, theme, 0, false).show();
+            new AddSalleForm(this, theme, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
             previous.show();

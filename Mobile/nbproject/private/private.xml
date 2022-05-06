@@ -4,10 +4,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/entity/User.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/SignInForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/salle/SalleForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/categorie/CategorieForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/user/UserDetailsForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/categorie/AddCategorieForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/salle/AddSalleForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/adresse/AddAdresseForm.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/services/UserService.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/utils/Statics.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/categorie/CategorieDetailsForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/user/UserForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/services/CategorieService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/services/SalleService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/article/AddArticleForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/entity/User.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/SideMenu.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/HomeForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/MyApplication.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/salle/SalleDetailsForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/user/AddUserForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/services/ArticleService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/article/ArticleForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/adresse/AdresseForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/adresse/AdresseDetailsForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/services/AdresseService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/gui/article/ArticleDetailsForm.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/e_com_chariot/Mobile/src/com/esprit/app/utils/DataSource.java</file>
         </group>
     </open-files>

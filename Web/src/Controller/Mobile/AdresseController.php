@@ -4,6 +4,8 @@ namespace App\Controller\Mobile;
 
 use App\Entity\Adresse;
 use App\Entity\User;
+use App\Repository\AdresseRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +20,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("/adresses/json/new", name="AdressesJsonNewAction")
      */
-    public function newAdresseJson(Request $request): JsonResponse
+    public function newAdresseJson(UserRepository $userRepository, Request $request): JsonResponse
     {
         $adresse = new Adresse();
 
@@ -27,7 +29,7 @@ class AdresseController extends AbstractController
         $adresse->setNummaison($request->get('nummaison'));
         $adresse->setRue($request->get('rue'));
         $adresse->setVille($request->get('ville'));
-        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('iduser'));
+        $user = $userRepository->find($request->get('iduser'));
         $adresse->setIduser($user);
 
         $em->persist($adresse);
@@ -39,11 +41,11 @@ class AdresseController extends AbstractController
     /**
      * @Route("/adresses/json/update", name="AdressesJsonUpdateAction")
      */
-    public function updateAdresseJson(Request $request): JsonResponse
+    public function updateAdresseJson(AdresseRepository $adresseRepository, Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        $adresse = $em->getRepository(Adresse::class)->find($request->get('id'));
+        $adresse = $adresseRepository->find($request->get('id'));
 
         $adresse->setNummaison($request->get('nummaison'));
         $adresse->setRue($request->get('rue'));
@@ -55,14 +57,13 @@ class AdresseController extends AbstractController
     }
 
     /**
-     * @Route("/adresses/json/{id}", name="AdressesJsonAction")
+     * @Route("/adresses/json/user/{id}", name="AdressesJsonAction")
      * @throws ExceptionInterface
      */
-    public function adressesJsonAction($id): JsonResponse
+    public function adressesJsonAction(AdresseRepository $adresseRepository, UserRepository $userRepository, $id): JsonResponse
     {
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($id);
-        $adresses = $this->getDoctrine()->getManager()
-            ->getRepository(Adresse::class)->findBy(['iduser' => $user]);
+        $user = $userRepository->find($id);
+        $adresses = $adresseRepository->findBy(['iduser' => $user]);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($adresses);
@@ -73,10 +74,9 @@ class AdresseController extends AbstractController
      * @Route("/adresses/json/{id}", name="AdressesIdJson")
      * @throws ExceptionInterface
      */
-    public function adressesIdJson($id): JsonResponse
+    public function adressesIdJson(AdresseRepository $adresseRepository, $id): JsonResponse
     {
-        $adresses = $this->getDoctrine()->getManager()
-            ->getRepository(Adresse::class)->find($id);
+        $adresses = $adresseRepository->find($id);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($adresses);
@@ -87,10 +87,9 @@ class AdresseController extends AbstractController
      * @Route("/adresses/json/delete/{id}", name="deleteAdressesJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteAdressesJsonAction($id): JsonResponse
+    public function deleteAdressesJsonAction(AdresseRepository $adresseRepository, $id): JsonResponse
     {
-        $adresses = $this->getDoctrine()
-            ->getRepository(Adresse::class)->find($id);
+        $adresses = $adresseRepository->find($id);
         $this->getDoctrine()->getManager()->remove($adresses);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

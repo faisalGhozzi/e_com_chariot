@@ -3,6 +3,7 @@
 namespace App\Controller\Mobile;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +20,9 @@ class UserController extends AbstractController
      * @Route("/users/json", name="UsersJsonAction")
      * @throws ExceptionInterface
      */
-    public function usersJsonAction(): JsonResponse
+    public function usersJsonAction(UserRepository $userRepository): JsonResponse
     {
-        $users = $this->getDoctrine()->getManager()
-            ->getRepository(User::class)->findAll();
+        $users = $userRepository->findAll();
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($users);
@@ -51,11 +51,11 @@ class UserController extends AbstractController
     /**
      * @Route("/users/json/update", name="updateUserJsonAction")
      */
-    public function updateUserJsonAction(Request $request, UserPasswordEncoderInterface $passwordEncoder): JsonResponse
+    public function updateUserJsonAction(UserRepository $userRepository, Request $request, UserPasswordEncoderInterface $passwordEncoder): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user = $em->getRepository(User::class)->find($$request->get('id'));
+        $user = $userRepository->find($request->get('id'));
         $user->setEmail($request->get('email'));
         $user->setNom($request->get('nom'));
         $user->setPrenom($request->get('prenom'));
@@ -70,10 +70,9 @@ class UserController extends AbstractController
      * @Route("/users/json/{id}", name="UsersIdJson")
      * @throws ExceptionInterface
      */
-    public function usersIdJson($id): JsonResponse
+    public function usersIdJson(UserRepository $userRepository, $id): JsonResponse
     {
-        $users = $this->getDoctrine()->getManager()
-            ->getRepository(User::class)->find($id);
+        $users = $userRepository->find($id);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($users);
@@ -84,10 +83,9 @@ class UserController extends AbstractController
      * @Route("/users/json/delete/{id}", name="deleteUsersJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteUsersJsonAction($id): JsonResponse
+    public function deleteUsersJsonAction(UserRepository $userRepository, $id): JsonResponse
     {
-        $users = $this->getDoctrine()
-            ->getRepository(User::class)->find($id);
+        $users = $userRepository->find($id);
         $this->getDoctrine()->getManager()->remove($users);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

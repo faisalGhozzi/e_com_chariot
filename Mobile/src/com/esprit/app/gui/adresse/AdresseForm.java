@@ -32,12 +32,12 @@ public class AdresseForm extends Form{
             MultiButton mb = new MultiButton(String.valueOf(adresse.getNumMaison()) + ", " + adresse.getRue());
             mb.setTextLine2(adresse.getVille());
             mb.addActionListener((evt) -> {
-                // new AdresseDetailsForm(this, theme, adresse).show();
+                new AdresseDetailsForm(this, theme, adresse).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            // new AddAdresseForm(this, theme, 0, false).show();
+            new AddAdresseForm(this, theme, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
             previous.show();

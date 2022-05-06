@@ -123,7 +123,7 @@ public class AdresseService {
     }
 
     public ArrayList<Adresse> getAllAdresses(int user_id){
-        String url = Statics.BASE_URL+"/adresses/json/"+user_id;
+        String url = Statics.BASE_URL+"/adresses/json/user/"+user_id;
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);

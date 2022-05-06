@@ -58,7 +58,7 @@ public class CategorieService {
         String url = Statics.BASE_URL+"/categories/json/update";
         req.setUrl(url);
         req.setPost(true);
-        req.addArgument("id", String.valueOf(a.getNom()));
+        req.addArgument("id", String.valueOf(a.getId()));
         req.addArgument("nomcateg", String.valueOf(a.getNom()));
         req.addArgument("description", String.valueOf(a.getDescription()));
 
@@ -98,9 +98,8 @@ public class CategorieService {
         JSONParser j = new JSONParser();
         Map<String,Object> categorieJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
         Categorie a = new Categorie();
-        int id = (int)Float.parseFloat(categorieJson.get("idCategorie").toString());
+        int id = (int)Float.parseFloat(categorieJson.get("idcateg").toString());
         a.setId(id);
-        String ville = categorieJson.get("ville").toString();
         String nomcateg = categorieJson.get("nomcateg").toString();
         a.setNom(nomcateg);
         String description = categorieJson.get("description").toString();

@@ -16,6 +16,7 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.esprit.app.services.UserService;
 import com.esprit.app.entity.User;
+import com.esprit.app.gui.HomeForm;
 
 // Page d'affichage d'un seul utilisaeur
 public class UserDetailsForm extends Form{
@@ -46,13 +47,13 @@ public class UserDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         // Definition d'un button de supression de l'utilisateur
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             us.deleteUser(u.getId());
-            previous.showBack();
+            previous.show();
         });
     }
 }

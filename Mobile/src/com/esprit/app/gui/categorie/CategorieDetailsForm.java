@@ -19,6 +19,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Categorie;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.gui.categorie.AddCategorieForm;
 import com.esprit.app.services.CategorieService;
 import com.esprit.app.utils.Statics;
@@ -49,12 +50,12 @@ public class CategorieDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             cs.deleteCategorie(c.getId());
-            previous.showBack();
+            previous.show();
         });
     }
 }

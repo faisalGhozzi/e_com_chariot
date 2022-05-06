@@ -6565,6 +6565,25 @@
         <argument key="chartBuilder" type="service_closure" id="chartjs.builder"/>
       </argument>
     </service>
+    <service id=".service_locator.1UuH9tO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.m6nwMRh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="adresseRepository" type="service_closure" id="App\Repository\AdresseRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iUkINWD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="adresseRepository" type="service_closure" id="App\Repository\AdresseRepository"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.Dx03tsO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6587,6 +6606,13 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="passwordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QBb2BJR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="passwordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.hbvt1JU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6652,12 +6678,6 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.1UuH9tO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.Nj317l0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6693,7 +6713,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.4i63sYd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.YTP1ioz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdresseController::listAdressesByuser" type="service_closure" id=".service_locator.DbG3Ivw"/>
@@ -6736,15 +6756,32 @@
         <argument key="App\Controller\LivreurController::listLivreur" type="service_closure" id=".service_locator.aZCcAnX"/>
         <argument key="App\Controller\LivreurController::stat" type="service_closure" id=".service_locator.8Aa0Lz3"/>
         <argument key="App\Controller\LivreurController::updateLivreur" type="service_closure" id=".service_locator.oJ1ZRpu"/>
+        <argument key="App\Controller\Mobile\AdresseController::adressesIdJson" type="service_closure" id=".service_locator.m6nwMRh"/>
+        <argument key="App\Controller\Mobile\AdresseController::adressesJsonAction" type="service_closure" id=".service_locator.iUkINWD"/>
+        <argument key="App\Controller\Mobile\AdresseController::deleteAdressesJsonAction" type="service_closure" id=".service_locator.m6nwMRh"/>
+        <argument key="App\Controller\Mobile\AdresseController::newAdresseJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\AdresseController::updateAdresseJson" type="service_closure" id=".service_locator.m6nwMRh"/>
         <argument key="App\Controller\Mobile\ArticleController::articlesIdJson" type="service_closure" id=".service_locator.Dx03tsO"/>
         <argument key="App\Controller\Mobile\ArticleController::articlesJsonAction" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\ArticleController::deleteArticlesJsonAction" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\ArticleController::newArticleJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\ArticleController::updateArticleJson" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\CategorieController::CategoriesIdJson" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\Mobile\CategorieController::categoriesJsonAction" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\Mobile\CategorieController::deleteCategoriesJsonAction" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\Mobile\CategorieController::updateCategorieJson" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\Mobile\CommentaireController::commentairesJsonAction" type="service_closure" id=".service_locator.8yqhsUG"/>
         <argument key="App\Controller\Mobile\LivraisonController::livraisonsJsonAction" type="service_closure" id=".service_locator.MvS2xH3"/>
         <argument key="App\Controller\Mobile\ProduitController::produitsJsonAction" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\Mobile\SalleController::deleteSallesJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\SalleController::sallesIdJson" type="service_closure" id=".service_locator.01Yvx7g"/>
         <argument key="App\Controller\Mobile\SalleController::sallesJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\SalleController::updateSalleJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\UserController::deleteUsersJsonAction" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\Mobile\UserController::newUserJsonAction" type="service_closure" id=".service_locator.ccM2MGC"/>
-        <argument key="App\Controller\Mobile\UserController::updateUserJsonAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\Mobile\UserController::updateUserJsonAction" type="service_closure" id=".service_locator.QBb2BJR"/>
+        <argument key="App\Controller\Mobile\UserController::usersIdJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\UserController::usersJsonAction" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\ProduitController::addProduit" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\ProduitController::listProduit" type="service_closure" id=".service_locator.hbvt1JU"/>
         <argument key="App\Controller\ProduitController::listProduitFront" type="service_closure" id=".service_locator.IZG9Qrs"/>
@@ -6813,15 +6850,32 @@
         <argument key="App\Controller\LivreurController:listLivreur" type="service_closure" id=".service_locator.aZCcAnX"/>
         <argument key="App\Controller\LivreurController:stat" type="service_closure" id=".service_locator.8Aa0Lz3"/>
         <argument key="App\Controller\LivreurController:updateLivreur" type="service_closure" id=".service_locator.oJ1ZRpu"/>
+        <argument key="App\Controller\Mobile\AdresseController:adressesIdJson" type="service_closure" id=".service_locator.m6nwMRh"/>
+        <argument key="App\Controller\Mobile\AdresseController:adressesJsonAction" type="service_closure" id=".service_locator.iUkINWD"/>
+        <argument key="App\Controller\Mobile\AdresseController:deleteAdressesJsonAction" type="service_closure" id=".service_locator.m6nwMRh"/>
+        <argument key="App\Controller\Mobile\AdresseController:newAdresseJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\AdresseController:updateAdresseJson" type="service_closure" id=".service_locator.m6nwMRh"/>
         <argument key="App\Controller\Mobile\ArticleController:articlesIdJson" type="service_closure" id=".service_locator.Dx03tsO"/>
         <argument key="App\Controller\Mobile\ArticleController:articlesJsonAction" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\ArticleController:deleteArticlesJsonAction" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\ArticleController:newArticleJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\ArticleController:updateArticleJson" type="service_closure" id=".service_locator.Dx03tsO"/>
+        <argument key="App\Controller\Mobile\CategorieController:CategoriesIdJson" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\Mobile\CategorieController:categoriesJsonAction" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\Mobile\CategorieController:deleteCategoriesJsonAction" type="service_closure" id=".service_locator.hqNb5OX"/>
+        <argument key="App\Controller\Mobile\CategorieController:updateCategorieJson" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\Mobile\CommentaireController:commentairesJsonAction" type="service_closure" id=".service_locator.8yqhsUG"/>
         <argument key="App\Controller\Mobile\LivraisonController:livraisonsJsonAction" type="service_closure" id=".service_locator.MvS2xH3"/>
         <argument key="App\Controller\Mobile\ProduitController:produitsJsonAction" type="service_closure" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\Mobile\SalleController:deleteSallesJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\SalleController:sallesIdJson" type="service_closure" id=".service_locator.01Yvx7g"/>
         <argument key="App\Controller\Mobile\SalleController:sallesJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\SalleController:updateSalleJsonAction" type="service_closure" id=".service_locator.01Yvx7g"/>
+        <argument key="App\Controller\Mobile\UserController:deleteUsersJsonAction" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\Mobile\UserController:newUserJsonAction" type="service_closure" id=".service_locator.ccM2MGC"/>
-        <argument key="App\Controller\Mobile\UserController:updateUserJsonAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\Mobile\UserController:updateUserJsonAction" type="service_closure" id=".service_locator.QBb2BJR"/>
+        <argument key="App\Controller\Mobile\UserController:usersIdJson" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\Mobile\UserController:usersJsonAction" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\ProduitController:addProduit" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\ProduitController:listProduit" type="service_closure" id=".service_locator.hbvt1JU"/>
         <argument key="App\Controller\ProduitController:listProduitFront" type="service_closure" id=".service_locator.IZG9Qrs"/>
@@ -7493,12 +7547,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.4i63sYd"/>
+      <argument type="service" id=".service_locator.YTP1ioz"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.4i63sYd"/>
+      <argument type="service" id=".service_locator.YTP1ioz"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7926,7 +7980,7 @@
     <service id="MercurySeries\FlashyBundle\FlashyNotifier" alias="mercuryseries_flashy.flashy_notifier" public="false"/>
     <service id="Symfony\UX\Chartjs\Builder\ChartBuilderInterface" alias="chartjs.builder" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.4i63sYd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.YTP1ioz"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>

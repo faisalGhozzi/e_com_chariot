@@ -50,12 +50,12 @@ class CategorieController extends AbstractController
     /**
      * @Route("/categories/json/update", name="CategoriesJsonUpdateAction")
      */
-    public function updateCategorieJson(Request $request): JsonResponse
+    public function updateCategorieJson(CategorieRepository $categorieRepository, Request $request): JsonResponse
     {
 
         $em = $this->getDoctrine()->getManager();
 
-        $categorie = $em->getRepository(Categorie::class)->find($request->get('id'));
+        $categorie = $categorieRepository->find($request->get('id'));
         $categorie->setNomcateg($request->get('nomcateg'));
         $categorie->setDescription($request->get('description'));
         $em->flush();
@@ -64,16 +64,15 @@ class CategorieController extends AbstractController
     }
 
     /**
-     * @Route("/Categories/json/{id}", name="CategoriesIdJson")
+     * @Route("/categories/json/{id}", name="CategoriesIdJson")
      * @throws ExceptionInterface
      */
-    public function CategoriesIdJson($id): JsonResponse
+    public function CategoriesIdJson(CategorieRepository $categorieRepository, $id): JsonResponse
     {
-        $Categories = $this->getDoctrine()->getManager()
-            ->getRepository(Categorie::class)->find($id);
-
+        $categories = $categorieRepository->find($id);
+        
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($Categories);
+        $formatted = $serializer->normalize($categories);
         return new JsonResponse($formatted);
     }
 
@@ -81,10 +80,9 @@ class CategorieController extends AbstractController
      * @Route("/categories/json/delete/{id}", name="deleteCategoriesJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteCategoriesJsonAction($id): JsonResponse
+    public function deleteCategoriesJsonAction(CategorieRepository $categorieRepository, $id): JsonResponse
     {
-        $categories = $this->getDoctrine()
-            ->getRepository(Categorie::class)->find($id);
+        $categories = $categorieRepository->find($id);
         $this->getDoctrine()->getManager()->remove($categories);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

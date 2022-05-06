@@ -13,6 +13,7 @@ use App\Repository\ArticleRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\CommentaireRepository;
 use App\Repository\RatingRepository;
+use App\Repository\UserRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
@@ -47,7 +48,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/json/new", name="ArticlesJsonNewAction")
      */
-    public function newArticleJson(Request $request): JsonResponse
+    public function newArticleJson(UserRepository $userRepository, Request $request): JsonResponse
     {
         $article = new Article();
 
@@ -59,7 +60,7 @@ class ArticleController extends AbstractController
         $article->setEtat('desarchive');
         $article->setNbrreact(0);
 
-        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('auteur'));
+        $user = $userRepository->find($request->get('auteur'));
 
         $article->setAuteur($user);
 
@@ -72,11 +73,11 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/json/update", name="ArticlesJsonUpdateAction")
      */
-    public function updateArticleJson(Request $request): JsonResponse
+    public function updateArticleJson(ArticleRepository $articleRepository, Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        $article = $em->getRepository(Article::class)->find($request->get('id'));
+        $article = $articleRepository->find($request->get('id'));
 
         $article->setImage($request->get('image'));
         $article->setTitre($request->get('titre'));
@@ -96,7 +97,7 @@ class ArticleController extends AbstractController
      */
     public function articlesIdJson(ArticleRepository $articleRepository, $id): JsonResponse
     {
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->find($id);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($articles);
@@ -107,10 +108,9 @@ class ArticleController extends AbstractController
      * @Route("/article/json/delete/{id}", name="deleteArticlesJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteArticlesJsonAction($id): JsonResponse
+    public function deleteArticlesJsonAction(ArticleRepository $articleRepository, $id): JsonResponse
     {
-        $articles = $this->getDoctrine()
-            ->getRepository(Article::class)->find($id);
+        $articles = $articleRepository->find($id);
         $this->getDoctrine()->getManager()->remove($articles);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

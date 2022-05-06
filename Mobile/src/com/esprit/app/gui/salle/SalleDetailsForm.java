@@ -56,12 +56,12 @@ public class SalleDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             ss.deleteSalle(s.getId());
-            previous.showBack();
+            previous.show();
         });
     }
 }

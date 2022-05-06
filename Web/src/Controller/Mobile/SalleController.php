@@ -62,11 +62,11 @@ class SalleController extends AbstractController
     /**
      * @Route("/salles/json/update", name="updateSalleJsonAction")
      */
-    public function updateSalleJsonAction(Request $request): JsonResponse
+    public function updateSalleJsonAction(SalleRepository $salleRepository, Request $request): JsonResponse
     {
         $em = $this->getDoctrine()->getManager();
 
-        $salle = $em->getRepository(Salle::class)->find($request->get('id'));
+        $salle = $salleRepository->find($request->get('id'));
         $salle->setNom($request->get('nom'));
         $salle->setImage($request->get('image'));
         $salle->setCapacite($request->get('capacite'));
@@ -81,10 +81,9 @@ class SalleController extends AbstractController
      * @Route("/salles/json/{id}", name="SallesIdJson")
      * @throws ExceptionInterface
      */
-    public function sallesIdJson($id): JsonResponse
+    public function sallesIdJson(SalleRepository $salleRepository, $id): JsonResponse
     {
-        $salles = $this->getDoctrine()->getManager()
-            ->getRepository(Salle::class)->find($id);
+        $salles = $salleRepository->find($id);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($salles);
@@ -95,10 +94,9 @@ class SalleController extends AbstractController
      * @Route("/salles/json/delete/{id}", name="deleteSallesJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteSallesJsonAction($id): JsonResponse
+    public function deleteSallesJsonAction(SalleRepository $salleRepository, $id): JsonResponse
     {
-        $salles = $this->getDoctrine()
-            ->getRepository(Salle::class)->find($id);
+        $salles = $salleRepository->find($id);
         $this->getDoctrine()->getManager()->remove($salles);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

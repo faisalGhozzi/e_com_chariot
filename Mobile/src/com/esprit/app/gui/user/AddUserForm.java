@@ -13,6 +13,7 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.User;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.UserService;
 
 public class AddUserForm extends Form{
@@ -44,11 +45,11 @@ public class AddUserForm extends Form{
                     u.setId(id);
                     us.updateUser(u);
                 }             
-                previous.showBack();
+                previous.show();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         addAll(nom, prenom, email, password, add);     
     }

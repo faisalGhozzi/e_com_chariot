@@ -6,6 +6,7 @@
 package com.esprit.app.gui.salle;
 
 
+import com.codename1.capture.Capture;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
@@ -15,6 +16,7 @@ import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
+import com.codename1.ui.Label;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -24,8 +26,11 @@ import com.codename1.ui.util.Resources;
 
 
 import com.esprit.app.entity.Salle;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.SalleService;
 import com.esprit.app.utils.Statics;
+import java.io.IOException;
+
 
 public class AddSalleForm extends Form{
     
@@ -40,7 +45,12 @@ public class AddSalleForm extends Form{
         if (id != 0){
             s = ss.getSalle(id);
         }     
+        Label imgName = new Label();
+        Label lbl_Image = new Label();
+        
         Button add = new Button(id == 0 ? "Create": "Update");
+        Button uploadImage = new Button("Upload Image");
+
         TextField nom = new TextField(id == 0 ? "" : s.getNom(), "Nom");
         TextField prix = new TextField(id == 0 ? "" : String.valueOf(s.getPrix()), "Prix");
         TextField capacite = new TextField(id == 0 ? "" : String.valueOf(s.getCapacite()), "Capacité");
@@ -55,13 +65,27 @@ public class AddSalleForm extends Form{
                     s.setId(id);
                     ss.updateSalle(s);
                 }             
-                previous.showBack();
+            previous.show();
+            }
+        });
+        
+        uploadImage.addActionListener((evt) -> {
+            String path = Capture.capturePhoto(Display.getInstance().getDisplayWidth(), -1);
+            if(path != null){
+                try {
+                    Image img = Image.createImage(path);
+                    lbl_Image.setIcon(img);
+                    imgName.setText(path);
+                    this.revalidate();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
-        addAll(nom, prix, capacite, add);     
+        addAll(lbl_Image, nom, prix, capacite, uploadImage, add);     
     }
 }
-

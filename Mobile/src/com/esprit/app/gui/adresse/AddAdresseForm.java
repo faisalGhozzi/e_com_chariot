@@ -13,6 +13,7 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Adresse;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.AdresseService;
 
 public class AddAdresseForm extends Form{
@@ -44,13 +45,13 @@ public class AddAdresseForm extends Form{
                     a.setId(id);
                     as.updateAdresse(a);
                 }             
-                previous.showBack();
+                previous.show();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
-        addAll(ville, rue, num, add);     
+        addAll(ville, rue, num, add);
     }
 }
 

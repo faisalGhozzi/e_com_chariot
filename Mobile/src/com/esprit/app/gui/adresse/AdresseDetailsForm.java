@@ -13,6 +13,7 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Adresse;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.gui.adresse.AddAdresseForm;
 import com.esprit.app.services.AdresseService;
 
@@ -43,12 +44,12 @@ public class AdresseDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.showBack();
+            previous.show();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             as.deleteAdresse(a.getId());
-            previous.showBack();
+            previous.show();
         });
     }
 }

@@ -39,12 +39,12 @@ public class ArticleForm extends Form{
             mb.setIcon(i.fill(200, 200));
             mb.setTextLine2("Author");
             mb.addActionListener((evt) -> {
-                // new ArticleDetailsForm(this, theme, article).show();
+                new ArticleDetailsForm(this, theme, article).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            // new AddArticleForm(this, theme, 0, false).show();
+            new AddArticleForm(this, theme, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
             previous.show();
