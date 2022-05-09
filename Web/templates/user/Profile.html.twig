@@ -1,12 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier Utulisateur{% endblock %}
+{% block title %}Modifier Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <section class="section page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <!-- Page Title -->
+                    <h1>Modifiez votre profile</h1>
+                    <!-- Page Description -->
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-8 m-auto">
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_user_index') }}">Retourner a la list</a>
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <a class="btn btn-outline-primary" href="{{ path('app_user_index') }}"><i class="ti-arrow-left"></i>
+                        Retourner a la list</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="post-grid section pt-0">
+        <div class="container">
+                {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </section>
 {% endblock %}

@@ -1,11 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
 
 {% block title %}New User{% endblock %}
 
 {% block content %}
-    <h1>Create new User</h1>
+<div class="row justify-content-center">
 
-    {{ include('user/_form.html.twig') }}
+    <div class="col-lg-8">
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
-{% endblock %}
+        <!-- Default Card Example -->
+        <div class="card mb-6">
+            <div class="card-header">
+                <h1>Create new user</h1>
+            </div>
+            <div class="card-body">
+
+                {{ include('user/_form.html.twig') }}
+
+                <a href="{{ path('app_user_index') }}">back to list</a>
+                {% endblock %}

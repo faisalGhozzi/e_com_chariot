@@ -105,10 +105,8 @@ class CommentaireController extends AbstractController
         $react= new Reacts();
         $commentaire=$commentaireRepository->find($request->get('idcomment'));
 
-
-
         $react->setIdCommentaire($commentaire);
-        $react->setIdUser($commentaire->getAuteurC()); // a modifier
+        $react->setIdUser($this->getUser()); // a modifier
         $react->setDatecrea(new \DateTime());
         $em = $this->getDoctrine()->getManager();
         $em->persist($react);
@@ -136,7 +134,7 @@ class CommentaireController extends AbstractController
         if($selectedCom->isLikedByUser($user)){
             $react = $reactsRepository->findOneBy([
                 'idcommentaire' => $id,
-                'idusers' => $user->getIduser()
+                'idusers' => $this->getUser()
             ]);
             //$react = $reactsRepository->findByUserComment($user->getIduser(),$id);
             $em = $this->getDoctrine()->getManager();

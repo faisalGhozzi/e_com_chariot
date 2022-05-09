@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerCVxjtOS/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerGq7oMjo/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -32,6 +32,7 @@ $classes[] = 'Knp\Bundle\PaginatorBundle\KnpPaginatorBundle';
 $classes[] = 'Vangrg\ProfanityBundle\VangrgProfanityBundle';
 $classes[] = 'MercurySeries\FlashyBundle\MercurySeriesFlashyBundle';
 $classes[] = 'Symfony\UX\Chartjs\ChartjsBundle';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\CaptchaBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -118,6 +119,9 @@ $classes[] = 'Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer';
 $classes[] = 'Symfony\Component\Cache\Adapter\ArrayAdapter';
 $classes[] = 'Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer';
 $classes[] = 'Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Integration\BotDetectCaptcha';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptchaValidator';
 $classes[] = 'Symfony\UX\Chartjs\Builder\ChartBuilder';
 $classes[] = 'Symfony\Component\Config\Resource\SelfCheckingResourceChecker';
 $classes[] = 'Symfony\Component\Config\ResourceCheckerConfigCacheFactory';
@@ -401,6 +405,7 @@ $classes[] = 'Symfony\Component\Routing\Loader\GlobFileLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\DirectoryLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\ContainerLoader';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\LegacyRouteLoaderContainer';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Routing\CaptchaRoutesLoader';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\AnnotatedRouteControllerLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\AnnotationDirectoryLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\AnnotationFileLoader';
@@ -484,6 +489,9 @@ $classes[] = 'Symfony\Component\HttpFoundation\Session\Session';
 $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage';
 $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\SessionListener';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Integration\BotDetectSimpleCaptcha';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType';
+$classes[] = 'Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidSimpleCaptchaValidator';
 $classes[] = 'blackknight467\StarRatingBundle\Form\RatingType';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\StreamedResponseListener';
 $classes[] = 'Symfony\Bundle\SwiftmailerBundle\Command\DebugCommand';

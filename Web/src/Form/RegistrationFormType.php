@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Unique;
-//use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 
 class RegistrationFormType extends AbstractType
@@ -91,11 +91,11 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-                ]);
+                ])
 
-//            ->add('captchaCode', CaptchaType::class, array(
-//                'captchaConfig' => 'ExampleCaptcha'
-//            ));
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

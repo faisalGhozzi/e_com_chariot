@@ -8,6 +8,12 @@
     "botman/driver-web": {
         "version": "1.5.1"
     },
+    "captcha-com/captcha": {
+        "version": "4.2.5"
+    },
+    "captcha-com/symfony-captcha-bundle": {
+        "version": "4.2.12"
+    },
     "cmen/google-charts-bundle": {
         "version": "4.0.0"
     },

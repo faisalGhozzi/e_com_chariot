@@ -28,6 +28,7 @@
       <parameter key="VangrgProfanityBundle">Vangrg\ProfanityBundle\VangrgProfanityBundle</parameter>
       <parameter key="MercurySeriesFlashyBundle">MercurySeries\FlashyBundle\MercurySeriesFlashyBundle</parameter>
       <parameter key="ChartjsBundle">Symfony\UX\Chartjs\ChartjsBundle</parameter>
+      <parameter key="CaptchaBundle">Captcha\Bundle\CaptchaBundle\CaptchaBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -105,6 +106,10 @@
       <parameter key="ChartjsBundle" type="collection">
         <parameter key="path">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\symfony\ux-chartjs</parameter>
         <parameter key="namespace">Symfony\UX\Chartjs</parameter>
+      </parameter>
+      <parameter key="CaptchaBundle" type="collection">
+        <parameter key="path">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle</parameter>
+        <parameter key="namespace">Captcha\Bundle\CaptchaBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -186,6 +191,7 @@
     <parameter key="serializer.mapping.cache.file">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\var\cache\dev/serialization.php</parameter>
     <parameter key="twig.exception_listener.controller">null</parameter>
     <parameter key="twig.form.resources" type="collection">
+      <parameter>@Captcha/captcha.html.twig</parameter>
       <parameter>StarRatingBundle::rating.html.twig</parameter>
       <parameter>form_div_layout.html.twig</parameter>
       <parameter>bootstrap_4_horizontal_layout.html.twig</parameter>
@@ -314,6 +320,21 @@
     <parameter key="vangrg_profanity.allow_bound_by_words">false</parameter>
     <parameter key="vangrg_profanity.source.file_name">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\vangrg\profanity-bundle\DependencyInjection/../data/profanities.yaml</parameter>
     <parameter key="vangrg_profanity.source.format">yaml</parameter>
+    <parameter key="botdetect_captcha.class">Captcha\Bundle\CaptchaBundle\Integration\BotDetectCaptcha</parameter>
+    <parameter key="botdetect_simple_captcha.class">Captcha\Bundle\CaptchaBundle\Integration\BotDetectSimpleCaptcha</parameter>
+    <parameter key="captcha_routes_loader.class">Captcha\Bundle\CaptchaBundle\Routing\CaptchaRoutesLoader</parameter>
+    <parameter key="captcha_type.class">Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType</parameter>
+    <parameter key="simple_captcha_type.class">Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType</parameter>
+    <parameter key="valid_captcha_validator.class">Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptchaValidator</parameter>
+    <parameter key="valid_simple_captcha_validator.class">Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidSimpleCaptchaValidator</parameter>
+    <parameter key="captcha.config" type="collection">
+      <parameter key="botdetect_captcha_path">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle\Support/../../captcha/botdetect-captcha-lib</parameter>
+      <parameter key="captchaConfig">null</parameter>
+      <parameter key="captchaStyleName">null</parameter>
+    </parameter>
+    <parameter key="captcha.config.botdetect_captcha_path">C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle\Support/../../captcha/botdetect-captcha-lib</parameter>
+    <parameter key="captcha.config.captchaConfig">null</parameter>
+    <parameter key="captcha.config.captchaStyleName">null</parameter>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -1128,6 +1149,7 @@
         <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument>blackknight467\StarRatingBundle\Form</argument>
+        <argument></argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\AdresseType</argument>
@@ -1150,6 +1172,8 @@
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
         <argument>blackknight467\StarRatingBundle\Form\RatingType</argument>
+        <argument>Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType</argument>
+        <argument>Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1479,7 +1503,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.UsKHctN"/>
+      <argument type="service" id=".service_locator.MTmaPLP"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1754,7 +1778,7 @@
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory" public="false">
-      <argument type="service" id=".service_locator.3Wh5x7N"/>
+      <argument type="service" id=".service_locator.dMG7FJ5"/>
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator" public="false">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
@@ -2172,6 +2196,8 @@
           <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/MercurySeriesFlashyBundle/translations</argument>
           <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\symfony\ux-chartjs/translations</argument>
           <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/ChartjsBundle/translations</argument>
+          <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/translations</argument>
+          <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/CaptchaBundle/translations</argument>
           <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -2218,6 +2244,8 @@
             <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/MercurySeriesFlashyBundle/translations</argument>
             <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\symfony\ux-chartjs/translations</argument>
             <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/ChartjsBundle/translations</argument>
+            <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/translations</argument>
+            <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/CaptchaBundle/translations</argument>
             <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -3195,6 +3223,9 @@
         <argument type="service" id="routing.loader.container"/>
       </call>
       <call method="addLoader">
+        <argument type="service" id="captcha.routing_loader"/>
+      </call>
+      <call method="addLoader">
         <argument type="service" id="routing.loader.annotation"/>
       </call>
       <call method="addLoader">
@@ -3757,6 +3788,10 @@
         <argument>!Framework</argument>
       </call>
       <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\symfony\twig-bundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
@@ -3835,6 +3870,14 @@
       <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\mercuryseries\flashy-bundle\src/Resources/views</argument>
         <argument>!MercurySeriesFlashy</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/Resources/views</argument>
+        <argument>Captcha</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/Resources/views</argument>
+        <argument>!Captcha</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web/templates</argument>
@@ -3965,6 +4008,10 @@
         <argument>!Framework</argument>
       </call>
       <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\symfony\twig-bundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
@@ -4043,6 +4090,14 @@
       <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\mercuryseries\flashy-bundle\src/Resources/views</argument>
         <argument>!MercurySeriesFlashy</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/Resources/views</argument>
+        <argument>Captcha</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web\vendor\captcha-com\symfony-captcha-bundle/Resources/views</argument>
+        <argument>!Captcha</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\Faycal Ghozzi\Desktop\ProjetsMoney\e_com_chariot\Web/templates</argument>
@@ -5243,6 +5298,13 @@
         </argument>
         <argument>null</argument>
       </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.TnlcShC"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_FULLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
@@ -5743,6 +5805,9 @@
     <service id=".security.request_matcher.QPwreRw" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/logout</argument>
     </service>
+    <service id=".security.request_matcher.TnlcShC" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/addLivraison</argument>
+    </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -5979,6 +6044,33 @@
       <argument type="service" id="request_stack"/>
     </service>
     <service id="chartjs.builder" class="Symfony\UX\Chartjs\Builder\ChartBuilder" public="false"/>
+    <service id="captcha" class="Captcha\Bundle\CaptchaBundle\Integration\BotDetectCaptcha" public="true">
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="simple_captcha" class="Captcha\Bundle\CaptchaBundle\Integration\BotDetectSimpleCaptcha" public="true">
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="captcha.routing_loader" class="Captcha\Bundle\CaptchaBundle\Routing\CaptchaRoutesLoader">
+      <tag name="routing.loader"/>
+    </service>
+    <service id="captcha.form.type" class="Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType" public="true">
+      <tag name="form.type" alias="captcha"/>
+      <argument type="service" id="service_container"/>
+      <argument>%captcha.config%</argument>
+    </service>
+    <service id="simple_captcha.form.type" class="Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType" public="true">
+      <tag name="form.type" alias="captcha"/>
+      <argument type="service" id="service_container"/>
+      <argument>%captcha.config%</argument>
+    </service>
+    <service id="captcha.validator" class="Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptchaValidator" public="true">
+      <tag name="validator.constraint_validator" alias="valid_captcha"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="simple_captcha.validator" class="Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidSimpleCaptchaValidator" public="true">
+      <tag name="validator.constraint_validator" alias="valid_simple_captcha"/>
+      <argument type="service" id="service_container"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdresseController" class="App\Controller\AdresseController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdresseController" class="App\Controller\AdresseController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdresseController" class="App\Controller\AdresseController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6449,12 +6541,6 @@
         <argument key="session" type="service_closure" id="session"/>
       </argument>
     </service>
-    <service id=".service_locator.o3htLhs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="session" type="service_closure" id="session"/>
-      </argument>
-    </service>
     <service id=".service_locator.kanAnHs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6713,7 +6799,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.YTP1ioz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.zJBO2dw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdresseController::listAdressesByuser" type="service_closure" id=".service_locator.DbG3Ivw"/>
@@ -6727,9 +6813,9 @@
         <argument key="App\Controller\ArticleController::index" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\ArticleController::searchArticle" type="service_closure" id=".service_locator.cUMn326"/>
         <argument key="App\Controller\ArticleController::updateArticle" type="service_closure" id=".service_locator.cUMn326"/>
-        <argument key="App\Controller\CardController::add" type="service_closure" id=".service_locator.o3htLhs"/>
+        <argument key="App\Controller\CardController::add" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController::delete" type="service_closure" id=".service_locator.kanAnHs"/>
-        <argument key="App\Controller\CardController::deleteAll" type="service_closure" id=".service_locator.o3htLhs"/>
+        <argument key="App\Controller\CardController::deleteAll" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController::index" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController::remove" type="service_closure" id=".service_locator.kanAnHs"/>
         <argument key="App\Controller\CategorieController::PDFProduits" type="service_closure" id=".service_locator.DdzI3DK"/>
@@ -6821,9 +6907,9 @@
         <argument key="App\Controller\ArticleController:index" type="service_closure" id=".service_locator.hqNb5OX"/>
         <argument key="App\Controller\ArticleController:searchArticle" type="service_closure" id=".service_locator.cUMn326"/>
         <argument key="App\Controller\ArticleController:updateArticle" type="service_closure" id=".service_locator.cUMn326"/>
-        <argument key="App\Controller\CardController:add" type="service_closure" id=".service_locator.o3htLhs"/>
+        <argument key="App\Controller\CardController:add" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController:delete" type="service_closure" id=".service_locator.kanAnHs"/>
-        <argument key="App\Controller\CardController:deleteAll" type="service_closure" id=".service_locator.o3htLhs"/>
+        <argument key="App\Controller\CardController:deleteAll" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController:index" type="service_closure" id=".service_locator.miWCEVF"/>
         <argument key="App\Controller\CardController:remove" type="service_closure" id=".service_locator.kanAnHs"/>
         <argument key="App\Controller\CategorieController:PDFProduits" type="service_closure" id=".service_locator.DdzI3DK"/>
@@ -6906,9 +6992,11 @@
         <argument key="App\Controller\UserController:tri" type="service_closure" id=".service_locator.1UuH9tO"/>
       </argument>
     </service>
-    <service id=".service_locator.3Wh5x7N" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.dMG7FJ5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptchaValidator" type="service_closure" id="captcha.validator"/>
+        <argument key="Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidSimpleCaptchaValidator" type="service_closure" id="simple_captcha.validator"/>
         <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service_closure" id="doctrine.orm.validator.unique"/>
         <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service_closure" id="security.validator.user_password"/>
         <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service_closure" id="validator.email"/>
@@ -6917,6 +7005,8 @@
         <argument key="Vangrg\ProfanityBundle\Validator\Constraints\ProfanityCheckValidator" type="service_closure" id="Vangrg\ProfanityBundle\Validator\Constraints\ProfanityCheckValidator"/>
         <argument key="doctrine.orm.validator.unique" type="service_closure" id="doctrine.orm.validator.unique"/>
         <argument key="security.validator.user_password" type="service_closure" id="security.validator.user_password"/>
+        <argument key="valid_captcha" type="service_closure" id="captcha.validator"/>
+        <argument key="valid_simple_captcha" type="service_closure" id="simple_captcha.validator"/>
         <argument key="validator.expression" type="service_closure" id="validator.expression"/>
       </argument>
     </service>
@@ -6966,7 +7056,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.UsKHctN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.MTmaPLP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AdresseType" type="service_closure" id="App\Form\AdresseType"/>
@@ -6984,6 +7074,8 @@
         <argument key="App\Form\UpdateType" type="service_closure" id="App\Form\UpdateType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
         <argument key="App\Form\VilleFormType" type="service_closure" id="App\Form\VilleFormType"/>
+        <argument key="Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType" type="service_closure" id="captcha.form.type"/>
+        <argument key="Captcha\Bundle\CaptchaBundle\Form\Type\SimpleCaptchaType" type="service_closure" id="simple_captcha.form.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -7547,12 +7639,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.YTP1ioz"/>
+      <argument type="service" id=".service_locator.zJBO2dw"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.YTP1ioz"/>
+      <argument type="service" id=".service_locator.zJBO2dw"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7980,7 +8072,7 @@
     <service id="MercurySeries\FlashyBundle\FlashyNotifier" alias="mercuryseries_flashy.flashy_notifier" public="false"/>
     <service id="Symfony\UX\Chartjs\Builder\ChartBuilderInterface" alias="chartjs.builder" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.YTP1ioz"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.zJBO2dw"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
@@ -7997,7 +8089,8 @@
     <service id="Psr\Log\LoggerInterface $debugLogger" alias="monolog.logger.debug"/>
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
-    <service id=".service_locator.E4ERaBf" alias=".service_locator.3Wh5x7N" public="false"/>
+    <service id=".service_locator.ZcJ5udT" alias=".service_locator.dMG7FJ5" public="false"/>
+    <service id=".service_locator.ZxS7P6K" alias=".service_locator.MTmaPLP" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

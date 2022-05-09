@@ -92,7 +92,7 @@ class __TwigTemplate_47084d00e98a4ce0733bcab3da8e110eaee58e907a1903ce52aca39e483
                     <a href=\"";
         // line 27
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("categories");
-        echo "\" class=\"btn btn-main-md\">Shop now</a>
+        echo "\" class=\"btn btn-main-md\">Découvrez-en</a>
                 </div>
 ";
         // line 32
@@ -151,7 +151,7 @@ class __TwigTemplate_47084d00e98a4ce0733bcab3da8e110eaee58e907a1903ce52aca39e483
                 <div class=\"col-md-6 order-2 order-md-1 text-center text-md-left\">
                     <h1 class=\"text-white font-weight-bold mb-4\">I-Chariot, Achats en ligne et plus encore</h1>
                     <p class=\"text-white mb-5\">Bienvenue dans votre boutique en ligne et votre source d'actualité</p>
-                    <a href=\"{{ path('categories') }}\" class=\"btn btn-main-md\">Shop now</a>
+                    <a href=\"{{ path('categories') }}\" class=\"btn btn-main-md\">Découvrez-en</a>
                 </div>
 {#                <div class=\"col-md-6 text-center order-1 order-md-2\">#}
 {#                    <img class=\"img-fluid\" src=\"images/mobile.png\" alt=\"screenshot\">#}

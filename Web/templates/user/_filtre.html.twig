@@ -1,16 +1,16 @@
-<style>
-    button.btn.btn-primary.w\=100 {
-        width: 18%;
-    }
+{#<style>#}
+{#    button.btn.btn-primary.w\=100 {#}
+{#        width: 18%;#}
+{#    }#}
 
 
-    input#searchform_q {
-        width: 40%;
-    }
-    input#searchform_p{
-        width: 40%;
-    }
-</style>
+{#    input#searchform_q {#}
+{#        width: 40%;#}
+{#    }#}
+{#    input#searchform_p{#}
+{#        width: 40%;#}
+{#    }#}
+{#</style>#}
 {% block content %}
 
     {{ form_start(form) }}
@@ -18,10 +18,6 @@
     {{ form_row(form.q)}}
 
     {{ form_row(form.p) }}
-
-    </div>
-
-    <button type="submit" class="btn btn-primary w=100">Chercher </button>
 
     {{ form_end(form) }}
 

@@ -1,56 +1,73 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="row">
-        <div class="col-md-10 m-auto">
-            <article class="single-post">
-                <div class="post-title text-center">
-                    <h1>{{salle.nom}}</h1>
-                </div>
-                <div class="post-body">
-                    <div class="feature-image">
-                        <img class="img-fluid" src="{{ asset('uploads/salles/' ~ salle.image ) }}" alt="feature-image">
+    <section class="section blog-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 m-auto">
+
+                    <article class="single-post">
+                        <div class="post-title text-center">
+                            <h1>{{ salle.nom }}</h1>
+                            <ul class="list-inline post-tag">
+                                <li class="list-inline-item">
+                                    <h4>Capacité :</h4>
+                                    <h4>Prix :</h4>
+                                </li>
+                                <li class="list-inline-item">
+                                    <h4>{{ salle.capacite }} Presonnes</h4>
+                                    <h4>{{ salle.prixSalle }} €</h4>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-body">
+                            <div class="feature-image">
+                                <img class="img-fluid" src="{{ asset('uploads/salles/' ~ salle.image ) }}"
+                                     alt="feature-image">
+                            </div>
+                            <table class="table justify-content-center col-lg-12">
+                                <tr>
+                                    <th style="text-align: center">Salle indisponible Le</th>
+{#                                    <th>Client</th>#}
+{#                                    <th>Nombre des personnes</th>#}
+{#                                    <th>Date</th>#}
+                                </tr>
+                                <tbody>
+                                {% for r in reservations %}
+                                    <tr>
+{#                                        <td>{{ r.idClient.nom }} {{ r.idClient.prenom }}</td>#}
+{#                                        <td>{{ r.nbrp }}</td>#}
+                                        <td style="text-align: center">{{ r.date|date('d-M-y') }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {% if app.user %}
+                            {{ form_start(form, {attr:{novalidate:'novalidate' }}) }}
+
+                            <div class="form-group">
+                                <label>Nombre des personnes</label>
+                                {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre'}} ) }}
+                                {{ form_errors(form.nbrp,{'attr':{'class':'text-danger'}}) }}
+                                <div class="text-danger">{% if errNbr is defined %} {{ errNbr }} {% endif %}</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                {{ form_widget(form.date , {'attr': {'class': 'form-control' }} ) }}
+                                {{ form_errors(form.date,{'attr':{'class':'text-danger'}}) }}
+                                <div class="text-danger">{% if err is defined %} {{ err }} {% endif %}</div>
+                            </div>
+                            {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
+
+                            {{ form_end(form) }}
+                            {% endif %}
+                        </div>
+                    </article>
+
+                    <div class="about-author">
+
                     </div>
-                    <h4><strong>Capacité:</strong></h4>
-                    <p>{{salle.capacite}}</p>
-                    <h4><strong>Prix:</strong></h4>
-                    <p>{{salle.prixSalle}}</p>
                 </div>
-            </article>
-            <div class="about-author">
-                <table class="table">
-                    <tr>
-                        <th>Client</th>
-                        <th>Nombre des personnes</th>
-                        <th>Date</th>
-                    </tr>
-                    <tbody>
-                    {% for r in reservations %}
-                        <tr>
-                            <td>{{ r.idClient.nom }} {{ r.idClient.prenom }}</td>
-                            <td>{{ r.nbrp }}</td>
-                            <td>{{ r.date|date }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                {{ form_start(form, {attr:{novalidate:'novalidate' }}) }}
-
-                <div class="form-group">
-                    <label>Nombre des personnes</label>
-                    {{ form_widget(form.nbrp , {'attr': {'class': 'form-control' , 'placeholder' : 'Nombre'}} ) }}
-                    {{ form_errors(form.nbrp,{'attr':{'class':'text-danger'}}) }}
-                    <div class="text-danger">{% if errNbr is defined %} {{ errNbr }} {% endif %}</div>
-                </div>
-                <div class="form-group">
-                    <label>Date</label>
-                    {{ form_widget(form.date , {'attr': {'class': 'form-control' }} ) }}
-                    {{ form_errors(form.date,{'attr':{'class':'text-danger'}}) }}
-                    <div class="text-danger">{% if err is defined %} {{ err }} {% endif %}</div>
-                </div>
-                {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
-
-                {{ form_end(form) }}
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

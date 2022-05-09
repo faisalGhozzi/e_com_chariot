@@ -76,13 +76,15 @@
                                     </ul>
                                 </div>
                                 <div class="col-8 text-right">
-                                    <a href="{{ path('updateComment',{'id':c.idcommentaire}) }}" class="text-dark"><i class="ti-reload"></i></a>
-                                    <a href="{{ path('deleteComment',{'id':c.idcommentaire}) }}" class="text-danger"><i class="ti-trash"></i></a>
+                                    {% if app.user == c.auteurC %}
+                                        <a href="{{ path('updateComment',{'id':c.idcommentaire}) }}" class="text-dark"><i class="ti-reload"></i></a>
+                                        <a href="{{ path('deleteComment',{'id':c.idcommentaire}) }}" class="text-danger"><i class="ti-trash"></i></a>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
-
+                    {%  if app.user %}
                     {{ form_start(form,{attr:{novalidate:'novalidate'}})}}
                         <div class="form-group">
                             <label>Comment</label>
@@ -92,7 +94,7 @@
                         {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
 
                     {{ form_end(form) }}
-
+                    {% endif %}
                 </div>
             </div>
         </div>

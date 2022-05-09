@@ -182,48 +182,6 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
             </a>
         </li>
 
-        <!-- Divider -->
-        <hr class=\"sidebar-divider\">
-
-        <!-- Heading -->
-        <div class=\"sidebar-heading\">
-            Al9aw fekra
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapsePages\"
-               aria-expanded=\"true\" aria-controls=\"collapsePages\">
-                <i class=\"fas fa-fw fa-folder\"></i>
-                <span>Pages</span>
-            </a>
-            <div id=\"collapsePages\" class=\"collapse\" aria-labelledby=\"headingPages\" data-parent=\"#accordionSidebar\">
-                <div class=\"bg-white py-2 collapse-inner rounded\">
-                    <h6 class=\"collapse-header\">Login Screens:</h6>
-                    <a class=\"collapse-item\" href=\"login.html\">Login</a>
-                    <a class=\"collapse-item\" href=\"register.html\">Register</a>
-                    <a class=\"collapse-item\" href=\"forgot-password.html\">Forgot Password</a>
-                    <div class=\"collapse-divider\"></div>
-                    <h6 class=\"collapse-header\">Other Pages:</h6>
-                    <a class=\"collapse-item\" href=\"404.html\">404 Page</a>
-                    <a class=\"collapse-item\" href=\"blank.html\">Blank Page</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"charts.html\">
-                <i class=\"fas fa-fw fa-chart-area\"></i>
-                <span>Charts</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"tables.html\">
-                <i class=\"fas fa-fw fa-table\"></i>
-                <span>Tables</span></a>
-        </li>
 
         <!-- Divider -->
         <hr class=\"sidebar-divider d-none d-md-block\">
@@ -415,14 +373,14 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
                         <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"userDropdown\" role=\"button\"
                            data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\">";
-        // line 346
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 346, $this->source); })()), "user", [], "any", false, false, false, 346), "nom", [], "any", false, false, false, 346), "html", null, true);
+        // line 304
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 304, $this->source); })()), "user", [], "any", false, false, false, 304), "nom", [], "any", false, false, false, 304), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 346, $this->source); })()), "user", [], "any", false, false, false, 346), "prenom", [], "any", false, false, false, 346), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 304, $this->source); })()), "user", [], "any", false, false, false, 304), "prenom", [], "any", false, false, false, 304), "html", null, true);
         echo "</span>
                             <img class=\"img-profile rounded-circle\"
                                  src=\"";
-        // line 348
+        // line 306
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/img/undraw_profile.svg"), "html", null, true);
         echo "\">
                         </a>
@@ -430,15 +388,22 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
                         <div class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\"
                              aria-labelledby=\"userDropdown\">
                             <a class=\"dropdown-item\" href=\"";
-        // line 353
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
+        // line 311
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", ["id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 311, $this->source); })()), "user", [], "any", false, false, false, 311), "id", [], "any", false, false, false, 311)]), "html", null, true);
         echo "\">
                                 <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
                                 Profile
                             </a>
+                            <a class=\"dropdown-item\" href=\"";
+        // line 315
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
+        echo "\">
+                                <i class=\"fas fa-arrow-left fa-sm fa-fw mr-2 text-gray-400\"></i>
+                                Go to client
+                            </a>
                             <div class=\"dropdown-divider\"></div>
                             <a class=\"dropdown-item\" href=\"";
-        // line 358
+        // line 320
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\" data-toggle=\"modal\" data-target=\"#logoutModal\">
                                 <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
@@ -452,9 +417,9 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
             </nav>
 
             ";
-        // line 369
+        // line 331
         $this->displayBlock('content', $context, $blocks);
-        // line 370
+        // line 332
         echo "            <!-- Footer -->
                 <footer class=\"sticky-footer bg-white\">
                     <div class=\"container my-auto\">
@@ -491,7 +456,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
                 <div class=\"modal-footer\">
                     <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>
                     <a class=\"btn btn-primary\" href=\"";
-        // line 405
+        // line 367
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\">Logout</a>
                 </div>
@@ -501,31 +466,31 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     <!-- Bootstrap core JavaScript-->
     ";
-        // line 412
+        // line 374
         $this->displayBlock('Bootstrap', $context, $blocks);
-        // line 416
+        // line 378
         echo "    <!-- Core plugin JavaScript-->
     ";
-        // line 417
+        // line 379
         $this->displayBlock('plugins', $context, $blocks);
-        // line 420
+        // line 382
         echo "    <!-- Custom scripts for all pages-->
     ";
-        // line 421
+        // line 383
         $this->displayBlock('scripts', $context, $blocks);
-        // line 424
+        // line 386
         echo "    <!-- Page level plugins -->
     ";
-        // line 425
+        // line 387
         $this->displayBlock('levels', $context, $blocks);
-        // line 428
+        // line 390
         echo "    <!-- Page level custom scripts -->
     ";
-        // line 429
+        // line 391
         $this->displayBlock('levscripts', $context, $blocks);
-        // line 433
+        // line 395
         echo "</div>
-
+</body>
 </html>";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -574,7 +539,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 369
+    // line 331
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -592,7 +557,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 412
+    // line 374
     public function block_Bootstrap($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -602,12 +567,12 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Bootstrap"));
 
-        // line 413
+        // line 375
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/vendor/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 414
+        // line 376
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/vendor/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
     ";
@@ -619,7 +584,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 417
+    // line 379
     public function block_plugins($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -629,7 +594,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "plugins"));
 
-        // line 418
+        // line 380
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/vendor/jquery-easing/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
@@ -642,7 +607,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 421
+    // line 383
     public function block_scripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -652,7 +617,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
 
-        // line 422
+        // line 384
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/sb-admin-2.min.js"), "html", null, true);
         echo "\"></script>
@@ -665,7 +630,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 425
+    // line 387
     public function block_levels($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -675,7 +640,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "levels"));
 
-        // line 426
+        // line 388
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/vendor/chart.js/Chart.min.js"), "html", null, true);
         echo "\"></script>
@@ -688,7 +653,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     }
 
-    // line 429
+    // line 391
     public function block_levscripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -698,12 +663,12 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "levscripts"));
 
-        // line 430
+        // line 392
         echo "        <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/demo/chart-area-demo.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 431
+        // line 393
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/demo/chart-pie-demo.js"), "html", null, true);
         echo "\"></script>
     ";
@@ -727,7 +692,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
 
     public function getDebugInfo()
     {
-        return array (  707 => 431,  702 => 430,  692 => 429,  679 => 426,  669 => 425,  656 => 422,  646 => 421,  633 => 418,  623 => 417,  611 => 414,  606 => 413,  596 => 412,  578 => 369,  566 => 26,  556 => 19,  552 => 18,  549 => 17,  539 => 16,  527 => 433,  525 => 429,  522 => 428,  520 => 425,  517 => 424,  515 => 421,  512 => 420,  510 => 417,  507 => 416,  505 => 412,  495 => 405,  458 => 370,  456 => 369,  442 => 358,  434 => 353,  426 => 348,  419 => 346,  177 => 107,  167 => 100,  158 => 94,  154 => 93,  150 => 92,  131 => 76,  120 => 68,  91 => 42,  86 => 40,  72 => 28,  70 => 16,  64 => 13,  50 => 1,);
+        return array (  672 => 393,  667 => 392,  657 => 391,  644 => 388,  634 => 387,  621 => 384,  611 => 383,  598 => 380,  588 => 379,  576 => 376,  571 => 375,  561 => 374,  543 => 331,  531 => 26,  521 => 19,  517 => 18,  514 => 17,  504 => 16,  492 => 395,  490 => 391,  487 => 390,  485 => 387,  482 => 386,  480 => 383,  477 => 382,  475 => 379,  472 => 378,  470 => 374,  460 => 367,  423 => 332,  421 => 331,  407 => 320,  399 => 315,  392 => 311,  384 => 306,  377 => 304,  177 => 107,  167 => 100,  158 => 94,  154 => 93,  150 => 92,  131 => 76,  120 => 68,  91 => 42,  86 => 40,  72 => 28,  70 => 16,  64 => 13,  50 => 1,);
     }
 
     public function getSourceContext()
@@ -845,48 +810,6 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
             </a>
         </li>
 
-        <!-- Divider -->
-        <hr class=\"sidebar-divider\">
-
-        <!-- Heading -->
-        <div class=\"sidebar-heading\">
-            Al9aw fekra
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapsePages\"
-               aria-expanded=\"true\" aria-controls=\"collapsePages\">
-                <i class=\"fas fa-fw fa-folder\"></i>
-                <span>Pages</span>
-            </a>
-            <div id=\"collapsePages\" class=\"collapse\" aria-labelledby=\"headingPages\" data-parent=\"#accordionSidebar\">
-                <div class=\"bg-white py-2 collapse-inner rounded\">
-                    <h6 class=\"collapse-header\">Login Screens:</h6>
-                    <a class=\"collapse-item\" href=\"login.html\">Login</a>
-                    <a class=\"collapse-item\" href=\"register.html\">Register</a>
-                    <a class=\"collapse-item\" href=\"forgot-password.html\">Forgot Password</a>
-                    <div class=\"collapse-divider\"></div>
-                    <h6 class=\"collapse-header\">Other Pages:</h6>
-                    <a class=\"collapse-item\" href=\"404.html\">404 Page</a>
-                    <a class=\"collapse-item\" href=\"blank.html\">Blank Page</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"charts.html\">
-                <i class=\"fas fa-fw fa-chart-area\"></i>
-                <span>Charts</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class=\"nav-item\">
-            <a class=\"nav-link\" href=\"tables.html\">
-                <i class=\"fas fa-fw fa-table\"></i>
-                <span>Tables</span></a>
-        </li>
 
         <!-- Divider -->
         <hr class=\"sidebar-divider d-none d-md-block\">
@@ -1084,9 +1007,13 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
                         <!-- Dropdown - User Information -->
                         <div class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\"
                              aria-labelledby=\"userDropdown\">
-                            <a class=\"dropdown-item\" href=\"{{ path('app_user_index') }}\">
+                            <a class=\"dropdown-item\" href=\"{{ path('app_user_show', {id : app.user.id}) }}\">
                                 <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
                                 Profile
+                            </a>
+                            <a class=\"dropdown-item\" href=\"{{ path('app_home') }}\">
+                                <i class=\"fas fa-arrow-left fa-sm fa-fw mr-2 text-gray-400\"></i>
+                                Go to client
                             </a>
                             <div class=\"dropdown-divider\"></div>
                             <a class=\"dropdown-item\" href=\"{{ path('app_logout') }}\" data-toggle=\"modal\" data-target=\"#logoutModal\">
@@ -1165,7 +1092,7 @@ class __TwigTemplate_5306d6b9495e67208f88824dc2662c46e1fbf3c6d2d6d2d3d7bb9c941c6
         <script src=\"{{ asset('backoffice/js/demo/chart-pie-demo.js') }}\"></script>
     {% endblock  %}
 </div>
-
+</body>
 </html>", "base2.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\base2.html.twig");
     }
 }

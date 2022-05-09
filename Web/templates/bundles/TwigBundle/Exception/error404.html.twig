@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Page non trouvée
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="center">
+            <div class="block text-center">
+                <h1>404</h1>
+                <h3>Page Non Trouvée</h3>
+                <p>Le lien sur lequel vous avez cliqué peut être rompu ou la
+                    <br>page peut avoir été supprimée.</p>
+                <br>
+                <br>
+                <a href="{{ path('app_home') }}" class="btn btn-main-md">retour à la page d'accueil</a>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

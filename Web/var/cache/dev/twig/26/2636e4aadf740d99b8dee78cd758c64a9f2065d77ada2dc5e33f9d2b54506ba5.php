@@ -197,50 +197,60 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
                                     </ul>
                                 </div>
                                 <div class=\"col-8 text-right\">
-                                    <a href=\"";
+                                    ";
                 // line 79
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateComment", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcommentaire", [], "any", false, false, false, 79)]), "html", null, true);
-                echo "\" class=\"text-dark\"><i class=\"ti-reload\"></i></a>
-                                    <a href=\"";
-                // line 80
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteComment", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcommentaire", [], "any", false, false, false, 80)]), "html", null, true);
-                echo "\" class=\"text-danger\"><i class=\"ti-trash\"></i></a>
-                                </div>
+                if ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 79, $this->source); })()), "user", [], "any", false, false, false, 79) == twig_get_attribute($this->env, $this->source, $context["c"], "auteurC", [], "any", false, false, false, 79))) {
+                    // line 80
+                    echo "                                        <a href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateComment", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcommentaire", [], "any", false, false, false, 80)]), "html", null, true);
+                    echo "\" class=\"text-dark\"><i class=\"ti-reload\"></i></a>
+                                        <a href=\"";
+                    // line 81
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteComment", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcommentaire", [], "any", false, false, false, 81)]), "html", null, true);
+                    echo "\" class=\"text-danger\"><i class=\"ti-trash\"></i></a>
+                                    ";
+                }
+                // line 83
+                echo "                                </div>
                             </div>
                         ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 84
-            echo "                    </div>
-
-                    ";
             // line 86
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 86, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
-            echo "
+            echo "                    </div>
+                    ";
+            // line 87
+            if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 87, $this->source); })()), "user", [], "any", false, false, false, 87)) {
+                // line 88
+                echo "                    ";
+                echo                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 88, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
+                echo "
                         <div class=\"form-group\">
                             <label>Comment</label>
                             ";
-            // line 89
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 89, $this->source); })()), "contenuC", [], "any", false, false, false, 89), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "contenu"]]);
-            echo "
+                // line 91
+                echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 91, $this->source); })()), "contenuC", [], "any", false, false, false, 91), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "contenu"]]);
+                echo "
                             ";
-            // line 90
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 90, $this->source); })()), "contenuC", [], "any", false, false, false, 90), 'errors', ["attr" => ["class" => "text-danger"]]);
-            echo "
+                // line 92
+                echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 92, $this->source); })()), "contenuC", [], "any", false, false, false, 92), 'errors', ["attr" => ["class" => "text-danger"]]);
+                echo "
                         </div>
                         ";
-            // line 92
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 92, $this->source); })()), "Submit", [], "any", false, false, false, 92), 'widget', ["attr" => ["class" => "btn btn-info"]]);
-            echo "
+                // line 94
+                echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 94, $this->source); })()), "Submit", [], "any", false, false, false, 94), 'widget', ["attr" => ["class" => "btn btn-info"]]);
+                echo "
 
                     ";
-            // line 94
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 94, $this->source); })()), 'form_end');
-            echo "
-
-                </div>
+                // line 96
+                echo                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 96, $this->source); })()), 'form_end');
+                echo "
+                    ";
+            }
+            // line 98
+            echo "                </div>
             </div>
         </div>
     </div>
@@ -252,8 +262,8 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
         \$(\"#recentes\").click(function() {
             var that = this;
             var val = ";
-            // line 107
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 107, $this->source); })()), "idArticle", [], "any", false, false, false, 107), "html", null, true);
+            // line 109
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 109, $this->source); })()), "idArticle", [], "any", false, false, false, 109), "html", null, true);
             echo ";
             var entitySelector = \$(\"#result\").html('');
             if (searchRequest != null)
@@ -302,8 +312,8 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
         \$(\"#anciens\").click(function() {
             var that = this;
             var val = ";
-            // line 154
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 154, $this->source); })()), "idArticle", [], "any", false, false, false, 154), "html", null, true);
+            // line 156
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 156, $this->source); })()), "idArticle", [], "any", false, false, false, 156), "html", null, true);
             echo ";
             var entitySelector = \$(\"#result\").html('');
             if (searchRequest != null)
@@ -396,7 +406,7 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
 
     public function getDebugInfo()
     {
-        return array (  306 => 154,  256 => 107,  240 => 94,  235 => 92,  230 => 90,  226 => 89,  220 => 86,  216 => 84,  206 => 80,  202 => 79,  192 => 73,  188 => 71,  184 => 69,  182 => 68,  178 => 67,  172 => 64,  168 => 63,  164 => 62,  157 => 57,  153 => 56,  128 => 34,  124 => 33,  119 => 31,  113 => 28,  107 => 25,  102 => 23,  93 => 17,  85 => 14,  79 => 11,  70 => 4,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  316 => 156,  266 => 109,  253 => 98,  248 => 96,  243 => 94,  238 => 92,  234 => 91,  227 => 88,  225 => 87,  222 => 86,  214 => 83,  209 => 81,  204 => 80,  202 => 79,  192 => 73,  188 => 71,  184 => 69,  182 => 68,  178 => 67,  172 => 64,  168 => 63,  164 => 62,  157 => 57,  153 => 56,  128 => 34,  124 => 33,  119 => 31,  113 => 28,  107 => 25,  102 => 23,  93 => 17,  85 => 14,  79 => 11,  70 => 4,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -479,13 +489,15 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
                                     </ul>
                                 </div>
                                 <div class=\"col-8 text-right\">
-                                    <a href=\"{{ path('updateComment',{'id':c.idcommentaire}) }}\" class=\"text-dark\"><i class=\"ti-reload\"></i></a>
-                                    <a href=\"{{ path('deleteComment',{'id':c.idcommentaire}) }}\" class=\"text-danger\"><i class=\"ti-trash\"></i></a>
+                                    {% if app.user == c.auteurC %}
+                                        <a href=\"{{ path('updateComment',{'id':c.idcommentaire}) }}\" class=\"text-dark\"><i class=\"ti-reload\"></i></a>
+                                        <a href=\"{{ path('deleteComment',{'id':c.idcommentaire}) }}\" class=\"text-danger\"><i class=\"ti-trash\"></i></a>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
-
+                    {%  if app.user %}
                     {{ form_start(form,{attr:{novalidate:'novalidate'}})}}
                         <div class=\"form-group\">
                             <label>Comment</label>
@@ -495,7 +507,7 @@ class __TwigTemplate_0e14b4626c1ce705c9b0e35bf6b42e36871b9ec7834115da86d2c4c177b
                         {{ form_widget(form.Submit , {'attr': {'class': 'btn btn-info'}} ) }}
 
                     {{ form_end(form) }}
-
+                    {% endif %}
                 </div>
             </div>
         </div>

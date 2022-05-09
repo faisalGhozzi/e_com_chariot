@@ -161,7 +161,7 @@ class ArticleController extends AbstractController
 
         if($formRating->isSubmitted() && $formRating->isValid()){
             $rating->setArticle($article);
-            $rating->setUser($article->getAuteur());
+            $rating->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($rating);
             $em->flush();

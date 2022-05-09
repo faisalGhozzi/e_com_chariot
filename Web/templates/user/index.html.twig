@@ -1,12 +1,42 @@
 {% extends 'base2.html.twig' %}
 
 
-{% block title %}liste d'utulisateur{% endblock %}
+{% block title %}liste des utilisateurs{% endblock %}
 
 {% block content %}
-    <h1>liste d'utulisateur</h1>
-    {% include 'user/_filtre.html.twig' with {form : form} only %}
-    <a href="{{ path('app_user_tri') }}">trier la liste </a>
+    <div class="container">
+        <div class="row">
+
+            <div class="col order-last text-right">
+                <a class="btn btn-outline-secondary" href="{{ path('app_user_tri') }}"><i class ="fa-solid fa-sort"></i> Trier la liste </a>
+                <a class="btn btn-outline-info" href="{{ path('app_user_new') }}"><i class="fa-solid fa-circle-plus"></i> Ajouter Utilisateur</a>
+            </div>
+            <div class="col order-first">
+                <h1 class="h3 mb-2 text-gray-800">La liste des utilisateurs</h1>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col order-first text-right">
+                {% include 'user/_filtre.html.twig' with {form : form} only %}
+            </div>
+            <div class="col">
+                <div class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                    </div>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <ul class="nav nav-second-level" id="entitiesNav">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col order-last">
+            </div>
+
+        </div>
+    </div>
 
     <table class="table">
         <thead>
@@ -43,6 +73,6 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('app_register') }}">Create new</a>
+{#    <a href="{{ path('app_register') }}">Create new</a>#}
 
 {% endblock %}

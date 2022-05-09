@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -59,12 +60,12 @@ class User implements UserInterface
      */
     private $isExpired = false;
 
-//    /**
-//     * @CaptchaAssert\ValidCaptcha(
-//     *      message = "CAPTCHA validation failed, try again."
-//     * )
-//     */
-//    protected $captchaCode;
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     *      message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
 
     public function isExpired(): bool
     {
@@ -76,15 +77,16 @@ class User implements UserInterface
         $this->isExpired = $isExpired;
         return $this;
     }
-//    public function getCaptchaCode()
-//    {
-//        return $this->captchaCode;
-//    }
-//
-//    public function setCaptchaCode($captchaCode)
-//    {
-//        $this->captchaCode = $captchaCode;
-//    }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

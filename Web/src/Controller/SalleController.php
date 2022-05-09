@@ -177,7 +177,7 @@ class SalleController extends AbstractController
                     ->to($reservation->getIdClient()->getEmail())
                     ->subject('Réservation !')
                     ->text('Réservation ajoutée!')
-                    ->html('<p>Mr '.$reservation->getIdClient()->getNom().' Félicitation ! votre réservation a été ajouté avec succés. Salle:'.$reservation->getIdSalle()->getNom().' Date de réservation:'.$reservation->getDate()->format('Y:M:D').'</p>');
+                    ->html('<p>Chère '.$reservation->getIdClient()->getNom().' Félicitation ! votre réservation a été ajouté avec succés. Salle:'.$reservation->getIdSalle()->getNom().' Date de réservation:'.$reservation->getDate()->format('Y:M:D').'</p>');
 
                 $mailer->send($email);
                 $reservations=$reservationRepository->findBy(array('idSalle'=>$salle));

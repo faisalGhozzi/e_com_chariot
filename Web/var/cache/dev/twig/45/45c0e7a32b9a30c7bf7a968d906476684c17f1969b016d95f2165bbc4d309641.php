@@ -65,39 +65,46 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 3
-        echo "
-    <link rel=\"stylesheet\" href=\"";
-        // line 4
+        echo "    <link rel=\"stylesheet\" href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/mercuryseriesflashy/css/flashy.css"), "html", null, true);
         echo "\">
-    <div class=\"container\">
 
-        <div class=\"row\">
-            <div class=\"col order-last text-right\">
-                <br>
-                <pre>
-                <a class=\"btn btn-outline-info\" href=\"";
-        // line 11
+    <section class=\"section page-title\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+                    <!-- Page Title -->
+                    <h1>Mes adresses</h1>
+                    <!-- Page Description -->
+                </div>
+            </div>
+            <br>
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+
+                </div>
+            </div>
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+                    <a class=\"btn btn-outline-info\" href=\"";
+        // line 22
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("addAdresse");
         echo "\">Ajouter Adresse</a>
-                <a class=\"btn btn-outline-info\" href=\"";
-        // line 12
+                    <a class=\"btn btn-outline-info\" href=\"";
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("villes");
         echo "\">Trier par ville</a>
-            </div>
-            <div class=\"col\">
-            </div>
-            <div class=\"col order-first\">
-                <h1 class=\"h3 mb-2 text-gray-800\">Mes adresses</h1>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 ";
-        // line 21
+        // line 29
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["adresses"]) || array_key_exists("adresses", $context) ? $context["adresses"] : (function () { throw new RuntimeError('Variable "adresses" does not exist.', 21, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["adresses"]) || array_key_exists("adresses", $context) ? $context["adresses"] : (function () { throw new RuntimeError('Variable "adresses" does not exist.', 29, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["a"]) {
-            // line 22
+            // line 30
             echo "<div class=\"container align-items-center\">
     <div class=\"row align-items-center \">
         <div class=\"col-md-3\">
@@ -109,16 +116,16 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
                         <div class=\"col mr-2 align-items-center\">
                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                                 Adresse N ";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 32), "html", null, true);
+            // line 40
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 40), "html", null, true);
             echo " </div>
                             <br>
                             <div class=\"text-xs font-weight-bold text-primary text-uppercase mb-1\">
                               Ville : </div>
                             <div class=\"h5 mb-0 font-weight-bold text-gray-800\">
                                 ";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "ville", [], "any", false, false, false, 37), "html", null, true);
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "ville", [], "any", false, false, false, 45), "html", null, true);
             echo "
                             </div>
                                 <br>
@@ -127,8 +134,8 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
                                     Rue : </div>
                             <div class=\"h5 mb-0 font-weight-bold text-gray-800\">
                                 ";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "rue", [], "any", false, false, false, 44), "html", null, true);
+            // line 52
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "rue", [], "any", false, false, false, 52), "html", null, true);
             echo "
                         </div>
                                 <br>
@@ -137,19 +144,19 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
                                     Numero de maison : </div>
                             <div class=\"h5 mb-0 font-weight-bold text-gray-800\">
                                 ";
-            // line 51
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "nummaison", [], "any", false, false, false, 51), "html", null, true);
+            // line 59
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "nummaison", [], "any", false, false, false, 59), "html", null, true);
             echo "
                     </div>
                                 <br>
                                 <br>
                                 <a href=\"";
-            // line 55
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteAdresse", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 55)]), "html", null, true);
+            // line 63
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteAdresse", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 63)]), "html", null, true);
             echo "\" class=\"btn btn-outline-danger\">Supprimer</a>
                                 <a href=\"";
-            // line 56
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateAdresse", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 56)]), "html", null, true);
+            // line 64
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("updateAdresse", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "idAdresse", [], "any", false, false, false, 64)]), "html", null, true);
             echo "\" class=\"btn btn-outline-primary\">Modifier</a>
 
                         </div>
@@ -171,24 +178,24 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['a'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 73
+        // line 81
         echo "    <div class=\"justify-content-center\">
         <div class=\"navigation \">
             ";
-        // line 75
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["adresses"]) || array_key_exists("adresses", $context) ? $context["adresses"] : (function () { throw new RuntimeError('Variable "adresses" does not exist.', 75, $this->source); })()));
+        // line 83
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["adresses"]) || array_key_exists("adresses", $context) ? $context["adresses"] : (function () { throw new RuntimeError('Variable "adresses" does not exist.', 83, $this->source); })()));
         echo "
         </div>
     </div>
     <script src=\"//code.jquery.com/jquery.js\"></script>
     <!-- Load Flashy default JavaScript -->
     <script src=\"";
-        // line 80
+        // line 88
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/mercuryseriesflashy/js/flashy.js"), "html", null, true);
         echo "\"></script>
     <!-- Include Flashy default partial -->
     ";
-        // line 82
+        // line 90
         echo twig_include($this->env, $context, "@MercurySeriesFlashy/flashy.html.twig");
         echo "
 ";
@@ -212,31 +219,39 @@ class __TwigTemplate_850140b30fb48a7ce22a52a96529177cb353548a5640e9f0db99dceaddd
 
     public function getDebugInfo()
     {
-        return array (  192 => 82,  187 => 80,  179 => 75,  175 => 73,  152 => 56,  148 => 55,  141 => 51,  131 => 44,  121 => 37,  113 => 32,  101 => 22,  97 => 21,  85 => 12,  81 => 11,  71 => 4,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  199 => 90,  194 => 88,  186 => 83,  182 => 81,  159 => 64,  155 => 63,  148 => 59,  138 => 52,  128 => 45,  120 => 40,  108 => 30,  104 => 29,  95 => 23,  91 => 22,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 {% block body %}
-
     <link rel=\"stylesheet\" href=\"{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}\">
-    <div class=\"container\">
 
-        <div class=\"row\">
-            <div class=\"col order-last text-right\">
-                <br>
-                <pre>
-                <a class=\"btn btn-outline-info\" href=\"{{ path('addAdresse') }}\">Ajouter Adresse</a>
-                <a class=\"btn btn-outline-info\" href=\"{{ path('villes') }}\">Trier par ville</a>
+    <section class=\"section page-title\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+                    <!-- Page Title -->
+                    <h1>Mes adresses</h1>
+                    <!-- Page Description -->
+                </div>
             </div>
-            <div class=\"col\">
+            <br>
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+
+                </div>
             </div>
-            <div class=\"col order-first\">
-                <h1 class=\"h3 mb-2 text-gray-800\">Mes adresses</h1>
+            <div class=\"row\">
+                <div class=\"col-sm-8 m-auto\">
+                    <a class=\"btn btn-outline-info\" href=\"{{ path('addAdresse') }}\">Ajouter Adresse</a>
+                    <a class=\"btn btn-outline-info\" href=\"{{ path('villes') }}\">Trier par ville</a>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 {% for a in adresses %}
 <div class=\"container align-items-center\">
     <div class=\"row align-items-center \">

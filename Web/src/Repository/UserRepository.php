@@ -68,26 +68,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findSearch(SearchData $search ) : array
     {//trii
         $query =$this->createQueryBuilder('u');
-
-
-
-
-
         if ($search->q || $search->p ) {
             $query =
                 $query
                     ->where('u.nom LIKE :q')
                     ->setParameter('q','%' .$search->q .'%')
                     ->andWhere('u.prenom LIKE :p')
-                    ->setParameter('p','%' .$search->p .'%')
-                    ->andWhere('u.role LIKE :s')
-                    ->setParameter('s','%' .$search->s .'%');
-
+                    ->setParameter('p','%' .$search->p .'%');
+//                    ->andWhere('u.roles LIKE :s')
+//                    ->setParameter('s','%' .$search->s .'%');
         }
-
-
-
-
         return $query->getQuery()->getResult();
     }
 

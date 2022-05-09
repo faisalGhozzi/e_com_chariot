@@ -146,4 +146,6 @@ return [
     'app_user_profile' => [[], ['_controller' => 'App\\Controller\\UserController::profile'], [], [['text', '/profile/user']], [], []],
     'forgetPassword' => [[], ['_controller' => 'App\\Controller\\UserController::forgetPassword'], [], [['text', '/forgetPassword/user']], [], []],
     'changePassword' => [['id'], ['_controller' => 'App\\Controller\\UserController::changePassword'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/changePassword/user']], [], []],
+    'captcha_handler' => [[], ['_controller' => 'CaptchaBundle:CaptchaHandler:index'], [], [['text', '/captcha-handler']], [], []],
+    'simple_captcha_handler' => [[], ['_controller' => 'CaptchaBundle:SimpleCaptchaHandler:index'], [], [['text', '/simple-captcha-handler']], [], []],
 ];

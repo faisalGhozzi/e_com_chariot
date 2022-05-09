@@ -1,23 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
     <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
-    <div class="container">
 
-        <div class="row">
-            <div class="col order-last text-right">
-                <br>
-                <pre>
-                <a class="btn btn-outline-info" href="{{ path('addAdresse') }}">Ajouter Adresse</a>
-                <a class="btn btn-outline-info" href="{{ path('villes') }}">Trier par ville</a>
+    <section class="section page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <!-- Page Title -->
+                    <h1>Mes adresses</h1>
+                    <!-- Page Description -->
+                </div>
             </div>
-            <div class="col">
+            <br>
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+
+                </div>
             </div>
-            <div class="col order-first">
-                <h1 class="h3 mb-2 text-gray-800">Mes adresses</h1>
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <a class="btn btn-outline-info" href="{{ path('addAdresse') }}">Ajouter Adresse</a>
+                    <a class="btn btn-outline-info" href="{{ path('villes') }}">Trier par ville</a>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 {% for a in adresses %}
 <div class="container align-items-center">
     <div class="row align-items-center ">

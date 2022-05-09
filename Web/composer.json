@@ -9,6 +9,7 @@
         "blackknight467/star-rating-bundle": "^2.0",
         "botman/botman": "^2.6",
         "botman/driver-web": "^1.5",
+        "captcha-com/symfony-captcha-bundle": "^4.2",
         "cmen/google-charts-bundle": "^4.0",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.6",
@@ -43,7 +44,6 @@
         "symfony/ux-chartjs": "^2.1",
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
-        "symfony/web-server-bundle": "4.4.*",
         "symfony/yaml": "4.4.*",
         "tattali/calendar-bundle": "^1.2",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -59,7 +59,8 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "4.4.*",
-        "symfony/web-profiler-bundle": "4.4.*"
+        "symfony/web-profiler-bundle": "4.4.*",
+        "symfony/web-server-bundle": "4.4.*"
     },
     "config": {
         "allow-plugins": {

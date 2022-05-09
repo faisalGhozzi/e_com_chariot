@@ -30,7 +30,6 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
             'title' => [$this, 'block_title'],
             'css' => [$this, 'block_css'],
             'body' => [$this, 'block_body'],
-            'footer' => [$this, 'block_footer'],
             'javascripts' => [$this, 'block_javascripts'],
         ];
     }
@@ -118,7 +117,7 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
         if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 56, $this->source); })()), "user", [], "any", false, false, false, 56)) {
             // line 57
             echo "                    <li class=\"nav-item dropdown\">
-                        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown-a\" data-toggle=\"dropdown\">Profile</a>
+                        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown-a\" data-toggle=\"dropdown\">Profile <i class=\"ti-arrow-down\"></i></a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown-a\">
                             <a class=\"dropdown-item\" href=\"";
             // line 60
@@ -132,27 +131,27 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
             // line 62
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("livraisonsUsers");
             echo "\">Livraisons</a>
-                            <a class=\"dropdown-item\" href=\"";
+                            ";
             // line 63
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 64
+                echo "                                <a class=\"dropdown-item\" href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home2");
+                echo "\">Tableau de bord</a>
+                            ";
+            }
+            // line 66
+            echo "                            <a class=\"dropdown-item\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Déconnexion</a>
                         </div>
                     </li>
                 ";
         } else {
-            // line 67
+            // line 70
             echo "                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Connexion</a></li>
-                ";
-        }
-        // line 69
-        echo "                ";
-        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 70
-            echo "                    <li class=\"nav-item \"><a class=\"nav-link\" href=\"";
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home2");
-            echo "\">Dashboard</a></li>
                 ";
         }
         // line 72
@@ -165,17 +164,93 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
         // line 77
         $this->displayBlock('body', $context, $blocks);
         // line 79
-        $this->displayBlock('footer', $context, $blocks);
-        // line 160
-        echo "<!-- To Top -->
+        echo "<footer>
+    <div class=\"footer-main\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-lg-4 col-md-12 m-md-auto align-self-center\">
+                    <div class=\"block\">
+                        <a href=\"index.html\"><img src=\"frontoffice/images/logotr_50.png\" alt=\"footer-logo\"></a>
+                        <!-- Social Site Icons -->
+                        <ul class=\"social-icon list-inline\">
+                            <li class=\"list-inline-item\">
+                                <a href=\"https://www.facebook.com/themefisher\"><i class=\"ti-facebook\"></i></a>
+                            </li>
+                            <li class=\"list-inline-item\">
+                                <a href=\"https://twitter.com/themefisher\"><i class=\"ti-twitter\"></i></a>
+                            </li>
+                            <li class=\"list-inline-item\">
+                                <a href=\"https://www.instagram.com/themefisher/\"><i class=\"ti-instagram\"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
+                    <div class=\"block-2\">
+                        <!-- heading -->
+                        <h6>Product</h6>
+                        <!-- links -->
+                        <ul>
+                            <li><a href=\"team.html\">Teams</a></li>
+                            <li><a href=\"blog.html\">Blogs</a></li>
+                            <li><a href=\"FAQ.html\">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
+                    <div class=\"block-2\">
+                        <!-- heading -->
+                        <h6>Resources</h6>
+                        <!-- links -->
+                        <ul>
+                            <li><a href=\"sign-up.html\">Singup</a></li>
+                            <li><a href=\"sign-in.html\">Login</a></li>
+                            <li><a href=\"blog.html\">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
+                    <div class=\"block-2\">
+                        <!-- heading -->
+                        <h6>Company</h6>
+                        <!-- links -->
+                        <ul>
+                            <li><a href=\"career.html\">Career</a></li>
+                            <li><a href=\"contact.html\">Contact</a></li>
+                            <li><a href=\"team.html\">Investor</a></li>
+                            <li><a href=\"privacy.html\">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
+                    <div class=\"block-2\">
+                        <!-- heading -->
+                        <h6>Company</h6>
+                        <!-- links -->
+                        <ul>
+                            <li><a href=\"about.html\">About</a></li>
+                            <li><a href=\"contact.html\">Contact</a></li>
+                            <li><a href=\"team.html\">Team</a></li>
+                            <li><a href=\"privacy-policy.html\">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=\"text-center bg-dark py-4\">
+        <small class=\"text-secondary\">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href=\"https://themefisher.com/\">Groupe</a></small>
+    </div>
+</footer>
+<!-- To Top -->
 <div class=\"scroll-top-to\">
     <i class=\"ti-angle-up\"></i>
 </div>
 
 ";
-        // line 165
+        // line 162
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 182
+        // line 179
         echo "</body>
 
 </html>
@@ -281,106 +356,7 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
 
     }
 
-    // line 79
-    public function block_footer($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        // line 80
-        echo "<footer>
-    <div class=\"footer-main\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-4 col-md-12 m-md-auto align-self-center\">
-                    <div class=\"block\">
-                        <a href=\"index.html\"><img src=\"frontoffice/images/logotr_50.png\" alt=\"footer-logo\"></a>
-                        <!-- Social Site Icons -->
-                        <ul class=\"social-icon list-inline\">
-                            <li class=\"list-inline-item\">
-                                <a href=\"https://www.facebook.com/themefisher\"><i class=\"ti-facebook\"></i></a>
-                            </li>
-                            <li class=\"list-inline-item\">
-                                <a href=\"https://twitter.com/themefisher\"><i class=\"ti-twitter\"></i></a>
-                            </li>
-                            <li class=\"list-inline-item\">
-                                <a href=\"https://www.instagram.com/themefisher/\"><i class=\"ti-instagram\"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
-                    <div class=\"block-2\">
-                        <!-- heading -->
-                        <h6>Product</h6>
-                        <!-- links -->
-                        <ul>
-                            <li><a href=\"team.html\">Teams</a></li>
-                            <li><a href=\"blog.html\">Blogs</a></li>
-                            <li><a href=\"FAQ.html\">FAQs</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
-                    <div class=\"block-2\">
-                        <!-- heading -->
-                        <h6>Resources</h6>
-                        <!-- links -->
-                        <ul>
-                            <li><a href=\"sign-up.html\">Singup</a></li>
-                            <li><a href=\"sign-in.html\">Login</a></li>
-                            <li><a href=\"blog.html\">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
-                    <div class=\"block-2\">
-                        <!-- heading -->
-                        <h6>Company</h6>
-                        <!-- links -->
-                        <ul>
-                            <li><a href=\"career.html\">Career</a></li>
-                            <li><a href=\"contact.html\">Contact</a></li>
-                            <li><a href=\"team.html\">Investor</a></li>
-                            <li><a href=\"privacy.html\">Terms</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-6 mt-5 mt-lg-0\">
-                    <div class=\"block-2\">
-                        <!-- heading -->
-                        <h6>Company</h6>
-                        <!-- links -->
-                        <ul>
-                            <li><a href=\"about.html\">About</a></li>
-                            <li><a href=\"contact.html\">Contact</a></li>
-                            <li><a href=\"team.html\">Team</a></li>
-                            <li><a href=\"privacy-policy.html\">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class=\"text-center bg-dark py-4\">
-        <small class=\"text-secondary\">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href=\"https://themefisher.com/\">Groupe</a></small>
-    </div>
-</footer>
-
-";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
-    // line 165
+    // line 162
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -390,46 +366,46 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 166
+        // line 163
         echo "<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 167
+        // line 164
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/bootstrap/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 168
+        // line 165
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/slick/slick.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 169
+        // line 166
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/fancybox/jquery.fancybox.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 170
+        // line 167
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/syotimer/jquery.syotimer.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 171
+        // line 168
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/aos/aos.js"), "html", null, true);
         echo "\"></script>
 <!-- google map -->
 <script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g\"></script>
 <script src=\"";
-        // line 174
+        // line 171
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/plugins/google-map/gmap.js"), "html", null, true);
         echo "\"></script>
 
 <script src=\"";
-        // line 176
+        // line 173
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/js/script.js"), "html", null, true);
         echo "\"></script>
 
 
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js\"></script>
     <script src=\"";
-        // line 180
+        // line 177
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/starrating/js/rating.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -453,7 +429,7 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
 
     public function getDebugInfo()
     {
-        return array (  433 => 180,  426 => 176,  421 => 174,  415 => 171,  411 => 170,  407 => 169,  403 => 168,  399 => 167,  394 => 166,  384 => 165,  295 => 80,  285 => 79,  267 => 77,  255 => 28,  249 => 25,  244 => 23,  240 => 22,  236 => 21,  232 => 20,  228 => 19,  224 => 18,  221 => 17,  211 => 16,  192 => 6,  179 => 182,  177 => 165,  170 => 160,  168 => 79,  166 => 77,  159 => 72,  153 => 70,  150 => 69,  144 => 67,  137 => 63,  133 => 62,  129 => 61,  125 => 60,  120 => 57,  118 => 56,  113 => 54,  107 => 51,  101 => 48,  95 => 45,  82 => 37,  73 => 30,  71 => 16,  66 => 14,  55 => 6,  48 => 1,);
+        return array (  409 => 177,  402 => 173,  397 => 171,  391 => 168,  387 => 167,  383 => 166,  379 => 165,  375 => 164,  370 => 163,  360 => 162,  342 => 77,  330 => 28,  324 => 25,  319 => 23,  315 => 22,  311 => 21,  307 => 20,  303 => 19,  299 => 18,  296 => 17,  286 => 16,  267 => 6,  254 => 179,  252 => 162,  167 => 79,  165 => 77,  158 => 72,  152 => 70,  144 => 66,  138 => 64,  136 => 63,  132 => 62,  128 => 61,  124 => 60,  119 => 57,  117 => 56,  112 => 54,  106 => 51,  100 => 48,  94 => 45,  81 => 37,  72 => 30,  70 => 16,  65 => 14,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -515,19 +491,19 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
                 </li>
                 {% if app.user %}
                     <li class=\"nav-item dropdown\">
-                        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown-a\" data-toggle=\"dropdown\">Profile</a>
+                        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown-a\" data-toggle=\"dropdown\">Profile <i class=\"ti-arrow-down\"></i></a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"dropdown-a\">
                             <a class=\"dropdown-item\" href=\"{{ path('app_user_profile') }}\">Profile</a>
                             <a class=\"dropdown-item\" href=\"{{ path('adresses') }}\">Mes adresses</a>
                             <a class=\"dropdown-item\" href=\"{{ path('livraisonsUsers') }}\">Livraisons</a>
+                            {% if is_granted(\"ROLE_ADMIN\") %}
+                                <a class=\"dropdown-item\" href=\"{{ path('app_home2') }}\">Tableau de bord</a>
+                            {% endif %}
                             <a class=\"dropdown-item\" href=\"{{ path('app_logout') }}\">Déconnexion</a>
                         </div>
                     </li>
                 {% else %}
                     <li class=\"nav-item\"><a class=\"nav-link\" href=\"{{ path('app_login') }}\">Connexion</a></li>
-                {% endif %}
-                {% if is_granted(\"ROLE_ADMIN\") %}
-                    <li class=\"nav-item \"><a class=\"nav-link\" href=\"{{ path('app_home2') }}\">Dashboard</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -536,7 +512,6 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
 
 {% block body %}
 {% endblock %}
-{% block footer %}
 <footer>
     <div class=\"footer-main\">
         <div class=\"container\">
@@ -615,8 +590,6 @@ class __TwigTemplate_a9a2fe9de31de8211108bb16e432ebf55d33d5842b1e96e6f99d747cbaa
         <small class=\"text-secondary\">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href=\"https://themefisher.com/\">Groupe</a></small>
     </div>
 </footer>
-
-{% endblock %}
 <!-- To Top -->
 <div class=\"scroll-top-to\">
     <i class=\"ti-angle-up\"></i>

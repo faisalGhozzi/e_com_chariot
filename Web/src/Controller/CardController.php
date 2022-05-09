@@ -42,17 +42,19 @@ class CardController extends AbstractController
     /**
      * @Route("/cart/add/{id}", name="cart_add")
      */
-    public function add($id, SessionInterface $session)
+    public function add($id, SessionInterface $session, ProduitRepository $produitRepository)
     {
         // On récupère le panier actuel
+        $em = $this->getDoctrine()->getManager();
         $panier = $session->get("panier", []);
-
+        $produit = $produitRepository->find($id);
+        $produit->setQuantite($produit->getQuantite()-1);
         if(!empty($panier[$id])){
             $panier[$id]++;
         }else{
             $panier[$id] = 1;
         }
-
+        $em->flush();
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
@@ -62,12 +64,14 @@ class CardController extends AbstractController
     /**
      * @Route("/cart/remove/{id}", name="cart_remove")
      */
-    public function remove(ProduitRepository $product, SessionInterface $session)
+    public function remove($id, ProduitRepository $product, SessionInterface $session)
     {
         // On récupère le panier actuel
+        $em = $this->getDoctrine()->getManager();
         $panier = $session->get("panier", []);
-        $id = $product->getIdproduit();
-
+//        $id = $product->getIdproduit();
+        $produit = $product->find($id);
+        $produit->setQuantite($produit->getQuantite()+1);
         if(!empty($panier[$id])){
             if($panier[$id] > 1){
                 $panier[$id]--;
@@ -75,40 +79,48 @@ class CardController extends AbstractController
                 unset($panier[$id]);
             }
         }
-
+        $em->flush();
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
 
     /**
      * @Route("/cart/delete/{id}", name="cart_delete")
      */
-    public function delete(ProduitRepository $product, SessionInterface $session)
+    public function delete($id, ProduitRepository $product, SessionInterface $session)
     {
         // On récupère le panier actuel
+        $em = $this->getDoctrine()->getManager();
         $panier = $session->get("panier", []);
-        $id = $product->getIdproduit();
-
+        $produit = $product->find($id);
+        $produit->setQuantite($produit->getQuantite() + $session->get("panier")[$id]);
         if(!empty($panier[$id])){
             unset($panier[$id]);
         }
-
+        $em->flush();
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
 
     /**
      * @Route("/cart/delete", name="cart_delete_all")
      */
-    public function deleteAll(SessionInterface $session)
+    public function deleteAll(SessionInterface $session, ProduitRepository $produitRepository)
     {
+        $em = $this->getDoctrine()->getManager();
+        foreach ($session->get("panier") as $key => $value){
+            $produit = $produitRepository->find($key);
+            $produit->setQuantite($produit->getQuantite() + $value);
+        }
+        $em->flush();
+
         $session->remove("panier");
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
 
 

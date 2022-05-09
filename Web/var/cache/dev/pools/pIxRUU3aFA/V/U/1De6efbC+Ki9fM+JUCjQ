@@ -1,3 +1,0 @@
-<?php //Symfony%255CComponent%255CHttpFoundation%255CRequest%2523prepareBasePath
-
-return [PHP_INT_MAX, []];

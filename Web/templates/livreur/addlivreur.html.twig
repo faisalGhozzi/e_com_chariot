@@ -1,22 +1,19 @@
 {% extends 'base2.html.twig' %}
 {% block content %}
-<div class="app-content">
+<div class="row justify-content-center">
 
-    <div class="side-app">
-        <div class="col-md-12 ">
-            <a class="btn btn-outline-info" href="{{ path('Livreurs') }}"><i class="fa-solid fa-turn-down-left"></i>Retourner</a>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card m-b-20">
-                    <div class="card-header">
-                        <h3 class="card-title">Ajouter livreur</h3>
+    <div class="col-lg-8">
 
-                    </div>
+        <!-- Default Card Example -->
+        <div class="card mb-6">
+            <div class="card-header">
+                <a class="btn btn-outline-secondary" href="{{ path('Livreurs') }}"><i
+                            class="fa fa-arrow-left"></i> Retourner a la liste</a>
+
+                <h1>Ajouter un livreur</h1>
+            </div>
+            <div class="card-body">
                     {{ form_start(livreurform,{attr:{novalidate:'novalidate'}}) }}
-                    <div class="card-body">
-
                         <form>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputname">Nom de livreur</label>
@@ -46,12 +43,10 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
                     {{ form_end(livreurform) }}
                 </div>
             </div>
         </div>
-
     </div>
 
     {% endblock %}

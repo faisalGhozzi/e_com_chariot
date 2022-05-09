@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Non autorisé
+{% endblock %}
+
+{% block body %}
+    <section class="error-page">
+        <div class="center">
+            <div class="block text-center">
+                <h1>401</h1>
+                <h3>Non autorisé</h3>
+                <p>vous devez être authentifié pour avoir
+                    <br>accès à cette page.</p>
+                <a href="{{ path('app_login') }}" class="btn btn-main-md">page de connexion</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

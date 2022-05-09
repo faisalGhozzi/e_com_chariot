@@ -11,7 +11,7 @@ use Vangrg\ProfanityBundle\Validator\Constraints as ProfanityAssert;
 
 
 /**
- *@ORM\Entity(repositoryClass="CommentaireRepository::class")
+ *@ORM\Entity
  */
 class Commentaire
 {
