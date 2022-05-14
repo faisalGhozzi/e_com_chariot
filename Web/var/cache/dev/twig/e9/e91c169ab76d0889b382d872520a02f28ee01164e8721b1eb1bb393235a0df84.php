@@ -329,6 +329,6 @@ class __TwigTemplate_daca60970fcf8fd2dfee08223b0d1b91243a812d38a312dca5acc51f3fd
             {% endif %}
         </ul>
     </nav>
-{% endif %}", "paginator/pagination.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\paginator\\pagination.html.twig");
+{% endif %}", "paginator/pagination.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\paginator\\pagination.html.twig");
     }
 }

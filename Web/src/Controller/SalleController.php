@@ -47,22 +47,21 @@ class SalleController extends AbstractController
         return $this->render("salle/afficheSalle.html.twig",
             array('salles'=>$pagedOffers));
     }
+
+
     /**
      * @Route("/removeSalle/{id}",name="d")
      */
-    public function deleteSalle($id,ReservationRepository $reservationRepository)
+    public function deleteSalle($id,SalleRepository $salleRepository)
     {
-        $salle= $this->getDoctrine()->getRepository(Salle::class)->find($id);
-        $reservations=$reservationRepository->findBy(array('idSalle'=>$salle));
         $em=$this->getDoctrine()->getManager();
-        foreach ($reservations as $item){
-            $em->remove($item);
-        }
+        $salle = $salleRepository->find($id);
 
         $em->remove($salle);
         $em->flush();
         return $this->redirectToRoute("salles");
     }
+
 
 /**
 * @Route("/admin/addSalle",name="addSalle")
@@ -94,12 +93,18 @@ class SalleController extends AbstractController
                 }
 
                 $Salle->setImage($newFilename);
+            } else{
+                $imageFile = "no_image.png";
+                $Salle->setImage($imageFile);
             }
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($Salle);
             $em->flush();
             return $this->redirectToRoute("salles");
+        }else{
+            $form->getErrors();
         }
         return $this->render("salle/addSalle.html.twig",array("SalleForm"=>$form->createView()));
     }
@@ -173,7 +178,7 @@ class SalleController extends AbstractController
                 $em->persist($reservation);
                 $em->flush();
                 $email = (new Email())
-                    ->from('your@email')
+                    ->from('houssem.abida@esprit.tn')
                     ->to($reservation->getIdClient()->getEmail())
                     ->subject('Réservation !')
                     ->text('Réservation ajoutée!')

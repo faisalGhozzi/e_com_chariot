@@ -206,6 +206,6 @@ class __TwigTemplate_261b375c732b228bd193fc8e454ae2500a81ba7fd73c4d4373fbeef6186
         {% block body '' %}
     </body>
 </html>
-", "@WebProfiler/Profiler/base.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base.html.twig");
+", "@WebProfiler/Profiler/base.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base.html.twig");
     }
 }

@@ -15,6 +15,8 @@
     <script src="https://kit.fontawesome.com/293caa18a5.js" crossorigin="anonymous"></script>
     {% block stylesheets %}
     <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
     <link href="{{ asset('backoffice/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{asset('frontoffice/plugins/themify-icons/themify-icons.css')}}">
 
@@ -389,6 +391,8 @@
     {% endblock  %}
     <!-- Page level custom scripts -->
     {% block levscripts %}
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
         <script src="{{ asset('backoffice/js/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('backoffice/js/demo/chart-pie-demo.js') }}"></script>
     {% endblock  %}

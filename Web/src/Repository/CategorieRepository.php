@@ -49,7 +49,7 @@ class CategorieRepository extends ServiceEntityRepository
      * @return Categorie[] Returns an array of Categorie objects
      */
 
-    public function rechercher($value)
+    public function findByNomcateg($value)
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.nomcateg like :val')

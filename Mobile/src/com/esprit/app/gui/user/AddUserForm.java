@@ -13,10 +13,11 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.User;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.UserService;
 
-public class AddUserForm extends Form{
+public class AddUserForm extends BaseForm{
     
     @SuppressWarnings("unused")
     private Resources theme;
@@ -24,7 +25,7 @@ public class AddUserForm extends Form{
     private UserService us = new UserService();
     
     
-    public AddUserForm(Form previous, Resources theme, int id){
+    public AddUserForm(Resources res, int id){
         super(id == 0 ? "Add User" : "Update User",BoxLayout.y());
         if (id != 0){
             u = us.getUser(id);
@@ -45,11 +46,11 @@ public class AddUserForm extends Form{
                     u.setId(id);
                     us.updateUser(u);
                 }             
-                previous.show();
+                new UserForm(res).showBack();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new UserForm(res).showBack();
         });
         addAll(nom, prenom, email, password, add);     
     }

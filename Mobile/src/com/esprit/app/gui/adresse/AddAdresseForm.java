@@ -13,10 +13,12 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Adresse;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.AdresseService;
+import com.esprit.app.utils.ConnectedUser;
 
-public class AddAdresseForm extends Form{
+public class AddAdresseForm extends BaseForm{
     
     @SuppressWarnings("unused")
     private Resources theme;
@@ -24,7 +26,7 @@ public class AddAdresseForm extends Form{
     private AdresseService as = new AdresseService();
     
     
-    public AddAdresseForm(Form previous, Resources theme, int id){
+    public AddAdresseForm(Resources res, int id){
         super(id == 0 ? "Add Adresse" : "Update Adresse",BoxLayout.y());
         if (id != 0){
             a = as.getAdresse(id);
@@ -45,11 +47,11 @@ public class AddAdresseForm extends Form{
                     a.setId(id);
                     as.updateAdresse(a);
                 }             
-                previous.show();
+                new AdresseForm(res, ConnectedUser.getConnectedUser().getId()).showBack();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new AdresseForm(res, ConnectedUser.getConnectedUser().getId()).showBack();
         });
         addAll(ville, rue, num, add);
     }

@@ -32,6 +32,13 @@ public class Commentaire {
         this.user = user;
     }
 
+    public Commentaire(String contenu, int article) {
+        this.contenu = contenu;
+        this.article = article;
+    }
+
+    
+
     public int getId() {
         return id;
     }

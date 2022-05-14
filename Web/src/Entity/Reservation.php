@@ -29,6 +29,7 @@ class Reservation
      *
      * @ORM\Column(name="nbrP", type="integer", nullable=false)
      * @Assert\NotBlank(message="le nombre ne doit pas etre vide !")
+     * @Assert\Positive(message="entrer une valeure positive")
      * @Assert\Range(
      *      min=5,
      *      notInRangeMessage="doit etre >5")

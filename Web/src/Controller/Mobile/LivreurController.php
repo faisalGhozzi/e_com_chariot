@@ -16,8 +16,8 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Form\SearchFormType;
-use Symfony\Component \Mailer\MailerInterface;
-use Symfony\Component \Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -32,10 +32,9 @@ class LivreurController extends AbstractController
      * @Route("/livreurs/json", name="LivreursJsonAction")
      * @throws ExceptionInterface
      */
-    public function livreursJsonAction(): JsonResponse
+    public function livreursJsonAction(LivreurRepository $livreurRepository): JsonResponse
     {
-        $livreurs = $this->getDoctrine()->getManager()
-            ->getRepository(Livreur::class)->findAll();
+        $livreurs = $livreurRepository->findAll();
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($livreurs);
@@ -43,13 +42,50 @@ class LivreurController extends AbstractController
     }
 
     /**
+     * @Route("/livreurs/json/new", name="LivreursJsonNewAction")
+     */
+    public function newLivreurJson(Request $request): JsonResponse
+    {
+        $livreur = new Livreur();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $livreur->setNomlivreur($request->get('nom'));
+        $livreur->setPrenom($request->get('prenom'));
+        $livreur->setNomlivreur($request->get('tel'));
+        $livreur->setPrenom($request->get('email'));
+
+        $em->persist($livreur);
+        $em->flush();
+
+        return new JsonResponse($livreur);
+    }
+
+    /**
+     * @Route("/livreurs/json/update", name="LivreursJsonUpdateAction")
+     */
+    public function updateLivreurJson(LivreurRepository $livreurRepository, Request $request): JsonResponse
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $livreur = $livreurRepository->find($request->get('id'));
+        $livreur->setNomlivreur($request->get('nom'));
+        $livreur->setPrenom($request->get('prenom'));
+        $livreur->setNomlivreur($request->get('tel'));
+        $livreur->setPrenom($request->get('email'));
+        $em->flush();
+
+        return new JsonResponse($livreur);
+    }
+
+    /**
      * @Route("/livreurs/json/{id}", name="LivreursIdJson")
      * @throws ExceptionInterface
      */
-    public function livreursIdJson($id): JsonResponse
+    public function livreursIdJson(LivreurRepository $livreurRepository, $id): JsonResponse
     {
-        $livreurs = $this->getDoctrine()->getManager()
-            ->getRepository(Livreur::class)->find($id);
+        $livreurs = $livreurRepository->find($id);
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($livreurs);
@@ -60,10 +96,9 @@ class LivreurController extends AbstractController
      * @Route("/livreurs/json/delete/{id}", name="deleteLivreursJsonAction")
      * @throws ExceptionInterface
      */
-    public function deleteLivreursJsonAction($id): JsonResponse
+    public function deleteLivreursJsonAction(LivreurRepository $livreurRepository, $id): JsonResponse
     {
-        $livreurs = $this->getDoctrine()
-            ->getRepository(Livreur::class)->find($id);
+        $livreurs = $livreurRepository->find($id);
         $this->getDoctrine()->getManager()->remove($livreurs);
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);

@@ -39,8 +39,8 @@ public class ArticleService {
         req.setPost(true);
         req.addArgument("contenu", String.valueOf(a.getContenu()));
         req.addArgument("titre", String.valueOf(a.getTitre()));
-        req.addArgument("image", String.valueOf(a.getImage()));
-        req.addArgument("auteur", String.valueOf(1));
+        req.addArgument("article_directory", String.valueOf(a.getImage()));
+        req.addArgument("auteur", String.valueOf(a.getAuteur()));
 
         InfiniteProgress prog = new InfiniteProgress();
         Dialog d = prog.showInfiniteBlocking();
@@ -63,8 +63,8 @@ public class ArticleService {
         req.addArgument("id", String.valueOf(a.getId()));
         req.addArgument("contenu", String.valueOf(a.getContenu()));
         req.addArgument("titre", String.valueOf(a.getTitre()));
-        req.addArgument("image", String.valueOf(a.getImage()));
-        req.addArgument("auteur", String.valueOf(1));
+        req.addArgument("article_directory", String.valueOf(a.getImage()));
+        req.addArgument("auteur", String.valueOf(a.getAuteur()));
 
         InfiniteProgress prog = new InfiniteProgress();
         Dialog d = prog.showInfiniteBlocking();

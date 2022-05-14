@@ -41,10 +41,6 @@ class SecurityController extends AbstractController
          $user = $userRepository->findOneBy(['email'=>$request->get('email')]);
          if($user)
          {
-            /*return $this->json([
-                'username' => $user->getUsername(),
-                'roles' => $user->getRoles(),
-             ]);*/
                $serializer = new Serializer([new ObjectNormalizer()]);
                $formatted = $serializer->normalize($user);
                return new JsonResponse($formatted);

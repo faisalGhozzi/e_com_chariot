@@ -5,11 +5,13 @@
  */
 package com.esprit.app.gui.salle;
 
+import com.codename1.components.FloatingActionButton;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.URLImage;
@@ -21,18 +23,27 @@ import com.codename1.ui.util.Resources;
 
 
 import com.esprit.app.entity.Salle;
+import com.esprit.app.gui.BaseForm;
+import com.esprit.app.gui.reservation.AddReservationForm;
+import com.esprit.app.gui.reservation.ReservationForm;
 import com.esprit.app.services.SalleService;
 import com.esprit.app.utils.Statics;
+import java.io.IOException;
 
-public class SalleDetailsForm extends Form{
+public class SalleDetailsForm extends BaseForm{
     @SuppressWarnings("unused")
     private Resources theme;
     private SalleService ss = new SalleService();
     
     
-    public SalleDetailsForm(Form previous,Resources theme,Salle s){
+    public SalleDetailsForm(Resources res,Salle s){
         super("Salle Details",BoxLayout.y());
         Button update = new Button("Update");
+        Button liste_reservation = new Button("Consulter liste d'attente");
+        FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
+        fab.createSubFAB(FontImage.MATERIAL_ADD, "").addActionListener((evt) -> {
+                new AddReservationForm(res, s.getId(), 0).show();
+        });
         EncodedImage enc = EncodedImage.createFromImage(Image.createImage(Display.getInstance().getDisplayWidth(),Display.getInstance().getDisplayHeight()/3), true);
         String url = Statics.BASE_URL+"/uploads/salles/"+s.getImage();
         ImageViewer img = new ImageViewer(URLImage.createToStorage(enc, url, url));
@@ -46,22 +57,29 @@ public class SalleDetailsForm extends Form{
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new AddSalleForm(previous, theme, s.getId()).show();
+                new AddSalleForm(res, s.getId()).show();
             }
         });
         
-        this.addAll(img, nom, prix, capacite, update);
+        liste_reservation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                    new ReservationForm(res, s.getId(), false).show();
+            }
+        }); 
         
+        this.addAll(img, nom, prix, capacite, update, liste_reservation);
+        fab.bindFabToContainer(this);
         
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new SalleForm(res).showBack();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             ss.deleteSalle(s.getId());
-            previous.show();
+            new SalleForm(res).showBack();
         });
     }
 }

@@ -25,6 +25,14 @@ public class Article {
         this.nbrreact = nbrreact;
         this.auteur = auteur;
     }
+    
+    public Article(String contenu, String titre, String image, int nbrreact, int auteur) {
+        this.contenu = contenu;
+        this.titre = titre;
+        this.image = image;
+        this.nbrreact = nbrreact;
+        this.auteur = auteur;
+    }
 
     public Article(int id, String contenu, String titre, String etat, String image, int nbrreact, int auteur) {
         this.id = id;

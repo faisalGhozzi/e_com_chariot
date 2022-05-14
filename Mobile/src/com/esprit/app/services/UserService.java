@@ -14,6 +14,7 @@ import com.codename1.io.NetworkManager;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 import com.esprit.app.entity.User;
+import com.esprit.app.utils.ConnectedUser;
 import com.esprit.app.utils.DataSource;
 import com.esprit.app.utils.Statics;
 import java.io.IOException;
@@ -31,6 +32,39 @@ public class UserService {
 
     public UserService() {
 	req = DataSource.getInstance().getRequest();
+    }
+    
+    public boolean login(String username, String password){
+        User u = new User();
+        String url = Statics.BASE_URL+"/loginJson";
+        req.setUrl(url);
+        req.addArgument("email", username);
+        req.addArgument("password", password);
+        resultOk=false;
+        // req.setRequestBody("{ \"email\" : \""+username+"\", \"password\" : \""+password+"\"}");
+        req.setPost(true);
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog d = prog.showInfiniteBlocking();
+        req.setDisposeOnCompletion(d);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk = req.getResponseCode() == 200;
+                //204 bad credentials / missing
+                User usr = new User();
+                try {
+                    usr = parseUser(new String(req.getResponseData()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                ConnectedUser.setUserStatus(usr);
+                req.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        
+        return resultOk;
     }
     
     public boolean addUser(User u){

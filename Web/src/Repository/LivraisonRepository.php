@@ -46,6 +46,13 @@ class LivraisonRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByLivreur(){
+        return $this->createQueryBuilder('l')
+            ->where('l.idLivreur IS NULL')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Livraison[] Returns an array of Livraison objects
     //  */

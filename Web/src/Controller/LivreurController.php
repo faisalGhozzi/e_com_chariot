@@ -12,8 +12,8 @@ use App\Form\LivreurType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Form\SearchFormType;
-use Symfony\Component \Mailer\MailerInterface;
-use Symfony\Component \Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
@@ -65,7 +65,7 @@ class LivreurController extends AbstractController
     /**
      * @Route("/admin/livreurs/new",name="addLivreur")
      */
-    public function addLivreur(Request $request,MailerInterface $mailer)
+    public function addLivreur(Request $request,MailerInterface $mailer,FlashyNotifier $flashy)
     {
         $livreur = new Livreur();
         $form = $this->createForm(LivreurType::class, $livreur);
@@ -81,7 +81,7 @@ class LivreurController extends AbstractController
                     ->subject('Bienvenue')
                     ->htmlTemplate('livreur/Emaillivreur.html.twig');
                 $mailer->send($email);
-                $this->get('session')->getFlashBag('info','Un nouveau livreur est ajouté');
+                $flashy->success('Un nouveau livreur est ajouté');
                 return $this->redirectToRoute("Livreurs");
             }
         }
@@ -91,7 +91,7 @@ class LivreurController extends AbstractController
     /**
      * @Route("/admin/livreurs/update/{id}", name="updateLivreur")
      */
-    public function updateLivreur(Request $request, LivreurRepository $repository, $id)
+    public function updateLivreur(Request $request, LivreurRepository $repository, $id, FlashyNotifier $flashy)
     {
         $livreur = $repository->find($id);
         $form = $this->createForm(LivreurType::class, $livreur);
@@ -99,7 +99,7 @@ class LivreurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            $this->get('session')->getFlashBag('info','Ce livreur a ete modifier');
+            $flashy->primaryDark('Ce livreur a ete modifier');
             return $this->redirectToRoute("Livreurs");
         }
         return $this->render("livreur/updatelivreur.html.twig", array("livreur" => $livreur, "form" => $form->createView()));
@@ -115,7 +115,7 @@ class LivreurController extends AbstractController
     {
         $em =$this->getDoctrine()->getManager();
         $requestString =$request->get('q');
-        $livreurs=$em->getRepository(Livreur::class)->findEntitiesByString($requestString);
+        $livreurs=$em->getRepository(Livreur::class)->findByNomlivreur($requestString);
         if(!$livreurs){
             $result['livreurs']['error']="livreur not found";
         }else{

@@ -78,15 +78,11 @@ class CategorieController extends AbstractController
     /**
      * @Route("/deleteCategorie/{id}",name="deleteCategorie")
      */
-    public function deleteCategorie($id,ProduitRepository $produitRepository)
+    public function deleteCategorie($id, CategorieRepository $categorieRepository)
     {
-        $categ= $this->getDoctrine()->getRepository(Categorie::class)->find($id);
-        $produits=$produitRepository->findBy(array('idCateg'=>$categ));
         $em=$this->getDoctrine()->getManager();
-        foreach ($produits as $produit) {
-            $em->remove($produit);
-            $em->flush();
-        }
+
+        $categ= $categorieRepository->find($id);
 
         $em->remove($categ);
         $em->flush();
@@ -106,7 +102,8 @@ class CategorieController extends AbstractController
      * @Route("/rechercheCategorie", name="rechercheCategorie")
      */
     public function rechercheCategorie(CategorieRepository $repository,Request $request){
-        $categories= $repository->rechercher($request->get('valeur'));
+        $categories= $repository->findByNomcateg($request->get('valeur'));
+        // $categories = $repository->findBy(array("nomcateg" => $request->get('valeur')));
         if(!$categories) {
             $result['categories']['error'] = "Aucune catégorie trouvé";
         } else {

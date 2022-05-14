@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\User;
 use App\Form\SearchformType;
+use App\Form\UserFrontType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -136,7 +137,7 @@ class UserController extends AbstractController
     public function profile(Request $request, UserPasswordEncoderInterface $userPasswordEncoder,UserRepository $userRepository): Response
     {
         $user = $this->getUser();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserFrontType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -183,38 +184,40 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/changePassword/user/{id}", name="changePassword", methods={"GET"})
+     * @Route("/user/changePassword/user/{id}", name="changePassword")
      */
     public function changePassword(UserRepository $userRepository,Request $request, $id, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
-        $error = "";
-        $user = $userRepository->find($id);
-        if ($request->get('newPassword') && $request->get('newPassword_')) {
+        if($request->isMethod('POST')){
+            $error = "";
+            $user = $userRepository->find($id);
+            if ($request->get('newPassword') && $request->get('newPassword_')) {
 
-            $newPassword = $request->get('newPassword');
-            $newPassword_ = $request->get('newPassword_');
+                $newPassword = $request->get('newPassword');
+                $newPassword_ = $request->get('newPassword_');
 
 
-            if($newPassword == $newPassword_) {
-                $user->setPassword(
-                    $userPasswordEncoder->encodePassword(
-                        $user,
-                        $newPassword
-                    )
-                );
-                $userRepository->add($user);
+                if($newPassword == $newPassword_) {
+                    $user->setPassword(
+                        $userPasswordEncoder->encodePassword(
+                            $user,
+                            $newPassword
+                        )
+                    );
+                    $userRepository->add($user);
 
-                return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+                    return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
 
+                }
+                else {
+                    $error = "Répétez le nouveau mot de passe";
+                }
             }
-            else {
-                $error = "Répétez le nouveau mot de passe";
-            }
+
+
+            return $this->render('security/changePassword.html.twig', [
+                'error' => $error,
+            ]);
         }
-
-
-        return $this->render('security/changePassword.html.twig', [
-            'error' => $error,
-        ]);
     }
 }

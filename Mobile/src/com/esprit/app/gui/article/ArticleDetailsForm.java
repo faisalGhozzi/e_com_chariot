@@ -6,6 +6,7 @@
 package com.esprit.app.gui.article;
 
 import com.codename1.components.ImageViewer;
+import com.codename1.components.ShareButton;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Display;
@@ -19,24 +20,30 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Article;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
+import com.esprit.app.gui.commentaires.CommentaireForm;
 import com.esprit.app.services.ArticleService;
 import com.esprit.app.utils.Statics;
 
-public class ArticleDetailsForm extends Form{
+public class ArticleDetailsForm extends BaseForm{
     @SuppressWarnings("unused")
     private Resources theme;
     private ArticleService as = new ArticleService();
     
     
-    public ArticleDetailsForm(Form previous,Resources theme,Article a){
+    public ArticleDetailsForm(Resources res,Article a){
         super("Article Details",BoxLayout.y());
         Button update = new Button("Update");
+        Button comments = new Button("Commentaires");
+        ShareButton shareButton = new ShareButton();
+        shareButton.setText("Partager");
         EncodedImage enc = EncodedImage.createFromImage(Image.createImage(Display.getInstance().getDisplayWidth(),Display.getInstance().getDisplayHeight()/3), true);
         String url = Statics.BASE_URL+"/uploads/articles/"+a.getImage();
         ImageViewer img = new ImageViewer(URLImage.createToStorage(enc, url, url));
         img.getAllStyles().setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
         
+        shareButton.setTextToShare(a.toString());
         
         SpanLabel titre = new SpanLabel("Nom : "+a.getTitre());
         SpanLabel contenu = new SpanLabel("Contenu : "+String.valueOf(a.getContenu()));
@@ -45,22 +52,29 @@ public class ArticleDetailsForm extends Form{
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new AddArticleForm(previous, theme, a.getId()).show();
+                new AddArticleForm(res, a.getId()).show();
             }
         });
         
-        this.addAll(img, titre, contenu, nbreact, update);
+        comments.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                new CommentaireForm(res, a.getId()).show();
+            }
+        });
+        
+        this.addAll(img, titre, contenu, nbreact, comments, update, shareButton);
         
         
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new ArticleForm(res).showBack();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             as.deleteArticle(a.getId());
-            previous.show();
+            new ArticleForm(res).showBack();
         });
     }
 }

@@ -21,7 +21,7 @@ class Article
     /**
      * @var string
      * @ORM\Column(name="contenu", type="text", length=200, nullable=false)
-     * @Assert\NotBlank(message="description  doit etre non vide")
+     * @Assert\NotBlank(message="description doit etre non vide")
      * @Assert\Length(
      *      min = 7,
      *      max = 100,
@@ -51,14 +51,14 @@ class Article
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="image doit etre non vide")
      * @ORM\Column(name="image", type="string", length=200, nullable=false)
      */
     private $image;
 
     /**
      * @var int
-     *
+     * @Assert\PositiveOrZero
      * @ORM\Column(name="nbrreact", type="integer", nullable=false)
      */
     private $nbrreact;

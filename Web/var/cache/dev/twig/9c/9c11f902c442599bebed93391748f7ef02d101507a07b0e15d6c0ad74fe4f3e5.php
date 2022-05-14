@@ -310,6 +310,6 @@ class __TwigTemplate_074b96699197c1054addaf4ccbf2463c756ca2e85d37dd538652b09ac6c
     </div>
 </section>
             {% endblock %}
-", "card/index.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\card\\index.html.twig");
+", "card/index.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\card\\index.html.twig");
     }
 }

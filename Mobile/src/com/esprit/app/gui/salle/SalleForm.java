@@ -15,20 +15,22 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Salle;
+import com.esprit.app.gui.BaseForm;
+import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.SalleService;
 import com.esprit.app.utils.Statics;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class SalleForm extends Form{
+public class SalleForm extends BaseForm{
+    
+    
     private Resources theme;
     private SalleService as = new SalleService();
     private ArrayList<Salle> salles;
     
-    public SalleForm(Form previous, Resources res)throws IOException{
-        super("My Salles", GridLayout.autoFit());
-        this.theme = theme;
+    public SalleForm(Resources res){
+        super("Salles", GridLayout.autoFit());
         this.revalidate();
         salles = as.getAllSalles();
         Container list = new Container(BoxLayout.y());
@@ -40,16 +42,16 @@ public class SalleForm extends Form{
             mb.setIcon(i.fill(200, 200));
             mb.setTextLine2(String.valueOf(salle.getCapacite())+" €");
             mb.addActionListener((evt) -> {
-                new SalleDetailsForm(this, theme, salle).show();
+                new SalleDetailsForm(res, salle).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            new AddSalleForm(this, theme, 0).show();
+            new AddSalleForm(res, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new HomeForm(res).showBack();
         });
-        this.add(list);   
-    }
+        this.add(list);
+    }    
 }

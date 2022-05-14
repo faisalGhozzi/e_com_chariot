@@ -85,39 +85,41 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
                     <div class=\"title text-center\">
                         <input type=\"text\" class=\"form-control\" placeholder=\"Recherche\" id=\"rech\">
                     </div>
-                    ";
-        // line 23
+                    <div id=\"result\">
+                        ";
+        // line 24
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 23, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 24, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-            // line 24
-            echo "                        <div class=\"job\">
-                            <div class=\"content\">
-                                <h3>";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nomcateg", [], "any", false, false, false, 26), "html", null, true);
-            echo "</h3>
-                                <p>";
+            // line 25
+            echo "                            <div class=\"job col-lg-12\">
+                                <div class=\"content\">
+                                    <h3>";
             // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "description", [], "any", false, false, false, 27), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nomcateg", [], "any", false, false, false, 27), "html", null, true);
+            echo "</h3>
+                                    <p>";
+            // line 28
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "description", [], "any", false, false, false, 28), "html", null, true);
             echo "</p>
-                            </div>
-                            <div class=\"col-lg-6\">
-                                <div class=\"apply-button\">
-                                    <a href=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Produits", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcateg", [], "any", false, false, false, 31)]), "html", null, true);
+                                </div>
+                                <div class=\"col-lg-6\">
+                                    <div class=\"apply-button\">
+                                        <a href=\"";
+            // line 32
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Produits", ["id" => twig_get_attribute($this->env, $this->source, $context["c"], "idcateg", [], "any", false, false, false, 32)]), "html", null, true);
             echo "\" class=\"btn btn-main-sm\">Voir les produits</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ";
+                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
-        echo "                </div>
+        // line 37
+        echo "                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -148,11 +150,11 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
                                     if (key === 'categories') {
                                         if (id !== 'error') {
                                             var img='";
-        // line 66
+        // line 68
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/articles/"), "html", null, true);
         echo "'+value[3];
                                             entitySelector.append(
-                                            '<div class=\"job\">'+
+                                            '<div class=\"job col-lg-12\">'+
                                                 '<div class=\"row\">'+
                                                 '<div class=\"content col-lg-6\">'+
                                                 '<h3>'+value[0]+'</h3>'+
@@ -199,7 +201,7 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
 
     public function getDebugInfo()
     {
-        return array (  152 => 66,  120 => 36,  109 => 31,  102 => 27,  98 => 26,  94 => 24,  90 => 23,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  154 => 68,  121 => 37,  110 => 32,  103 => 28,  99 => 27,  95 => 25,  91 => 24,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -226,19 +228,21 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
                     <div class=\"title text-center\">
                         <input type=\"text\" class=\"form-control\" placeholder=\"Recherche\" id=\"rech\">
                     </div>
-                    {% for c in categories %}
-                        <div class=\"job\">
-                            <div class=\"content\">
-                                <h3>{{c.nomcateg}}</h3>
-                                <p>{{c.description}}</p>
-                            </div>
-                            <div class=\"col-lg-6\">
-                                <div class=\"apply-button\">
-                                    <a href=\"{{ path('Produits',{'id':c.idcateg}) }}\" class=\"btn btn-main-sm\">Voir les produits</a>
+                    <div id=\"result\">
+                        {% for c in categories %}
+                            <div class=\"job col-lg-12\">
+                                <div class=\"content\">
+                                    <h3>{{c.nomcateg}}</h3>
+                                    <p>{{c.description}}</p>
+                                </div>
+                                <div class=\"col-lg-6\">
+                                    <div class=\"apply-button\">
+                                        <a href=\"{{ path('Produits',{'id':c.idcateg}) }}\" class=\"btn btn-main-sm\">Voir les produits</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,7 +275,7 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
                                         if (id !== 'error') {
                                             var img='{{ asset(\"uploads/articles/\") }}'+value[3];
                                             entitySelector.append(
-                                            '<div class=\"job\">'+
+                                            '<div class=\"job col-lg-12\">'+
                                                 '<div class=\"row\">'+
                                                 '<div class=\"content col-lg-6\">'+
                                                 '<h3>'+value[0]+'</h3>'+
@@ -298,6 +302,6 @@ class __TwigTemplate_f4627fee1e92c22bee100868df3551cc32a89a69c247bd86be46fab2ebe
         });
     </script>
 {% endblock %}
-", "categorie/listcategories.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\categorie\\listcategories.html.twig");
+", "categorie/listcategories.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\categorie\\listcategories.html.twig");
     }
 }

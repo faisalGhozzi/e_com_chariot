@@ -21,10 +21,9 @@ class UserType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('nom')
             ->add('prenom')
-            
-//            ->add('captchaCode', CaptchaType::class, array(
-//                'captchaConfig' => 'ExampleCaptcha'
-//            ))
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ))
             ->add('isExpired',CheckboxType::class, [
                 'label'    => "Bloquer",
                 'required' => false,

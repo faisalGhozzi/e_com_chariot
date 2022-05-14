@@ -51,7 +51,7 @@
                                                 $.each(arr, function(id, value) {
                                                     if (key == 'livreurs') {
                                                         if (id != 'error') {
-                                                            entitySelector.append('<li><a href="/details/'+id+'">'+  value +'</a></li>');
+                                                            entitySelector.append('<li><a href="/admin/livreurs/details/'+id+'">'+  value +'</a></li>');
                                                         } else {
                                                             entitySelector.append('<li class="errorLi">'+value+'</li>');
                                                         }
@@ -78,6 +78,7 @@
     <div class="card-body">
         <div class="table-responsive">
     <table border="1"  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
         <tr>
             <td>Id</td>
             <td>Nom de livreur</td>
@@ -87,6 +88,8 @@
             <td>Action</td>
 
         </tr>
+        </thead>
+        <tbody>
         {% for l in livreurs %}
             <tr>
                 <td>{{l.idlivreur}}</td>
@@ -99,14 +102,10 @@
                 </td>
             </tr>
         {% endfor %}
+        {{ knp_pagination_render(livreurs,('paginator/pagination.html.twig')) }}
+        </tbody>
     </table>
             </div>
-        </div>
-    </div>
-
-    <div class="justify-content-center">
-        <div class="navigation ">
-            {{ knp_pagination_render(livreurs) }}
         </div>
     </div>
     <script src="//code.jquery.com/jquery.js"></script>

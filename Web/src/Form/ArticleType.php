@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 class ArticleType extends AbstractType
@@ -18,7 +19,13 @@ class ArticleType extends AbstractType
         $builder
             ->add('contenu')
             ->add('titre')
-            ->add('image', FileType::class, array('label' => 'Brochure (image)','data_class' => null))
+            ->add('image', FileType::class, array(
+                'label' => 'Brochure (image)',
+                'data_class' => null,
+                'constraints' => [
+                    new NotBlank()]
+                )
+                )
             ->add('nbrreact')
         ;
     }

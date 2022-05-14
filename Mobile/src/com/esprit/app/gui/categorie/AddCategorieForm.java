@@ -13,18 +13,18 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Categorie;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.CategorieService;
 
-public class AddCategorieForm extends Form{
+public class AddCategorieForm extends BaseForm{
     
     @SuppressWarnings("unused")
-    private Resources theme;
     private Categorie c = new Categorie();
     private CategorieService cs = new CategorieService();
     
     
-    public AddCategorieForm(Form previous, Resources theme, int id){
+    public AddCategorieForm(Resources res, int id){
         super(id == 0 ? "Add Categorie" : "Update Categorie",BoxLayout.y());
         if (id != 0){
             c = cs.getCategorie(id);
@@ -43,11 +43,11 @@ public class AddCategorieForm extends Form{
                     c.setId(id);
                     cs.updateCategorie(c);
                 }             
-                previous.show();
+                new CategorieForm(res).showBack();
             }
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new CategorieForm(res).showBack();
         });
         addAll(nom, description, add);     
     }

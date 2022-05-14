@@ -51,7 +51,7 @@ class SalleController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $salle->setNom($request->get('nom'));
-        $salle->setImage($request->get('image'));
+        $salle->setImage($request->get('salles_directory'));
         $salle->setCapacite($request->get('capacite'));
         $salle->setPrixsalle($request->get('prixsalle'));
         $em->persist($salle);
@@ -68,13 +68,43 @@ class SalleController extends AbstractController
 
         $salle = $salleRepository->find($request->get('id'));
         $salle->setNom($request->get('nom'));
-        $salle->setImage($request->get('image'));
+        $salle->setImage($request->get('salles_directory'));
         $salle->setCapacite($request->get('capacite'));
         $salle->setPrixsalle($request->get('prixsalle'));
         $em->flush();
         return new JsonResponse($salle);
     }
 
+    /**
+     * @param Request $request
+     * @Route("/salles/json/upload",name="uploadSallesJson",methods={"GET","POST"})
+     * @return JsonResponse
+     */
+    public function uploadImage(Request $request)
+    {
+
+        $allowedExts = array("gif", "jpeg", "jpg", "png");
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $extension = end($temp);
+
+        if ((($_FILES["file"]["type"] == "image/*") || ($_FILES["file"]["type"] == "image/jpeg") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/pjpeg") || ($_FILES["file"]["type"] == "image/x-png") || ($_FILES["file"]["type"] == "image/png")) && ($_FILES["file"]["size"] < 5000000) && in_array($extension, $allowedExts)) {
+            if ($_FILES["file"]["error"] > 0) {
+                $named_array = array("Response" => array(array("Status" => "error")));
+                return new JsonResponse($named_array);
+
+            } else {
+                move_uploaded_file($_FILES["file"]["tmp_name"], $this->getParameter('salles_directory').$_FILES["file"]["name"]);
+
+                $Path = $_FILES["file"]["name"];
+                $named_array = array("Response" => array(array("Status" => "ok")));
+                return new JsonResponse($named_array);
+            }
+        } else {
+            $named_array = array("Response" => array(array("Status" => "invalid")));
+            return new JsonResponse($named_array);
+
+        }
+    }
 
 
     /**

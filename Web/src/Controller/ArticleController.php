@@ -52,11 +52,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("admin/articles/remove/{id}",name="deleteArticle")
      */
-    public function deleteArticle($id)
+    public function deleteArticle(ArticleRepository $articleRepository, $id)
     {
         $em=$this->getDoctrine()->getManager();
-        $article = $this->getDoctrine()
-            ->getRepository(Article::class)
+        $article = $articleRepository
             ->find($id);
         $article->setEtat("supprimer");
         $em->flush();
@@ -84,6 +83,7 @@ class ArticleController extends AbstractController
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
             $article->setImage($fileName);
+            $article->setAuteur($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $article->setEtat("desarchive");
             $em->persist($article);

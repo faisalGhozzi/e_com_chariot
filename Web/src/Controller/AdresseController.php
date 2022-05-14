@@ -31,7 +31,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("/removeAdresse/{id}",name="deleteAdresse")
      */
-    public function deleteAdresse($id)
+    public function deleteAdresse(FlashyNotifier $flashy, $id)
     {
         $adresse= $this->getDoctrine()->getRepository(Adresse::class)->find($id);
         $em=$this->getDoctrine()->getManager();
@@ -44,7 +44,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("profile/user/addAdresse",name="addAdresse")
      */
-    public function addAdresse( Request $request)
+    public function addAdresse(Request $request, FlashyNotifier $flashy)
     {
         $adresse= new Adresse();
         $form= $this->createForm(AdresseType::class,$adresse);
@@ -55,7 +55,7 @@ class AdresseController extends AbstractController
             $adresse->setIduser($user);
             $em->persist($adresse);
             $em->flush();
-            $this->get('session')->getFlashBag('info','Une nouvelle adresse est ajouté');
+            $flashy->success('Une nouvelle adresse est ajouté');
             return $this->redirectToRoute("adresses");
         }
         return $this->render("adresse/addadresse.html.twig",array("form"=>$form->createView()));
@@ -64,7 +64,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("/updateAdresse/{id}", name="updateAdresse")
      */
-    public function updateAdresse( Request $request,AdresseRepository $repository,$id)
+    public function updateAdresse( Request $request,AdresseRepository $repository,$id, FlashyNotifier $flashy)
     {
         $adresse= $repository->find($id);
         $form= $this->createForm(AdresseType::class,$adresse);
@@ -72,7 +72,7 @@ class AdresseController extends AbstractController
         if($form->isSubmitted()&& $form->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            $this->get('session')->getFlashBag('info','adresse a ete modifier');
+            $flashy->primaryDark('adresse a ete modifier');
             return $this->redirectToRoute("adresses");
         }
         return $this->render("adresse/updateadresse.html.twig",array("adresse"=>$adresse,"form"=>$form->createView()));

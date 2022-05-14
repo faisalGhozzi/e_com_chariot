@@ -5,9 +5,11 @@ namespace App\Form;
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twilio\TwiML\Voice\Number;
 
 class ReservationType extends AbstractType
 {
@@ -15,7 +17,7 @@ class ReservationType extends AbstractType
     {
         $builder
             ->add('date',DateType::class)
-            ->add('nbrp')
+            ->add('nbrp', NumberType::class)
             ->add('Submit',SubmitType::class)
         ;
     }

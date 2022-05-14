@@ -54,18 +54,34 @@ return [
         '/article/json' => [[['_route' => 'ArticlesJsonAction', '_controller' => 'App\\Controller\\Mobile\\ArticleController::articlesJsonAction'], null, null, null, false, false, null]],
         '/article/json/new' => [[['_route' => 'ArticlesJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\ArticleController::newArticleJson'], null, null, null, false, false, null]],
         '/article/json/update' => [[['_route' => 'ArticlesJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\ArticleController::updateArticleJson'], null, null, null, false, false, null]],
+        '/article/json/upload' => [[['_route' => 'uploadJson', '_controller' => 'App\\Controller\\Mobile\\ArticleController::uploadImage'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/cart/json' => [[['_route' => 'cartJson', '_controller' => 'App\\Controller\\Mobile\\CartController::index'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/cart/json/add' => [[['_route' => 'cartJsonAdd', '_controller' => 'App\\Controller\\Mobile\\CartController::add'], null, null, null, false, false, null]],
+        '/cart/json/remove' => [[['_route' => 'cartJsonRemove', '_controller' => 'App\\Controller\\Mobile\\CartController::remove'], null, null, null, true, false, null]],
+        '/cart/json/delete' => [[['_route' => 'cartJsonDelete', '_controller' => 'App\\Controller\\Mobile\\CartController::delete'], null, null, null, false, false, null]],
+        '/cart/json/delete/all' => [[['_route' => 'cartJsonDeleteAll', '_controller' => 'App\\Controller\\Mobile\\CartController::deleteAll'], null, null, null, false, false, null]],
         '/categories/json' => [[['_route' => 'CategoriesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CategorieController::categoriesJsonAction'], null, null, null, false, false, null]],
         '/categories/json/new' => [[['_route' => 'CategoriesJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\CategorieController::newCategorieJson'], null, null, null, false, false, null]],
         '/categories/json/update' => [[['_route' => 'CategoriesJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\CategorieController::updateCategorieJson'], null, null, null, false, false, null]],
         '/commentaires/json' => [[['_route' => 'CommentairesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::commentairesJsonAction'], null, null, null, false, false, null]],
+        '/commentaires/json/new' => [[['_route' => 'CommentairesJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::newCommentaireJson'], null, null, null, false, false, null]],
+        '/commentaires/json/update' => [[['_route' => 'CommentairesJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::updateCommentaireJson'], null, null, null, false, false, null]],
         '/livraisons/json' => [[['_route' => 'LivraisonsJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::livraisonsJsonAction'], null, null, null, false, false, null]],
+        '/livraisons/nolivreur/json' => [[['_route' => 'LivraisonsSansLivreursJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::livraisonsSansLivreursJsonAction'], null, null, null, false, false, null]],
         '/livraisons/json/new' => [[['_route' => 'LivraisonsJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::newLivraisonJson'], null, null, null, false, false, null]],
+        '/livraisons/json/update' => [[['_route' => 'LivraisonsJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::updateLivraisonJson'], null, null, null, false, false, null]],
         '/livreurs/json' => [[['_route' => 'LivreursJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivreurController::livreursJsonAction'], null, null, null, false, false, null]],
-        '/produits/json' => [[['_route' => 'ProduitsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::produitsJsonAction'], null, null, null, false, false, null]],
-        '/reservations/json' => [[['_route' => 'ReservationsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::reservationsJsonAction'], null, null, null, false, false, null]],
+        '/livreurs/json/new' => [[['_route' => 'LivreursJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\LivreurController::newLivreurJson'], null, null, null, false, false, null]],
+        '/livreurs/json/update' => [[['_route' => 'LivreursJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\LivreurController::updateLivreurJson'], null, null, null, false, false, null]],
+        '/produits/json/new' => [[['_route' => 'newProduitJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::newSalleJsonAction'], null, null, null, false, false, null]],
+        '/produits/json/update' => [[['_route' => 'updateProduitJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::updateSalleJsonAction'], null, null, null, false, false, null]],
+        '/produits/json/upload' => [[['_route' => 'uploadsProduitsJson', '_controller' => 'App\\Controller\\Mobile\\ProduitController::uploadImage'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/reservations/json/new' => [[['_route' => 'ReservationsJsonNewAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::newReservationJson'], null, null, null, false, false, null]],
+        '/reservations/json/update' => [[['_route' => 'ReservationsJsonUpdateAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::updateAdresseJson'], null, null, null, false, false, null]],
         '/salles/json' => [[['_route' => 'SallesJsonAction', '_controller' => 'App\\Controller\\Mobile\\SalleController::sallesJsonAction'], null, null, null, false, false, null]],
         '/salles/json/new' => [[['_route' => 'newSalleJsonAction', '_controller' => 'App\\Controller\\Mobile\\SalleController::newSalleJsonAction'], null, null, null, false, false, null]],
         '/salles/json/update' => [[['_route' => 'updateSalleJsonAction', '_controller' => 'App\\Controller\\Mobile\\SalleController::updateSalleJsonAction'], null, null, null, false, false, null]],
+        '/salles/json/upload' => [[['_route' => 'uploadSallesJson', '_controller' => 'App\\Controller\\Mobile\\SalleController::uploadImage'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/users/json' => [[['_route' => 'UsersJsonAction', '_controller' => 'App\\Controller\\Mobile\\UserController::usersJsonAction'], null, null, null, false, false, null]],
         '/users/json/new' => [[['_route' => 'newUserJsonAction', '_controller' => 'App\\Controller\\Mobile\\UserController::newUserJsonAction'], null, null, null, false, false, null]],
         '/users/json/update' => [[['_route' => 'updateUserJsonAction', '_controller' => 'App\\Controller\\Mobile\\UserController::updateUserJsonAction'], null, null, null, false, false, null]],
@@ -113,124 +129,132 @@ return [
                     .')'
                     .'|act/([^/]++)(*:241)'
                     .'|servations/json/(?'
-                        .'|([^/]++)(*:276)'
-                        .'|delete/([^/]++)(*:299)'
+                        .'|salle/([^/]++)(*:282)'
+                        .'|user/([^/]++)(*:303)'
+                        .'|([^/]++)(*:319)'
+                        .'|delete/([^/]++)(*:342)'
                     .')'
                 .')'
                 .'|/u(?'
                     .'|pdate(?'
-                        .'|Adresse/([^/]++)(*:338)'
-                        .'|Comment/([^/]++)(*:362)'
-                        .'|Reservation/([^/]++)(*:390)'
-                        .'|Salle/([^/]++)(*:412)'
+                        .'|Adresse/([^/]++)(*:381)'
+                        .'|Comment/([^/]++)(*:405)'
+                        .'|Reservation/([^/]++)(*:433)'
+                        .'|Salle/([^/]++)(*:455)'
                     .')'
-                    .'|sers/json/(?'
-                        .'|([^/]++)(*:442)'
-                        .'|delete/([^/]++)(*:465)'
+                    .'|ser(?'
+                        .'|s/json/(?'
+                            .'|([^/]++)(*:488)'
+                            .'|delete/([^/]++)(*:511)'
+                        .')'
+                        .'|/changePassword/user/([^/]++)(*:549)'
                     .')'
                 .')'
                 .'|/a(?'
                     .'|d(?'
                         .'|min/(?'
                             .'|articles/(?'
-                                .'|remove/([^/]++)(*:518)'
-                                .'|update/([^/]++)(*:541)'
-                                .'|([^/]++)(*:557)'
+                                .'|remove/([^/]++)(*:602)'
+                                .'|update/([^/]++)(*:625)'
+                                .'|([^/]++)(*:641)'
                             .')'
                             .'|u(?'
-                                .'|pdateCategorie/([^/]++)(*:593)'
+                                .'|pdateCategorie/([^/]++)(*:677)'
                                 .'|sers/(?'
-                                    .'|([^/]++)(*:617)'
-                                    .'|edit/([^/]++)(*:638)'
-                                    .'|delete/([^/]++)(*:661)'
+                                    .'|([^/]++)(*:701)'
+                                    .'|edit/([^/]++)(*:722)'
+                                    .'|delete/([^/]++)(*:745)'
                                 .')'
                             .')'
-                            .'|comment/delete/([^/]++)(*:694)'
+                            .'|comment/delete/([^/]++)(*:778)'
                             .'|livr(?'
                                 .'|aisons/([^/]++)/(?'
-                                    .'|affecter(*:736)'
-                                    .'|livreur/([^/]++)(*:760)'
+                                    .'|affecter(*:820)'
+                                    .'|livreur/([^/]++)(*:844)'
                                 .')'
                                 .'|eurs/(?'
-                                    .'|remove/([^/]++)(*:792)'
-                                    .'|update/([^/]++)(*:815)'
-                                    .'|details/([^/]++)(*:839)'
+                                    .'|remove/([^/]++)(*:876)'
+                                    .'|update/([^/]++)(*:899)'
+                                    .'|details/([^/]++)(*:923)'
                                 .')'
                             .')'
                             .'|produits/(?'
-                                .'|([^/]++)(*:869)'
-                                .'|remove/([^/]++)(*:892)'
-                                .'|add/([^/]++)(*:912)'
-                                .'|update/([^/]++)(*:935)'
+                                .'|([^/]++)(*:953)'
+                                .'|remove/([^/]++)(*:976)'
+                                .'|add/([^/]++)(*:996)'
+                                .'|update/([^/]++)(*:1019)'
                             .')'
-                            .'|salle/([^/]++)(*:958)'
+                            .'|salle/([^/]++)(*:1043)'
                         .')'
                         .'|resses/json/(?'
-                            .'|user/([^/]++)(*:995)'
-                            .'|([^/]++)(*:1011)'
-                            .'|delete/([^/]++)(*:1035)'
+                            .'|user/([^/]++)(*:1081)'
+                            .'|([^/]++)(*:1098)'
+                            .'|delete/([^/]++)(*:1122)'
                         .')'
                     .')'
                     .'|rticle(?'
-                        .'|s/([^/]++)(*:1065)'
+                        .'|s/([^/]++)(*:1152)'
                         .'|/json/(?'
-                            .'|([^/]++)(*:1091)'
-                            .'|delete/([^/]++)(*:1115)'
+                            .'|([^/]++)(*:1178)'
+                            .'|delete/([^/]++)(*:1202)'
                         .')'
                     .')'
                 .')'
                 .'|/c(?'
                     .'|a(?'
                         .'|rt/(?'
-                            .'|add/([^/]++)(*:1154)'
-                            .'|remove/([^/]++)(*:1178)'
-                            .'|delete/([^/]++)(*:1202)'
+                            .'|add/([^/]++)(*:1241)'
+                            .'|remove/([^/]++)(*:1265)'
+                            .'|delete/([^/]++)(*:1289)'
                         .')'
                         .'|tegories/json/(?'
-                            .'|([^/]++)(*:1237)'
-                            .'|delete/([^/]++)(*:1261)'
+                            .'|([^/]++)(*:1324)'
+                            .'|delete/([^/]++)(*:1348)'
                         .')'
                     .')'
-                    .'|ommentaires/json/delete/([^/]++)(*:1304)'
-                    .'|hangePassword/user/([^/]++)(*:1340)'
+                    .'|ommentaires/json/(?'
+                        .'|([^/]++)(*:1387)'
+                        .'|delete/([^/]++)(*:1411)'
+                    .')'
                 .')'
                 .'|/delete(?'
                     .'|C(?'
-                        .'|ategorie/([^/]++)(*:1381)'
-                        .'|omment/([^/]++)(*:1405)'
+                        .'|ategorie/([^/]++)(*:1453)'
+                        .'|omment/([^/]++)(*:1477)'
                     .')'
-                    .'|Reservation/([^/]++)(*:1435)'
+                    .'|Reservation/([^/]++)(*:1507)'
                 .')'
                 .'|/PDF(?'
-                    .'|Produits/([^/]++)(*:1469)'
-                    .'|Reservation/([^/]++)(*:1498)'
+                    .'|Produits/([^/]++)(*:1541)'
+                    .'|Reservation/([^/]++)(*:1570)'
                 .')'
                 .'|/pro(?'
-                    .'|file/user/livraisons/filtre/([^/]++)(*:1551)'
+                    .'|file/user/livraisons/filtre/([^/]++)(*:1623)'
                     .'|duits/(?'
                         .'|json/(?'
-                            .'|([^/]++)(*:1585)'
-                            .'|delete/([^/]++)(*:1609)'
+                            .'|categorie/([^/]++)(*:1667)'
+                            .'|([^/]++)(*:1684)'
+                            .'|delete/([^/]++)(*:1708)'
                         .')'
-                        .'|([^/]++)(*:1627)'
+                        .'|([^/]++)(*:1726)'
                     .')'
                 .')'
                 .'|/livr(?'
                     .'|aisons/json/(?'
-                        .'|([^/]++)(*:1669)'
-                        .'|delete/([^/]++)(*:1693)'
+                        .'|([^/]++)(*:1768)'
+                        .'|delete/([^/]++)(*:1792)'
                     .')'
                     .'|eurs/json/(?'
-                        .'|([^/]++)(*:1724)'
-                        .'|delete/([^/]++)(*:1748)'
+                        .'|([^/]++)(*:1823)'
+                        .'|delete/([^/]++)(*:1847)'
                     .')'
                 .')'
                 .'|/salle(?'
                     .'|s/json/(?'
-                        .'|([^/]++)(*:1786)'
-                        .'|delete/([^/]++)(*:1810)'
+                        .'|([^/]++)(*:1885)'
+                        .'|delete/([^/]++)(*:1909)'
                     .')'
-                    .'|/([^/]++)(*:1829)'
+                    .'|/([^/]++)(*:1928)'
                 .')'
             .')/?$}sD',
     ],
@@ -245,61 +269,65 @@ return [
         198 => [[['_route' => 'deleteAdresse', '_controller' => 'App\\Controller\\AdresseController::deleteAdresse'], ['id'], null, null, false, true, null]],
         220 => [[['_route' => 'd', '_controller' => 'App\\Controller\\SalleController::deleteSalle'], ['id'], null, null, false, true, null]],
         241 => [[['_route' => 'comm_react', '_controller' => 'App\\Controller\\CommentaireController::reactCommentaire'], ['id'], null, null, false, true, null]],
-        276 => [[['_route' => 'ReservationsIdJson', '_controller' => 'App\\Controller\\Mobile\\ReservationController::reservationsIdJson'], ['id'], null, null, false, true, null]],
-        299 => [[['_route' => 'deleteReservationsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::deleteReservationsJsonAction'], ['id'], null, null, false, true, null]],
-        338 => [[['_route' => 'updateAdresse', '_controller' => 'App\\Controller\\AdresseController::updateAdresse'], ['id'], null, null, false, true, null]],
-        362 => [[['_route' => 'updateComment', '_controller' => 'App\\Controller\\CommentaireController::updateComment'], ['id'], null, null, false, true, null]],
-        390 => [[['_route' => 'updateReservation', '_controller' => 'App\\Controller\\ReservationController::updateReservation'], ['id'], null, null, false, true, null]],
-        412 => [[['_route' => 'updateSalle', '_controller' => 'App\\Controller\\SalleController::updateSalle'], ['id'], null, null, false, true, null]],
-        442 => [[['_route' => 'UsersIdJson', '_controller' => 'App\\Controller\\Mobile\\UserController::usersIdJson'], ['id'], null, null, false, true, null]],
-        465 => [[['_route' => 'deleteUsersJsonAction', '_controller' => 'App\\Controller\\Mobile\\UserController::deleteUsersJsonAction'], ['id'], null, null, false, true, null]],
-        518 => [[['_route' => 'deleteArticle', '_controller' => 'App\\Controller\\ArticleController::deleteArticle'], ['id'], null, null, false, true, null]],
-        541 => [[['_route' => 'updateArticle', '_controller' => 'App\\Controller\\ArticleController::updateArticle'], ['id'], null, null, false, true, null]],
-        557 => [[['_route' => 'articledetailadmin', '_controller' => 'App\\Controller\\ArticleController::ArticleAdmin'], ['id'], null, null, false, true, null]],
-        593 => [[['_route' => 'updateCategorie', '_controller' => 'App\\Controller\\CategorieController::updateCategorie'], ['id'], null, null, false, true, null]],
-        617 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        638 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        661 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        694 => [[['_route' => 'deleteCommentAdmin', '_controller' => 'App\\Controller\\CommentaireController::deleteCommentAdmin'], ['id'], null, null, false, true, null]],
-        736 => [[['_route' => 'affecter', '_controller' => 'App\\Controller\\LivraisonController::affecter'], ['id'], null, null, false, false, null]],
-        760 => [[['_route' => 'choisirlivreur', '_controller' => 'App\\Controller\\LivraisonController::choisirlivreur'], ['id', 'idlivreur'], null, null, false, true, null]],
-        792 => [[['_route' => 'deleteLivreur', '_controller' => 'App\\Controller\\LivreurController::deleteLivreur'], ['id'], null, null, false, true, null]],
-        815 => [[['_route' => 'updateLivreur', '_controller' => 'App\\Controller\\LivreurController::updateLivreur'], ['id'], null, null, false, true, null]],
-        839 => [[['_route' => 'details', '_controller' => 'App\\Controller\\LivreurController::details'], ['id'], null, null, false, true, null]],
-        869 => [[['_route' => 'ProduitsAdmin', '_controller' => 'App\\Controller\\ProduitController::listProduit'], ['id'], null, null, false, true, null]],
-        892 => [[['_route' => 'deleteProduit', '_controller' => 'App\\Controller\\ProduitController::deleteProduit'], ['id'], null, null, false, true, null]],
-        912 => [[['_route' => 'addProduit', '_controller' => 'App\\Controller\\ProduitController::addProduit'], ['id'], null, null, false, true, null]],
-        935 => [[['_route' => 'updateProduit', '_controller' => 'App\\Controller\\ProduitController::updateProduit'], ['id'], null, null, false, true, null]],
-        958 => [[['_route' => 'SalledetailAdmin', '_controller' => 'App\\Controller\\SalleController::SalledetailAdmin'], ['id'], null, null, false, true, null]],
-        995 => [[['_route' => 'AdressesJsonAction', '_controller' => 'App\\Controller\\Mobile\\AdresseController::adressesJsonAction'], ['id'], null, null, false, true, null]],
-        1011 => [[['_route' => 'AdressesIdJson', '_controller' => 'App\\Controller\\Mobile\\AdresseController::adressesIdJson'], ['id'], null, null, false, true, null]],
-        1035 => [[['_route' => 'deleteAdressesJsonAction', '_controller' => 'App\\Controller\\Mobile\\AdresseController::deleteAdressesJsonAction'], ['id'], null, null, false, true, null]],
-        1065 => [[['_route' => 'articledetail', '_controller' => 'App\\Controller\\ArticleController::Article'], ['id'], null, null, false, true, null]],
-        1091 => [[['_route' => 'ArticlesIdJson', '_controller' => 'App\\Controller\\Mobile\\ArticleController::articlesIdJson'], ['id'], null, null, false, true, null]],
-        1115 => [[['_route' => 'deleteArticlesJsonAction', '_controller' => 'App\\Controller\\Mobile\\ArticleController::deleteArticlesJsonAction'], ['id'], null, null, false, true, null]],
-        1154 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CardController::add'], ['id'], null, null, false, true, null]],
-        1178 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CardController::remove'], ['id'], null, null, false, true, null]],
-        1202 => [[['_route' => 'cart_delete', '_controller' => 'App\\Controller\\CardController::delete'], ['id'], null, null, false, true, null]],
-        1237 => [[['_route' => 'CategoriesIdJson', '_controller' => 'App\\Controller\\Mobile\\CategorieController::CategoriesIdJson'], ['id'], null, null, false, true, null]],
-        1261 => [[['_route' => 'deleteCategoriesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CategorieController::deleteCategoriesJsonAction'], ['id'], null, null, false, true, null]],
-        1304 => [[['_route' => 'deleteCommentairesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::deleteCommentairesJsonAction'], ['id'], null, null, false, true, null]],
-        1340 => [[['_route' => 'changePassword', '_controller' => 'App\\Controller\\UserController::changePassword'], ['id'], ['GET' => 0], null, false, true, null]],
-        1381 => [[['_route' => 'deleteCategorie', '_controller' => 'App\\Controller\\CategorieController::deleteCategorie'], ['id'], null, null, false, true, null]],
-        1405 => [[['_route' => 'deleteComment', '_controller' => 'App\\Controller\\CommentaireController::deleteComment'], ['id'], null, null, false, true, null]],
-        1435 => [[['_route' => 'deleteReservation', '_controller' => 'App\\Controller\\ReservationController::deleteReservation'], ['id'], null, null, false, true, null]],
-        1469 => [[['_route' => 'PDFProduits', '_controller' => 'App\\Controller\\CategorieController::PDFProduits'], ['id'], null, null, false, true, null]],
-        1498 => [[['_route' => 'PDFReservation', '_controller' => 'App\\Controller\\ReservationController::PDFReservation'], ['id'], null, null, false, true, null]],
-        1551 => [[['_route' => 'filtres', '_controller' => 'App\\Controller\\LivraisonController::filtrelivraisonsByuser'], ['type'], null, null, false, true, null]],
-        1585 => [[['_route' => 'ProduitsIdJson', '_controller' => 'App\\Controller\\Mobile\\ProduitController::produitsIdJson'], ['id'], null, null, false, true, null]],
-        1609 => [[['_route' => 'deleteProduitsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::deleteProduitsJsonAction'], ['id'], null, null, false, true, null]],
-        1627 => [[['_route' => 'Produits', '_controller' => 'App\\Controller\\ProduitController::listProduitFront'], ['id'], null, null, false, true, null]],
-        1669 => [[['_route' => 'LivraisonsIdJson', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::livraisonsIdJson'], ['id'], null, null, false, true, null]],
-        1693 => [[['_route' => 'deleteLivraisonsJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::deleteLivraisonsJsonAction'], ['id'], null, null, false, true, null]],
-        1724 => [[['_route' => 'LivreursIdJson', '_controller' => 'App\\Controller\\Mobile\\LivreurController::livreursIdJson'], ['id'], null, null, false, true, null]],
-        1748 => [[['_route' => 'deleteLivreursJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivreurController::deleteLivreursJsonAction'], ['id'], null, null, false, true, null]],
-        1786 => [[['_route' => 'SallesIdJson', '_controller' => 'App\\Controller\\Mobile\\SalleController::sallesIdJson'], ['id'], null, null, false, true, null]],
-        1810 => [[['_route' => 'deleteSallesJsonAction', '_controller' => 'App\\Controller\\Mobile\\SalleController::deleteSallesJsonAction'], ['id'], null, null, false, true, null]],
-        1829 => [
+        282 => [[['_route' => 'ReservationsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::reservationsJsonAction'], ['id'], null, null, false, true, null]],
+        303 => [[['_route' => 'ReservationsUserJsonAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::reservationsUserJsonAction'], ['id'], null, null, false, true, null]],
+        319 => [[['_route' => 'ReservationsIdJson', '_controller' => 'App\\Controller\\Mobile\\ReservationController::reservationsIdJson'], ['id'], null, null, false, true, null]],
+        342 => [[['_route' => 'deleteReservationsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ReservationController::deleteReservationsJsonAction'], ['id'], null, null, false, true, null]],
+        381 => [[['_route' => 'updateAdresse', '_controller' => 'App\\Controller\\AdresseController::updateAdresse'], ['id'], null, null, false, true, null]],
+        405 => [[['_route' => 'updateComment', '_controller' => 'App\\Controller\\CommentaireController::updateComment'], ['id'], null, null, false, true, null]],
+        433 => [[['_route' => 'updateReservation', '_controller' => 'App\\Controller\\ReservationController::updateReservation'], ['id'], null, null, false, true, null]],
+        455 => [[['_route' => 'updateSalle', '_controller' => 'App\\Controller\\SalleController::updateSalle'], ['id'], null, null, false, true, null]],
+        488 => [[['_route' => 'UsersIdJson', '_controller' => 'App\\Controller\\Mobile\\UserController::usersIdJson'], ['id'], null, null, false, true, null]],
+        511 => [[['_route' => 'deleteUsersJsonAction', '_controller' => 'App\\Controller\\Mobile\\UserController::deleteUsersJsonAction'], ['id'], null, null, false, true, null]],
+        549 => [[['_route' => 'changePassword', '_controller' => 'App\\Controller\\UserController::changePassword'], ['id'], null, null, false, true, null]],
+        602 => [[['_route' => 'deleteArticle', '_controller' => 'App\\Controller\\ArticleController::deleteArticle'], ['id'], null, null, false, true, null]],
+        625 => [[['_route' => 'updateArticle', '_controller' => 'App\\Controller\\ArticleController::updateArticle'], ['id'], null, null, false, true, null]],
+        641 => [[['_route' => 'articledetailadmin', '_controller' => 'App\\Controller\\ArticleController::ArticleAdmin'], ['id'], null, null, false, true, null]],
+        677 => [[['_route' => 'updateCategorie', '_controller' => 'App\\Controller\\CategorieController::updateCategorie'], ['id'], null, null, false, true, null]],
+        701 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        722 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        745 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        778 => [[['_route' => 'deleteCommentAdmin', '_controller' => 'App\\Controller\\CommentaireController::deleteCommentAdmin'], ['id'], null, null, false, true, null]],
+        820 => [[['_route' => 'affecter', '_controller' => 'App\\Controller\\LivraisonController::affecter'], ['id'], null, null, false, false, null]],
+        844 => [[['_route' => 'choisirlivreur', '_controller' => 'App\\Controller\\LivraisonController::choisirlivreur'], ['id', 'idlivreur'], null, null, false, true, null]],
+        876 => [[['_route' => 'deleteLivreur', '_controller' => 'App\\Controller\\LivreurController::deleteLivreur'], ['id'], null, null, false, true, null]],
+        899 => [[['_route' => 'updateLivreur', '_controller' => 'App\\Controller\\LivreurController::updateLivreur'], ['id'], null, null, false, true, null]],
+        923 => [[['_route' => 'details', '_controller' => 'App\\Controller\\LivreurController::details'], ['id'], null, null, false, true, null]],
+        953 => [[['_route' => 'ProduitsAdmin', '_controller' => 'App\\Controller\\ProduitController::listProduit'], ['id'], null, null, false, true, null]],
+        976 => [[['_route' => 'deleteProduit', '_controller' => 'App\\Controller\\ProduitController::deleteProduit'], ['id'], null, null, false, true, null]],
+        996 => [[['_route' => 'addProduit', '_controller' => 'App\\Controller\\ProduitController::addProduit'], ['id'], null, null, false, true, null]],
+        1019 => [[['_route' => 'updateProduit', '_controller' => 'App\\Controller\\ProduitController::updateProduit'], ['id'], null, null, false, true, null]],
+        1043 => [[['_route' => 'SalledetailAdmin', '_controller' => 'App\\Controller\\SalleController::SalledetailAdmin'], ['id'], null, null, false, true, null]],
+        1081 => [[['_route' => 'AdressesJsonAction', '_controller' => 'App\\Controller\\Mobile\\AdresseController::adressesJsonAction'], ['id'], null, null, false, true, null]],
+        1098 => [[['_route' => 'AdressesIdJson', '_controller' => 'App\\Controller\\Mobile\\AdresseController::adressesIdJson'], ['id'], null, null, false, true, null]],
+        1122 => [[['_route' => 'deleteAdressesJsonAction', '_controller' => 'App\\Controller\\Mobile\\AdresseController::deleteAdressesJsonAction'], ['id'], null, null, false, true, null]],
+        1152 => [[['_route' => 'articledetail', '_controller' => 'App\\Controller\\ArticleController::Article'], ['id'], null, null, false, true, null]],
+        1178 => [[['_route' => 'ArticlesIdJson', '_controller' => 'App\\Controller\\Mobile\\ArticleController::articlesIdJson'], ['id'], null, null, false, true, null]],
+        1202 => [[['_route' => 'deleteArticlesJsonAction', '_controller' => 'App\\Controller\\Mobile\\ArticleController::deleteArticlesJsonAction'], ['id'], null, null, false, true, null]],
+        1241 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CardController::add'], ['id'], null, null, false, true, null]],
+        1265 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CardController::remove'], ['id'], null, null, false, true, null]],
+        1289 => [[['_route' => 'cart_delete', '_controller' => 'App\\Controller\\CardController::delete'], ['id'], null, null, false, true, null]],
+        1324 => [[['_route' => 'CategoriesIdJson', '_controller' => 'App\\Controller\\Mobile\\CategorieController::CategoriesIdJson'], ['id'], null, null, false, true, null]],
+        1348 => [[['_route' => 'deleteCategoriesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CategorieController::deleteCategoriesJsonAction'], ['id'], null, null, false, true, null]],
+        1387 => [[['_route' => 'CommentairesIdJson', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::CommentairesIdJson'], ['id'], null, null, false, true, null]],
+        1411 => [[['_route' => 'deleteCommentairesJsonAction', '_controller' => 'App\\Controller\\Mobile\\CommentaireController::deleteCommentairesJsonAction'], ['id'], null, null, false, true, null]],
+        1453 => [[['_route' => 'deleteCategorie', '_controller' => 'App\\Controller\\CategorieController::deleteCategorie'], ['id'], null, null, false, true, null]],
+        1477 => [[['_route' => 'deleteComment', '_controller' => 'App\\Controller\\CommentaireController::deleteComment'], ['id'], null, null, false, true, null]],
+        1507 => [[['_route' => 'deleteReservation', '_controller' => 'App\\Controller\\ReservationController::deleteReservation'], ['id'], null, null, false, true, null]],
+        1541 => [[['_route' => 'PDFProduits', '_controller' => 'App\\Controller\\CategorieController::PDFProduits'], ['id'], null, null, false, true, null]],
+        1570 => [[['_route' => 'PDFReservation', '_controller' => 'App\\Controller\\ReservationController::PDFReservation'], ['id'], null, null, false, true, null]],
+        1623 => [[['_route' => 'filtres', '_controller' => 'App\\Controller\\LivraisonController::filtrelivraisonsByuser'], ['type'], null, null, false, true, null]],
+        1667 => [[['_route' => 'ProduitsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::produitsJsonAction'], ['id'], null, null, false, true, null]],
+        1684 => [[['_route' => 'ProduitsIdJson', '_controller' => 'App\\Controller\\Mobile\\ProduitController::produitsIdJson'], ['id'], null, null, false, true, null]],
+        1708 => [[['_route' => 'deleteProduitsJsonAction', '_controller' => 'App\\Controller\\Mobile\\ProduitController::deleteProduitsJsonAction'], ['id'], null, null, false, true, null]],
+        1726 => [[['_route' => 'Produits', '_controller' => 'App\\Controller\\ProduitController::listProduitFront'], ['id'], null, null, false, true, null]],
+        1768 => [[['_route' => 'LivraisonsIdJson', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::livraisonsIdJson'], ['id'], null, null, false, true, null]],
+        1792 => [[['_route' => 'deleteLivraisonsJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivraisonController::deleteLivraisonsJsonAction'], ['id'], null, null, false, true, null]],
+        1823 => [[['_route' => 'LivreursIdJson', '_controller' => 'App\\Controller\\Mobile\\LivreurController::livreursIdJson'], ['id'], null, null, false, true, null]],
+        1847 => [[['_route' => 'deleteLivreursJsonAction', '_controller' => 'App\\Controller\\Mobile\\LivreurController::deleteLivreursJsonAction'], ['id'], null, null, false, true, null]],
+        1885 => [[['_route' => 'SallesIdJson', '_controller' => 'App\\Controller\\Mobile\\SalleController::sallesIdJson'], ['id'], null, null, false, true, null]],
+        1909 => [[['_route' => 'deleteSallesJsonAction', '_controller' => 'App\\Controller\\Mobile\\SalleController::deleteSallesJsonAction'], ['id'], null, null, false, true, null]],
+        1928 => [
             [['_route' => 'SalledetailFront', '_controller' => 'App\\Controller\\SalleController::SalledetailFront'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

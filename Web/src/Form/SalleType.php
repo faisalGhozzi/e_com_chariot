@@ -11,7 +11,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class SalleType extends AbstractType
 {
@@ -20,7 +23,9 @@ class SalleType extends AbstractType
         $builder
 
             ->add('nom',TextType::class, ['attr'=>[ 'placeholder'=>'Nom de la salle']])
-            ->add('prixsalle',TextType::class,['attr'=>[ 'placeholder'=>'Prix de la salle']])
+            ->add('prixsalle',NumberType::class,[
+                'attr'=>[ 'placeholder'=>'Prix de la salle'],
+                ])
             ->add('img',
                 FileType::class, [
                     'label' => 'image',
@@ -32,7 +37,9 @@ class SalleType extends AbstractType
                         ])
                     ],
                 ])
-            ->add('capacite',TextType::class,['attr'=>[ 'placeholder'=>'Capacite de la salle']])
+            ->add('capacite',NumberType::class,[
+                'attr'=>[ 'placeholder'=>'Capacite de la salle'],
+                ])
         ;
 
     }

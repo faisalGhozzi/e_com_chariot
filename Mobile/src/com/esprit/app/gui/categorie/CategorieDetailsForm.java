@@ -19,18 +19,19 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Categorie;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.gui.categorie.AddCategorieForm;
 import com.esprit.app.services.CategorieService;
 import com.esprit.app.utils.Statics;
 
-public class CategorieDetailsForm extends Form{
+public class CategorieDetailsForm extends BaseForm{
     @SuppressWarnings("unused")
     private Resources theme;
     private CategorieService cs = new CategorieService();
     
     
-    public CategorieDetailsForm(Form previous,Resources theme,Categorie c){
+    public CategorieDetailsForm(Resources res,Categorie c){
         super("Categorie Details",BoxLayout.y());
         Button update = new Button("Update");
         
@@ -40,7 +41,7 @@ public class CategorieDetailsForm extends Form{
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new AddCategorieForm(previous, theme, c.getId()).show();
+                new AddCategorieForm(res, c.getId()).show();
             }
         });
         
@@ -50,12 +51,13 @@ public class CategorieDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new CategorieForm(res).showBack();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             cs.deleteCategorie(c.getId());
-            previous.show();
+            new CategorieForm(res).showBack();
+
         });
     }
 }

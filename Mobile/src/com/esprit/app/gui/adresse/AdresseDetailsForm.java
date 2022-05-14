@@ -13,17 +13,18 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Adresse;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.gui.adresse.AddAdresseForm;
 import com.esprit.app.services.AdresseService;
+import com.esprit.app.utils.ConnectedUser;
 
-public class AdresseDetailsForm extends Form{
+public class AdresseDetailsForm extends BaseForm{
     @SuppressWarnings("unused")
-    private Resources theme;
     private AdresseService as = new AdresseService();
     
     
-    public AdresseDetailsForm(Form previous,Resources theme,Adresse a){
+    public AdresseDetailsForm(Resources res, Adresse a){
         super("Adresse Details",BoxLayout.y());
         Button update = new Button("Update");
         
@@ -34,7 +35,7 @@ public class AdresseDetailsForm extends Form{
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                new AddAdresseForm(previous, theme, a.getId()).show();
+                new AddAdresseForm(res, a.getId()).show();
             }
         });
         
@@ -44,12 +45,13 @@ public class AdresseDetailsForm extends Form{
 
 
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new AdresseForm(res, ConnectedUser.getConnectedUser().getId()).showBack();
         });
         
         this.getToolbar().addCommandToRightBar("Delete", null , (evt) -> {
             as.deleteAdresse(a.getId());
-            previous.show();
+            new AdresseForm(res, ConnectedUser.getConnectedUser().getId()).showBack();
+
         });
     }
 }

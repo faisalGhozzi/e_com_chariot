@@ -173,6 +173,6 @@ class __TwigTemplate_8c63f67423675ecf5bcd656e57290b71c78d162abf1d27283fa04adb9fc
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 {% endblock %}
 </body>
-</html>", "chat/index3.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\chat\\index3.html.twig");
+</html>", "chat/index3.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\chat\\index3.html.twig");
     }
 }

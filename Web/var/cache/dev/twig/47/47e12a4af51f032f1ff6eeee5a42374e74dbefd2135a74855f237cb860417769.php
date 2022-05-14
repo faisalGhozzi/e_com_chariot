@@ -159,6 +159,6 @@ class __TwigTemplate_47084d00e98a4ce0733bcab3da8e110eaee58e907a1903ce52aca39e483
             </div>
         </div>
     </section>
-{% endblock %}", "home/index.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\home\\index.html.twig");
+{% endblock %}", "home/index.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\home\\index.html.twig");
     }
 }

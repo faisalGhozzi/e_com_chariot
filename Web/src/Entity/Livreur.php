@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -18,28 +20,28 @@ class Livreur
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="nom doit etre non vide")
      * @ORM\Column(name="nomLivreur", type="string", length=20, nullable=false)
      */
     private $nomlivreur;
 
     /**
      * @var int
-     *
+     * @Assert\Positive(message="numero telephone doit etre non vide")
      * @ORM\Column(name="numtel", type="integer", nullable=false)
      */
     private $numtel;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="prenom doit etre non vide")
      * @ORM\Column(name="prenom", type="string", length=100, nullable=false)
      */
     private $prenom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="email doit etre non vide")
      * @ORM\Column(name="email", type="string", length=250, nullable=false)
      */
     private $email;

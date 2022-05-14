@@ -35,6 +35,7 @@ class Salle
      *      min=1,
      *      notInRangeMessage="Le prix doit etre >0")
      * @Assert\NotBlank(message="Prix doit etre non vide !")
+     * @Assert\Positive(message="entrer une valeure positive")
      * @ORM\Column(name="prixSalle", type="float", precision=10, scale=0, nullable=false)
      */
     private $prixsalle;
@@ -49,6 +50,7 @@ class Salle
     /**
      * @var int
      * @Assert\NotBlank(message="la capacité ne doit pas etre vide !")
+     * @Assert\Positive(message="entrer une valeure positive")
      * @Assert\Range(
      *      min = 5,
      *      max = 500,

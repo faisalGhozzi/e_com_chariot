@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Adresse;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class VilleFormType extends AbstractType
         $builder
             ->add('ville')
             ->add('rue')
-            ->add('nummaison')
+            ->add('nummaison', NumberType::class)
             ->add('iduser')
         ;
     }

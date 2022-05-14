@@ -28,14 +28,14 @@ class ProduitController extends AbstractController
     /**
      * @Route("/admin/produits/remove/{id}",name="deleteProduit")
      */
-    public function deleteProduit($id)
+    public function deleteProduit($id, ProduitRepository $produitRepository)
     {
-        $produit= $this->getDoctrine()->getRepository(Produit::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $produit= $produitRepository->find($id);
         $idCat=$produit->getIdCateg()->getIdCateg();
-         $em=$this->getDoctrine()->getManager();
-         $em->remove($produit);
-         $em->flush();
-          return $this->redirectToRoute("ProduitsAdmin",array('id'=>$idCat));
+        $em->remove($produit);
+        $em->flush();
+        return $this->redirectToRoute("ProduitsAdmin",array('id'=>$idCat));
     }
     /**
      * @Route("/admin/produits/add/{id}",name="addProduit")

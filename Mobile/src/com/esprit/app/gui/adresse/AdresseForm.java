@@ -12,35 +12,36 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.app.entity.Adresse;
+import com.esprit.app.gui.BaseForm;
+import com.esprit.app.gui.user.UserDetailsForm;
 import com.esprit.app.services.AdresseService;
+import com.esprit.app.utils.ConnectedUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AdresseForm extends Form{
-    private Resources theme;
+public class AdresseForm extends BaseForm{
     private AdresseService as = new AdresseService();
     private ArrayList<Adresse> adresses;
     
-    public AdresseForm(Form previous, Resources res)throws IOException{
+    public AdresseForm(Resources res, int id_user){
         super("My Adresses", GridLayout.autoFit());
-        this.theme = theme;
         this.revalidate();
-        adresses = as.getAllAdresses(1);
+        adresses = as.getAllAdresses(id_user);
         Container list = new Container(BoxLayout.y());
         list.setScrollableY(true);
         for (Adresse adresse : adresses) {
             MultiButton mb = new MultiButton(String.valueOf(adresse.getNumMaison()) + ", " + adresse.getRue());
             mb.setTextLine2(adresse.getVille());
             mb.addActionListener((evt) -> {
-                new AdresseDetailsForm(this, theme, adresse).show();
+                new AdresseDetailsForm(res, adresse).show();
             });
             list.add(mb);
         }
         this.getToolbar().addCommandToRightBar("Add", null, (evt) -> {
-            new AddAdresseForm(this, theme, 0).show();
+            new AddAdresseForm(res, 0).show();
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new UserDetailsForm(res, ConnectedUser.getConnectedUser()).showBack();
         });
         this.add(list);   
     }

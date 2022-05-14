@@ -84,7 +84,7 @@ class LivreurRepository extends ServiceEntityRepository
             ->execute();
     }*/
 
-    public function findEntitiesByString($str){
+    public function findByNomlivreur($str){
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT p

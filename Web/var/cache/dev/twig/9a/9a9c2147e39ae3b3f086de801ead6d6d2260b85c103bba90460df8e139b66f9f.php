@@ -220,7 +220,7 @@ class __TwigTemplate_8fdadbb20873adb385ba0339c967374d1d7fd8dcdd515fec0c9f88bfd9e
                                 '</div>'+
                                 '<div class=\"post-details\">'+
                                     '<p>'+result[i].description+'</p>'+
-                                    '<a href=\"/card/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
+                                    '<a href=\"/cart/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
                                     '<i class=\"bi bi-cart-plus\"></i> Ajouter'+
                                     '</a>'+
                                     '</div>'+
@@ -281,7 +281,7 @@ class __TwigTemplate_8fdadbb20873adb385ba0339c967374d1d7fd8dcdd515fec0c9f88bfd9e
                                     '</div>'+
                                     '<div class=\"post-details\">'+
                                     '<p>'+result[i].description+'</p>'+
-                                    '<a href=\"/card/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
+                                    '<a href=\"/cart/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
                                     '<i class=\"bi bi-cart-plus\"></i> Ajouter'+
                                     '</a>'+
                                     '</div>'+
@@ -440,7 +440,7 @@ class __TwigTemplate_8fdadbb20873adb385ba0339c967374d1d7fd8dcdd515fec0c9f88bfd9e
                                 '</div>'+
                                 '<div class=\"post-details\">'+
                                     '<p>'+result[i].description+'</p>'+
-                                    '<a href=\"/card/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
+                                    '<a href=\"/cart/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
                                     '<i class=\"bi bi-cart-plus\"></i> Ajouter'+
                                     '</a>'+
                                     '</div>'+
@@ -495,7 +495,7 @@ class __TwigTemplate_8fdadbb20873adb385ba0339c967374d1d7fd8dcdd515fec0c9f88bfd9e
                                     '</div>'+
                                     '<div class=\"post-details\">'+
                                     '<p>'+result[i].description+'</p>'+
-                                    '<a href=\"/card/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
+                                    '<a href=\"/cart/add/'+result[i].idproduit+'\" class=\"btn btn-success\">'+
                                     '<i class=\"bi bi-cart-plus\"></i> Ajouter'+
                                     '</a>'+
                                     '</div>'+
@@ -516,6 +516,6 @@ class __TwigTemplate_8fdadbb20873adb385ba0339c967374d1d7fd8dcdd515fec0c9f88bfd9e
 
 
 {% endblock %}
-", "produit/listproduitfront.html.twig", "C:\\Users\\Faycal Ghozzi\\Desktop\\ProjetsMoney\\e_com_chariot\\Web\\templates\\produit\\listproduitfront.html.twig");
+", "produit/listproduitfront.html.twig", "C:\\Users\\Insaf Ghozzi\\Desktop\\Faycal\\e_com_chariot\\Web\\templates\\produit\\listproduitfront.html.twig");
     }
 }

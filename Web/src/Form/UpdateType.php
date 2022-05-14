@@ -5,8 +5,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Entity\Salle;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twilio\TwiML\Voice\Number;
 
 class UpdateType extends AbstractType
 {
@@ -14,7 +16,7 @@ class UpdateType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prixsalle')
+            ->add('prixsalle', NumberType::class)
             ->add('image')
             ->add('capacite')
         ;

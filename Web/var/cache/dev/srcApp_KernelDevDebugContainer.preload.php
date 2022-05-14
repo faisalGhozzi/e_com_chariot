@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerGq7oMjo/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerNaxHAqM/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -53,12 +53,12 @@ $classes[] = 'App\Controller\LivraisonController';
 $classes[] = 'App\Controller\LivreurController';
 $classes[] = 'App\Controller\Mobile\AdresseController';
 $classes[] = 'App\Controller\Mobile\ArticleController';
+$classes[] = 'App\Controller\Mobile\CartController';
 $classes[] = 'App\Controller\Mobile\CategorieController';
 $classes[] = 'App\Controller\Mobile\CommentaireController';
 $classes[] = 'App\Controller\Mobile\LivraisonController';
 $classes[] = 'App\Controller\Mobile\LivreurController';
 $classes[] = 'App\Controller\Mobile\ProduitController';
-$classes[] = 'App\Controller\Mobile\RegistrationController';
 $classes[] = 'App\Controller\Mobile\ReservationController';
 $classes[] = 'App\Controller\Mobile\SalleController';
 $classes[] = 'App\Controller\Mobile\UserController';
@@ -82,6 +82,7 @@ $classes[] = 'App\Form\ReservationType';
 $classes[] = 'App\Form\SalleType';
 $classes[] = 'App\Form\SearchformType';
 $classes[] = 'App\Form\UpdateType';
+$classes[] = 'App\Form\UserFrontType';
 $classes[] = 'App\Form\UserType';
 $classes[] = 'App\Form\VilleFormType';
 $classes[] = 'App\Repository\AdresseRepository';
@@ -316,6 +317,7 @@ $classes[] = 'Symfony\Component\Mailer\EventListener\MessageLoggerListener';
 $classes[] = 'Symfony\Component\Mailer\Mailer';
 $classes[] = 'Symfony\Component\Mailer\Transport\Transports';
 $classes[] = 'Symfony\Component\Mailer\Transport';
+$classes[] = 'Symfony\Component\Mailer\Bridge\Google\Transport\GmailTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\NullTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\SendmailTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\Smtp\EsmtpTransportFactory';

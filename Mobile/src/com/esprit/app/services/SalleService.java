@@ -39,7 +39,7 @@ public class SalleService {
         req.setPost(true);
         req.addArgument("nom", String.valueOf(a.getNom()));
         req.addArgument("prixsalle", String.valueOf(a.getPrix()));
-        req.addArgument("image", String.valueOf(a.getImage()));
+        req.addArgument("salles_directory", String.valueOf(a.getImage()));
         req.addArgument("capacite", String.valueOf(a.getCapacite()));
         
         InfiniteProgress prog = new InfiniteProgress();
@@ -63,7 +63,7 @@ public class SalleService {
         req.addArgument("id", String.valueOf(a.getId()));
         req.addArgument("nom", String.valueOf(a.getNom()));
         req.addArgument("prixsalle", String.valueOf(a.getPrix()));
-        req.addArgument("image", String.valueOf(a.getImage()));
+        req.addArgument("salles_directory", String.valueOf(a.getImage()));
         req.addArgument("capacite", String.valueOf(a.getCapacite()));
         
         InfiniteProgress prog = new InfiniteProgress();

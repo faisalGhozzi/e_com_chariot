@@ -38,7 +38,7 @@ class ArticleController extends AbstractController
      */
     public function articlesJsonAction(ArticleRepository $articleRepository): JsonResponse
     {
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findByExampleField("desarchive");
 
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($articles);
@@ -54,7 +54,7 @@ class ArticleController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
-        $article->setImage($request->get('image'));
+        $article->setImage($request->get('article_directory'));
         $article->setTitre($request->get('titre'));
         $article->setContenu($request->get('contenu'));
         $article->setEtat('desarchive');
@@ -79,7 +79,7 @@ class ArticleController extends AbstractController
 
         $article = $articleRepository->find($request->get('id'));
 
-        $article->setImage($request->get('image'));
+        $article->setImage($request->get('article_directory'));
         $article->setTitre($request->get('titre'));
         $article->setContenu($request->get('contenu'));
         $article->setEtat('desarchive');
@@ -90,17 +90,48 @@ class ArticleController extends AbstractController
         return new JsonResponse($article);
     }
 
+    /**
+     * @param Request $request
+     * @Route("/article/json/upload",name="uploadJson",methods={"GET","POST"})
+     * @return JsonResponse
+     */
+    public function uploadImage(Request $request)
+    {
+
+        $allowedExts = array("gif", "jpeg", "jpg", "png");
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $extension = end($temp);
+
+        if ((($_FILES["file"]["type"] == "image/*") || ($_FILES["file"]["type"] == "image/jpeg") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/pjpeg") || ($_FILES["file"]["type"] == "image/x-png") || ($_FILES["file"]["type"] == "image/png")) && ($_FILES["file"]["size"] < 5000000) && in_array($extension, $allowedExts)) {
+            if ($_FILES["file"]["error"] > 0) {
+                $named_array = array("Response" => array(array("Status" => "error")));
+                return new JsonResponse($named_array);
+
+            } else {
+                move_uploaded_file($_FILES["file"]["tmp_name"], $this->getParameter('article_directory').$_FILES["file"]["name"]);
+
+                $Path = $_FILES["file"]["name"];
+                $named_array = array("Response" => array(array("Status" => "ok")));
+                return new JsonResponse($named_array);
+            }
+        } else {
+            $named_array = array("Response" => array(array("Status" => "invalid")));
+            return new JsonResponse($named_array);
+
+        }
+    }
+
 
     /**
      * @Route("/article/json/{id}", name="ArticlesIdJson")
      * @throws ExceptionInterface
      */
-    public function articlesIdJson(ArticleRepository $articleRepository, $id): JsonResponse
+    public function articlesIdJson(ArticleRepository $articleRepository, CommentaireRepository $commentaireRepository, $id): JsonResponse
     {
-        $articles = $articleRepository->find($id);
-
+        $article = $articleRepository->find($id);
+//        $commentaires = $commentaireRepository->findByArticle($article);
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($articles);
+        $formatted = $serializer->normalize($article);
         return new JsonResponse($formatted);
     }
 
@@ -110,11 +141,11 @@ class ArticleController extends AbstractController
      */
     public function deleteArticlesJsonAction(ArticleRepository $articleRepository, $id): JsonResponse
     {
-        $articles = $articleRepository->find($id);
-        $this->getDoctrine()->getManager()->remove($articles);
+        $article = $articleRepository->find($id);
+        $article->setEtat("supprimer");
         $this->getDoctrine()->getManager()->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($articles);
+        $formatted = $serializer->normalize($article);
         return new JsonResponse($formatted);
     }
 }

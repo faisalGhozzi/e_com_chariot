@@ -8,8 +8,12 @@ package com.esprit.app.gui.salle;
 
 import com.codename1.capture.Capture;
 import com.codename1.components.ImageViewer;
+import com.codename1.components.InfiniteProgress;
 import com.codename1.components.SpanLabel;
+import com.codename1.io.MultipartRequest;
+import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.TextField;
 
 import com.codename1.ui.Display;
@@ -18,6 +22,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.URLImage;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
@@ -26,13 +31,13 @@ import com.codename1.ui.util.Resources;
 
 
 import com.esprit.app.entity.Salle;
+import com.esprit.app.gui.BaseForm;
 import com.esprit.app.gui.HomeForm;
 import com.esprit.app.services.SalleService;
 import com.esprit.app.utils.Statics;
 import java.io.IOException;
 
-
-public class AddSalleForm extends Form{
+public class AddSalleForm extends BaseForm{
     
     @SuppressWarnings("unused")
     private Resources theme;
@@ -40,7 +45,7 @@ public class AddSalleForm extends Form{
     private SalleService ss = new SalleService();
     
     
-    public AddSalleForm(Form previous, Resources theme, int id){
+    public AddSalleForm(Resources res, int id){
         super(id == 0 ? "Add Salle" : "Update Salle",BoxLayout.y());
         if (id != 0){
             s = ss.getSalle(id);
@@ -58,34 +63,65 @@ public class AddSalleForm extends Form{
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Salle s = new Salle(nom.getText(), Float.parseFloat(prix.getText()), "no_image.png", Integer.parseInt(capacite.getText()));
+                Salle s = new Salle(nom.getText(), Float.parseFloat(prix.getText()), imgName.getText() , Integer.parseInt(capacite.getText()));
                 if ( id == 0 ){
                     ss.addSalle(s);
                 }else{
                     s.setId(id);
                     ss.updateSalle(s);
                 }             
-            previous.show();
+                new SalleForm(res).showBack();
             }
         });
         
+        
         uploadImage.addActionListener((evt) -> {
-            String path = Capture.capturePhoto(Display.getInstance().getDisplayWidth(), -1);
-            if(path != null){
-                try {
-                    Image img = Image.createImage(path);
-                    lbl_Image.setIcon(img);
-                    imgName.setText(path);
-                    this.revalidate();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                
+            MultipartRequest cr = new MultipartRequest();
+
+            String filePath = Capture.capturePhoto(Display.getInstance().getDisplayWidth(), -1);
+            String filename = filePath.substring(filePath.lastIndexOf("/") + 1, filePath.indexOf("."));
+            String ext = filePath.substring(filePath.lastIndexOf("."), filePath.length());
+            imgName.setText(filename + "" + ext);
+            
+            s.setImage(imgName.getText());
+           
+            cr.setUrl(Statics.BASE_URL + "/salles/json/upload");
+            cr.setPost(true); 
+            String mime = "image/*";
+            try {
+                cr.addData("file", filePath, mime);
+            } catch (IOException ex) {
+                Dialog.show("Error", ex.getMessage(), "OK", null);
             }
+
+            cr.setFilename("file", filename.concat(ext));//any unique name you want
+
+            InfiniteProgress prog = new InfiniteProgress();
+            Dialog dlg = prog.showInifiniteBlocking();
+            cr.setDisposeOnCompletion(dlg);
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+            Dialog.show("Success", "Image uploaded", "OK", null);
+            Image img;
+            try {
+                img = Image.createImage(filePath);
+                lbl_Image.setIcon(img);
+                this.revalidate();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+                    
         });
         this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
-            previous.show();
+            new SalleForm(res).showBack();
         });
         addAll(lbl_Image, nom, prix, capacite, uploadImage, add);     
     }
+    
+    /*public void returnToPrec(Resources res) throws IOException{
+        SalleForm h = new SalleForm(res);
+        h.setF(h.createSalleForm(res));
+        this.setTransitionOutAnimator(CommonTransitions.createEmpty());
+        h.getF().show();
+    }*/
 }

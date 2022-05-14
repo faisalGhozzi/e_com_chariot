@@ -4,3 +4,6 @@ twig:
     strict_variables: '%kernel.debug%'
     exception_controller: null
     form_theme: ['bootstrap_4_horizontal_layout.html.twig']
+    paths:
+        '%kernel.project_dir%/public': img
+        '%kernel.project_dir%/vendor/blackknight467/star-rating-bundle/blackknight467/StarRatingBundle/Resources/views': StarRatingBundle

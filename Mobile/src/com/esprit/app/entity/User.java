@@ -70,6 +70,10 @@ public class User {
         this.password = password;
     }
 
+    public String csvFormat() {
+        return id+","+nom+","+prenom+","+email;
+    }
+    
     @Override
     public String toString() {
         return "User{" + "email=" + email + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password + '}';
